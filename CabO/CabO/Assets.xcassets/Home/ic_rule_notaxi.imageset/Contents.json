@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "ic_rule_notaxi.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

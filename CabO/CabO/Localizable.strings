@@ -1,0 +1,18 @@
+/* 
+  Localizable.strings
+  CabO
+
+  Created by Octos.
+  
+*/
+
+// MARK: Web Operation
+"kInternetDown"  = "No internet connection";
+"kConnecting"    = "Connecting...";
+"kHostDown"      = "Your host seems to be down";
+"kTimeOut"       = "The request timed out";
+"kInternalError" = "Internal error";
+"kTokenExpire"   = "Session expired please login again";
+"kSomethingWentWrong"   = "Something went wrong";
+"kImageSizeValidation"  = "Please select images below size 4 MB";
+"_appName"  = "Eco Carpool";

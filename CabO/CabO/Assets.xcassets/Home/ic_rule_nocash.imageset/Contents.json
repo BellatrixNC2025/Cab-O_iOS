@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "ic_rule_nocash.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

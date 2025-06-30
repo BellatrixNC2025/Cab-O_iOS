@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="94" height="94" viewBox="0 0 94 94">
+  <defs>
+    <filter id="Ellipse_4227" x="19.185" y="22.184" width="54.991" height="54.991" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.271"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_38531" data-name="Group 38531" transform="translate(-157.263 -369.263)">
+    <g id="Ellipse_4226" data-name="Ellipse 4226" transform="translate(157.263 369.263)" fill="rgba(17,209,110,0.27)" stroke="rgba(37,126,249,0.12)" stroke-width="1">
+      <circle cx="47" cy="47" r="47" stroke="none"/>
+      <circle cx="47" cy="47" r="46.5" fill="none"/>
+    </g>
+    <circle id="Ellipse_4225" data-name="Ellipse 4225" cx="25.787" cy="25.787" r="25.787" transform="translate(178.155 390.155)" fill="#11d16e"/>
+    <g transform="matrix(1, 0, 0, 1, 157.26, 369.26)" filter="url(#Ellipse_4227)">
+      <g id="Ellipse_4227-2" data-name="Ellipse 4227" transform="translate(28.18 28.18)" fill="#0dc566" stroke="#fff" stroke-width="2">
+        <circle cx="18.495" cy="18.495" r="18.495" stroke="none"/>
+        <circle cx="18.495" cy="18.495" r="17.495" fill="none"/>
+      </g>
+    </g>
+    <path id="Path_34537" data-name="Path 34537" d="M15.585,3.525A.892.892,0,0,0,14.4,2.337L2.759,7.849a.892.892,0,0,0,.165,1.672L7.3,10.616,8.4,15a.893.893,0,0,0,1.673.165Z" transform="translate(195.076 407.303)" fill="#fff"/>
+  </g>
+</svg>

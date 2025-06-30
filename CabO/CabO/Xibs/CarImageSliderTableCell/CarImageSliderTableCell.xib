@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="214" id="KGk-i7-Jjw" customClass="CarImageSliderTableCell" customModule="CabO" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="214"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="214"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BUf-ko-mk7" customClass="NRoundView" customModule="CabO" customModuleProvider="target">
+                        <rect key="frame" x="20" y="12" width="280" height="190"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="uJO-dJ-YTE">
+                                <rect key="frame" x="0.0" y="0.0" width="280" height="190"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" sectionInsetReference="safeArea" id="DrN-ro-DMn">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <connections>
+                                    <outlet property="dataSource" destination="KGk-i7-Jjw" id="AwI-au-ldL"/>
+                                    <outlet property="delegate" destination="KGk-i7-Jjw" id="vYC-DL-1Aj"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" name="headerBG"/>
+                        <constraints>
+                            <constraint firstItem="uJO-dJ-YTE" firstAttribute="top" secondItem="BUf-ko-mk7" secondAttribute="top" id="PZH-zc-zeB"/>
+                            <constraint firstAttribute="trailing" secondItem="uJO-dJ-YTE" secondAttribute="trailing" id="Qe2-Kv-KNR"/>
+                            <constraint firstAttribute="bottom" secondItem="uJO-dJ-YTE" secondAttribute="bottom" id="X6A-Sq-SEx"/>
+                            <constraint firstItem="uJO-dJ-YTE" firstAttribute="leading" secondItem="BUf-ko-mk7" secondAttribute="leading" id="unF-KP-WfI"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadious">
+                                <real key="value" value="16"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mn9-sJ-d0m" customClass="NRoundButton" customModule="CabO" customModuleProvider="target">
+                        <rect key="frame" x="284" y="91" width="32" height="32"/>
+                        <color key="backgroundColor" name="theme_primary"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="mn9-sJ-d0m" secondAttribute="height" multiplier="1:1" id="V3n-Vb-Hdc"/>
+                            <constraint firstAttribute="height" constant="32" id="kK4-RC-E8l">
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeightResize" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </constraint>
+                        </constraints>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" image="ic_arrow_right"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadious">
+                                <real key="value" value="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="btnPrevNextTap:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="KrE-ZL-pAQ"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hTU-YV-Cae" customClass="NRoundButton" customModule="CabO" customModuleProvider="target">
+                        <rect key="frame" x="4" y="91" width="32" height="32"/>
+                        <color key="backgroundColor" name="theme_primary"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="hTU-YV-Cae" secondAttribute="height" multiplier="1:1" id="BTx-hr-rQa"/>
+                            <constraint firstAttribute="height" constant="32" id="aU0-Z8-nhb">
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeightResize" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </constraint>
+                        </constraints>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" image="lessthan" catalog="system"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadious">
+                                <real key="value" value="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="btnPrevNextTap:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Rxe-xj-zIP"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="mn9-sJ-d0m" firstAttribute="centerX" secondItem="BUf-ko-mk7" secondAttribute="trailing" id="5mc-ei-vDa"/>
+                    <constraint firstItem="mn9-sJ-d0m" firstAttribute="centerY" secondItem="BUf-ko-mk7" secondAttribute="centerY" id="Jc7-ns-I2d"/>
+                    <constraint firstAttribute="bottom" secondItem="BUf-ko-mk7" secondAttribute="bottom" constant="12" id="Pa0-Rr-nUP">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isHeightResize" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </constraint>
+                    <constraint firstItem="hTU-YV-Cae" firstAttribute="centerX" secondItem="BUf-ko-mk7" secondAttribute="leading" id="UhF-sT-jO4"/>
+                    <constraint firstItem="BUf-ko-mk7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="Wmg-41-A6m">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isHeightResize" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </constraint>
+                    <constraint firstItem="BUf-ko-mk7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="axB-Yb-wSx">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isWidthResize" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </constraint>
+                    <constraint firstItem="hTU-YV-Cae" firstAttribute="centerY" secondItem="BUf-ko-mk7" secondAttribute="centerY" id="eTL-gF-8Zv"/>
+                    <constraint firstAttribute="trailing" secondItem="BUf-ko-mk7" secondAttribute="trailing" constant="20" id="jzg-dP-i6d">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isWidthResize" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </constraint>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="bottomConstraints" destination="Pa0-Rr-nUP" id="kah-uJ-1KF"/>
+                <outlet property="collectionView" destination="uJO-dJ-YTE" id="cgT-PH-OSG"/>
+                <outlet property="leadingConstraints" destination="axB-Yb-wSx" id="Zpg-U7-QyK"/>
+                <outlet property="topConstraints" destination="Wmg-41-A6m" id="Mtr-tL-GmR"/>
+                <outlet property="trailingConstraints" destination="jzg-dP-i6d" id="YM9-OF-D6Z"/>
+            </connections>
+            <point key="canvasLocation" x="117.55725190839694" y="48.591549295774648"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ic_arrow_right" width="6.6180000305175781" height="12.484999656677246"/>
+        <image name="lessthan" catalog="system" width="128" height="108"/>
+        <namedColor name="headerBG">
+            <color red="0.0" green="0.20784313725490197" blue="0.1803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="theme_primary">
+            <color red="0.066666666666666666" green="0.81960784313725488" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

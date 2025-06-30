@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="Gu3-l1-5G9" customClass="ValidationToast" customModule="FanSportizSDK" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HQg-p1-lym">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6pO-B0-NZc" userLabel="AnimatingView">
+                            <rect key="frame" x="0.0" y="64" width="414" height="64"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wW2-f1-KZL">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" red="1" green="0.20000000000000001" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstItem="wW2-f1-KZL" firstAttribute="leading" secondItem="6pO-B0-NZc" secondAttribute="leading" id="MeU-EE-tNe"/>
+                                <constraint firstAttribute="trailing" secondItem="wW2-f1-KZL" secondAttribute="trailing" id="Xcq-Rr-1qE"/>
+                                <constraint firstItem="wW2-f1-KZL" firstAttribute="top" secondItem="6pO-B0-NZc" secondAttribute="top" id="r4v-li-Ne0"/>
+                                <constraint firstAttribute="bottom" secondItem="wW2-f1-KZL" secondAttribute="bottom" id="r5g-es-SJg"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="6pO-B0-NZc" firstAttribute="top" secondItem="HQg-p1-lym" secondAttribute="top" constant="64" id="3iM-uc-pqu"/>
+                        <constraint firstItem="6pO-B0-NZc" firstAttribute="centerX" secondItem="HQg-p1-lym" secondAttribute="centerX" id="Mkk-PL-UuW"/>
+                        <constraint firstItem="6pO-B0-NZc" firstAttribute="height" secondItem="HQg-p1-lym" secondAttribute="height" id="NT2-Ye-llm"/>
+                        <constraint firstItem="6pO-B0-NZc" firstAttribute="width" secondItem="HQg-p1-lym" secondAttribute="width" id="lX7-lF-JEw"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="HQg-p1-lym" secondAttribute="trailing" id="Fvk-g5-IGV"/>
+                <constraint firstItem="HQg-p1-lym" firstAttribute="top" secondItem="Gu3-l1-5G9" secondAttribute="top" id="tIi-s5-aV0"/>
+                <constraint firstItem="HQg-p1-lym" firstAttribute="leading" secondItem="Gu3-l1-5G9" secondAttribute="leading" id="wbt-iv-Qaa"/>
+                <constraint firstAttribute="bottom" secondItem="HQg-p1-lym" secondAttribute="bottom" id="wsn-be-3dG"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="animatingView" destination="6pO-B0-NZc" id="q7z-1x-OqN"/>
+                <outlet property="animatingViewBottomConstraint" destination="3iM-uc-pqu" id="VM6-us-H7j"/>
+                <outlet property="messageLabel" destination="wW2-f1-KZL" id="4kl-yt-vNz"/>
+            </connections>
+            <point key="canvasLocation" x="-152" y="210"/>
+        </view>
+    </objects>
+</document>

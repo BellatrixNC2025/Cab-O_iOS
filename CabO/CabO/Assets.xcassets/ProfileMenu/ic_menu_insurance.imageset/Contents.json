@@ -1,0 +1,15 @@
+{
+  "images" : [
+    {
+      "filename" : "3668850_insurance_protection_safety_shield_icon.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
+  }
+}

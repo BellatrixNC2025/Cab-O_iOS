@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Urbanist-Medium.ttf">
+            <string>Urbanist-Medium</string>
+        </array>
+        <array key="Urbanist-SemiBold.ttf">
+            <string>Urbanist-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="203" id="KGk-i7-Jjw" customClass="InputCell" customModule="CabO" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="185"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="185"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xjq-QV-KiT" customClass="NRoundView" customModule="CabO" customModuleProvider="target">
+                        <rect key="frame" x="15" y="0.0" width="290" height="185"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadious">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FhR-zi-cb7" customClass="NRoundView" customModule="CabO" customModuleProvider="target">
+                        <rect key="frame" x="20" y="30" width="280" height="131"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9ud-2c-mlc">
+                                <rect key="frame" x="10" y="8" width="260" height="115"/>
+                                <subviews>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KNT-yw-kNR">
+                                        <rect key="frame" x="-30" y="0.0" width="30" height="115"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_pro_info" translatesAutoresizingMaskIntoConstraints="NO" id="jld-I6-d76" customClass="TintImageView" customModule="CabO" customModuleProvider="target">
+                                                <rect key="frame" x="9.6666666666666643" y="7" width="15" height="15"/>
+                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="15" id="Keo-G9-o6v">
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isHeightResize" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </constraint>
+                                                    <constraint firstAttribute="width" secondItem="jld-I6-d76" secondAttribute="height" multiplier="1:1" id="htY-Pt-GH6">
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isWidthResize" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </constraint>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="jld-I6-d76" firstAttribute="top" secondItem="KNT-yw-kNR" secondAttribute="top" constant="7" id="KKd-zD-2dj">
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeightResize" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </constraint>
+                                            <constraint firstAttribute="width" constant="30" id="Kau-26-s5L">
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isWidthResize" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </constraint>
+                                            <constraint firstItem="jld-I6-d76" firstAttribute="centerX" secondItem="KNT-yw-kNR" secondAttribute="centerX" constant="2" id="urp-MX-TUa">
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isWidthResize" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </constraint>
+                                        </constraints>
+                                    </view>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="5ae-lR-IXM">
+                                        <rect key="frame" x="0.0" y="0.0" width="260" height="115"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" name="primaryText_Dark"/>
+                                        <color key="textColor" name="primaryText_Dark"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="KGk-i7-Jjw" id="9dv-rj-PkO"/>
+                                        </connections>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5pK-sh-xG4">
+                                <rect key="frame" x="15" y="15" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" name="Urbanist-SemiBold" family="Urbanist" pointSize="14"/>
+                                <color key="textColor" name="placeholderText"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="9ud-2c-mlc" firstAttribute="top" secondItem="FhR-zi-cb7" secondAttribute="top" constant="8" id="0Mf-Y7-eJ5">
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeightResize" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </constraint>
+                            <constraint firstAttribute="bottom" secondItem="9ud-2c-mlc" secondAttribute="bottom" constant="8" id="2oc-0d-cTk">
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeightResize" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </constraint>
+                            <constraint firstItem="9ud-2c-mlc" firstAttribute="leading" secondItem="FhR-zi-cb7" secondAttribute="leading" constant="10" id="6P5-1o-ksO">
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isWidthResize" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </constraint>
+                            <constraint firstAttribute="trailing" secondItem="9ud-2c-mlc" secondAttribute="trailing" constant="10" id="B5B-lS-LTi">
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isWidthResize" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </constraint>
+                            <constraint firstItem="5pK-sh-xG4" firstAttribute="top" secondItem="5ae-lR-IXM" secondAttribute="top" constant="7" id="TAB-EV-h0j"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="5pK-sh-xG4" secondAttribute="trailing" constant="8" id="YgY-vG-Vic"/>
+                            <constraint firstItem="5pK-sh-xG4" firstAttribute="leading" secondItem="5ae-lR-IXM" secondAttribute="leading" constant="5" id="qUI-QC-WoN"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadious">
+                                <real key="value" value="14"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" name="primaryText"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hwn-xH-wLu">
+                        <rect key="frame" x="20" y="8" width="22.666666666666671" height="14"/>
+                        <fontDescription key="fontDescription" name="Urbanist-Medium" family="Urbanist" pointSize="12"/>
+                        <color key="textColor" name="primaryText_Dark"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="FontType">
+                                <integer key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ATf-03-c1M">
+                        <rect key="frame" x="250" y="163" width="50" height="14"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sbS-0V-0ie">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" name="primaryText"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="FontType">
+                                        <integer key="value" value="0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="xjq-QV-KiT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="12J-td-zns"/>
+                    <constraint firstAttribute="bottom" secondItem="ATf-03-c1M" secondAttribute="bottom" constant="8" id="5G2-6h-lGx"/>
+                    <constraint firstItem="ATf-03-c1M" firstAttribute="trailing" secondItem="FhR-zi-cb7" secondAttribute="trailing" id="5GW-cl-HMW"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hwn-xH-wLu" secondAttribute="trailing" constant="20" id="Bfz-bO-Y9Z">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isWidthResize" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </constraint>
+                    <constraint firstItem="ATf-03-c1M" firstAttribute="top" secondItem="FhR-zi-cb7" secondAttribute="bottom" constant="2" id="E58-xc-Fv4"/>
+                    <constraint firstItem="hwn-xH-wLu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="GAM-ch-ZOz">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isHeightResize" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </constraint>
+                    <constraint firstAttribute="trailing" secondItem="FhR-zi-cb7" secondAttribute="trailing" constant="20" id="N05-go-rxI">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isWidthResize" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </constraint>
+                    <constraint firstAttribute="trailing" secondItem="xjq-QV-KiT" secondAttribute="trailing" constant="15" id="VG5-ML-AC4"/>
+                    <constraint firstAttribute="bottom" secondItem="xjq-QV-KiT" secondAttribute="bottom" id="Z87-Gl-nVc"/>
+                    <constraint firstItem="xjq-QV-KiT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="maJ-mQ-Djt"/>
+                    <constraint firstItem="hwn-xH-wLu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="nx0-zc-1b7">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isWidthResize" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </constraint>
+                    <constraint firstItem="FhR-zi-cb7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="vP1-8G-L3M">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isWidthResize" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </constraint>
+                    <constraint firstItem="FhR-zi-cb7" firstAttribute="top" secondItem="hwn-xH-wLu" secondAttribute="bottom" constant="8" id="xUA-vB-oFB">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isHeightResize" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </constraint>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="imgLeft" destination="jld-I6-d76" id="XZk-Rv-AMm"/>
+                <outlet property="labelTextCount" destination="sbS-0V-0ie" id="Pfv-d9-LkH"/>
+                <outlet property="lblTitle" destination="hwn-xH-wLu" id="yBp-gO-ATY"/>
+                <outlet property="placeholder" destination="5pK-sh-xG4" id="oAs-wj-3SO"/>
+                <outlet property="textFieldLeading" destination="6P5-1o-ksO" id="9Xz-fP-h84"/>
+                <outlet property="tfContainer" destination="FhR-zi-cb7" id="k5u-ne-LEi"/>
+                <outlet property="txtView" destination="5ae-lR-IXM" id="ci9-RB-O60"/>
+                <outlet property="vwLeftBg" destination="KNT-yw-kNR" id="8Te-Oc-NS5"/>
+            </connections>
+            <point key="canvasLocation" x="-43.076923076923073" y="-15.284360189573459"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ic_pro_info" width="19.253999710083008" height="19.253999710083008"/>
+        <namedColor name="placeholderText">
+            <color red="0.72941176470588232" green="0.74509803921568629" blue="0.81568627450980391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primaryText">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primaryText_Dark">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

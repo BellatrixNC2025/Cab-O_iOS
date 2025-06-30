@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="CarImageSliderCollectionViewCell" customModule="EcoCarpool" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="356" height="199"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="356" height="199"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lNl-7N-bu5">
+                        <rect key="frame" x="0.0" y="0.0" width="356" height="199"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </imageView>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="lNl-7N-bu5" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="1Jo-OA-2zs"/>
+                <constraint firstItem="lNl-7N-bu5" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="ccL-NE-5jH"/>
+                <constraint firstAttribute="trailing" secondItem="lNl-7N-bu5" secondAttribute="trailing" id="eE9-fV-Bzh"/>
+                <constraint firstAttribute="bottom" secondItem="lNl-7N-bu5" secondAttribute="bottom" id="toH-in-SGa"/>
+            </constraints>
+            <size key="customSize" width="356" height="199"/>
+            <connections>
+                <outlet property="imgView" destination="lNl-7N-bu5" id="ArV-Fr-2Lv"/>
+            </connections>
+            <point key="canvasLocation" x="67.175572519083971" y="14.43661971830986"/>
+        </collectionViewCell>
+    </objects>
+</document>

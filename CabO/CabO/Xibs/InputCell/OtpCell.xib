@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="CircularStd-BoldItalic.ttf">
+            <string>CircularStd-BoldItalic</string>
+        </array>
+        <array key="CircularStd-Book.ttf">
+            <string>CircularStd-Book</string>
+        </array>
+        <array key="OpenSans-Regular.ttf">
+            <string>OpenSans</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="88" id="KGk-i7-Jjw" customClass="OtpCell" customModule="CabO" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="I8J-lo-lfL">
+                        <rect key="frame" x="20" y="8" width="280" height="93.333333333333329"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter verification code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0l3-Lg-kDM">
+                                <rect key="frame" x="0.0" y="0.0" width="280" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" name="primaryText_Dark"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="FontType">
+                                        <integer key="value" value="0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xmc-gD-hse" customClass="NRoundView" customModule="CabO" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="25" width="280" height="44"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="qcO-Rd-hrN">
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="44"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Fb-57-gu0" customClass="NRoundView" customModule="CabO" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="56.666666666666664" height="44"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VBe-Uj-QOG">
+                                                        <rect key="frame" x="28.333333333333336" y="22" width="0.0" height="0.0"/>
+                                                        <fontDescription key="fontDescription" name="CircularStd-Book" family="Circular Std" pointSize="24"/>
+                                                        <color key="textColor" name="primaryText"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="FontType">
+                                                                <integer key="value" value="2"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" name="textfieldBg_Dark"/>
+                                                <constraints>
+                                                    <constraint firstItem="VBe-Uj-QOG" firstAttribute="centerX" secondItem="7Fb-57-gu0" secondAttribute="centerX" id="5Y6-CZ-CgP"/>
+                                                    <constraint firstItem="VBe-Uj-QOG" firstAttribute="centerY" secondItem="7Fb-57-gu0" secondAttribute="centerY" id="QSQ-FE-7mJ"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadious">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" name="textfield_border"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YTs-u9-343" customClass="NRoundView" customModule="CabO" customModuleProvider="target">
+                                                <rect key="frame" x="74.666666666666671" y="0.0" width="56.333333333333329" height="44"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WDL-df-b4C">
+                                                        <rect key="frame" x="28" y="22" width="0.0" height="0.0"/>
+                                                        <fontDescription key="fontDescription" name="CircularStd-Book" family="Circular Std" pointSize="24"/>
+                                                        <color key="textColor" name="primaryText"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="FontType">
+                                                                <integer key="value" value="2"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" name="textfieldBg_Dark"/>
+                                                <constraints>
+                                                    <constraint firstItem="WDL-df-b4C" firstAttribute="centerY" secondItem="YTs-u9-343" secondAttribute="centerY" id="8m5-OB-7ML"/>
+                                                    <constraint firstItem="WDL-df-b4C" firstAttribute="centerX" secondItem="YTs-u9-343" secondAttribute="centerX" id="Kr9-Bs-W3G"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadious">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" name="textfield_border"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7tI-0X-K1y" customClass="NRoundView" customModule="CabO" customModuleProvider="target">
+                                                <rect key="frame" x="149" y="0.0" width="56.666666666666657" height="44"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uqk-Wc-eSR">
+                                                        <rect key="frame" x="28.333333333333343" y="22" width="0.0" height="0.0"/>
+                                                        <fontDescription key="fontDescription" name="CircularStd-Book" family="Circular Std" pointSize="24"/>
+                                                        <color key="textColor" name="primaryText"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="FontType">
+                                                                <integer key="value" value="2"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" name="textfieldBg_Dark"/>
+                                                <constraints>
+                                                    <constraint firstItem="uqk-Wc-eSR" firstAttribute="centerY" secondItem="7tI-0X-K1y" secondAttribute="centerY" id="E9i-wA-yFw"/>
+                                                    <constraint firstItem="uqk-Wc-eSR" firstAttribute="centerX" secondItem="7tI-0X-K1y" secondAttribute="centerX" id="h5e-IU-FKI"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadious">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" name="textfield_border"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I3B-9g-MJH" customClass="NRoundView" customModule="CabO" customModuleProvider="target">
+                                                <rect key="frame" x="223.66666666666666" y="0.0" width="56.333333333333343" height="44"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q87-Tv-E4Y">
+                                                        <rect key="frame" x="28.000000000000028" y="22" width="0.0" height="0.0"/>
+                                                        <fontDescription key="fontDescription" name="CircularStd-Book" family="Circular Std" pointSize="24"/>
+                                                        <color key="textColor" name="primaryText"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="FontType">
+                                                                <integer key="value" value="2"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" name="textfieldBg_Dark"/>
+                                                <constraints>
+                                                    <constraint firstItem="q87-Tv-E4Y" firstAttribute="centerY" secondItem="I3B-9g-MJH" secondAttribute="centerY" id="CUL-T5-w6K"/>
+                                                    <constraint firstItem="q87-Tv-E4Y" firstAttribute="centerX" secondItem="I3B-9g-MJH" secondAttribute="centerX" id="hLy-fb-Txl"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadious">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" name="textfield_border"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </stackView>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vJb-Y9-38I">
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="44"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="1"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" smartInsertDeleteType="yes"/>
+                                        <connections>
+                                            <action selector="textChanged:" destination="KGk-i7-Jjw" eventType="editingChanged" id="ivX-hB-WHG"/>
+                                            <outlet property="delegate" destination="KGk-i7-Jjw" id="iRG-lH-xND"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="vJb-Y9-38I" firstAttribute="top" secondItem="qcO-Rd-hrN" secondAttribute="top" id="8ak-YL-Vhu"/>
+                                    <constraint firstItem="vJb-Y9-38I" firstAttribute="trailing" secondItem="qcO-Rd-hrN" secondAttribute="trailing" id="Bp8-H2-ABs"/>
+                                    <constraint firstItem="vJb-Y9-38I" firstAttribute="bottom" secondItem="qcO-Rd-hrN" secondAttribute="bottom" id="J6m-Iy-20P"/>
+                                    <constraint firstAttribute="bottom" secondItem="qcO-Rd-hrN" secondAttribute="bottom" id="TdK-Yx-pft"/>
+                                    <constraint firstAttribute="trailing" secondItem="qcO-Rd-hrN" secondAttribute="trailing" id="c0L-Gr-ao3"/>
+                                    <constraint firstAttribute="height" constant="44" id="edl-Fo-b3p">
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isHeightResize" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </constraint>
+                                    <constraint firstItem="qcO-Rd-hrN" firstAttribute="top" secondItem="xmc-gD-hse" secondAttribute="top" id="peB-Xu-hMy"/>
+                                    <constraint firstItem="vJb-Y9-38I" firstAttribute="leading" secondItem="qcO-Rd-hrN" secondAttribute="leading" id="uBF-1h-nPm"/>
+                                    <constraint firstItem="qcO-Rd-hrN" firstAttribute="leading" secondItem="xmc-gD-hse" secondAttribute="leading" id="ugE-zP-Oak"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadious">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" name="F7F9FE"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invalid Otp" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kbf-fB-GTr">
+                                <rect key="frame" x="0.0" y="77" width="280" height="16.333333333333329"/>
+                                <fontDescription key="fontDescription" name="CircularStd-BoldItalic" family="Circular Std" pointSize="14"/>
+                                <color key="textColor" red="0.87843137250000003" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="I8J-lo-lfL" secondAttribute="trailing" constant="20" id="V1n-ir-uCl">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isWidthResize" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </constraint>
+                    <constraint firstItem="I8J-lo-lfL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="WQD-De-g0d"/>
+                    <constraint firstItem="I8J-lo-lfL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="pnt-zV-e7D">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isWidthResize" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </constraint>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="lblError" destination="kbf-fB-GTr" id="H2h-F2-j4M"/>
+                <outlet property="lblTitle" destination="0l3-Lg-kDM" id="4TL-Ya-sAG"/>
+                <outlet property="txtF" destination="vJb-Y9-38I" id="DPD-s0-3Sh"/>
+                <outletCollection property="lblOtp" destination="VBe-Uj-QOG" collectionClass="NSMutableArray" id="6fv-aJ-IvQ"/>
+                <outletCollection property="lblOtp" destination="WDL-df-b4C" collectionClass="NSMutableArray" id="OHI-bx-YJO"/>
+                <outletCollection property="lblOtp" destination="uqk-Wc-eSR" collectionClass="NSMutableArray" id="JQS-hm-0LE"/>
+                <outletCollection property="lblOtp" destination="q87-Tv-E4Y" collectionClass="NSMutableArray" id="9Wd-Ja-4o2"/>
+                <outletCollection property="bgView" destination="7Fb-57-gu0" collectionClass="NSMutableArray" id="DGW-a1-7SB"/>
+                <outletCollection property="bgView" destination="YTs-u9-343" collectionClass="NSMutableArray" id="jMc-LV-L4C"/>
+                <outletCollection property="bgView" destination="7tI-0X-K1y" collectionClass="NSMutableArray" id="5fE-dm-9bS"/>
+                <outletCollection property="bgView" destination="I3B-9g-MJH" collectionClass="NSMutableArray" id="XIw-Ee-QYE"/>
+            </connections>
+            <point key="canvasLocation" x="-73.282442748091597" y="19.014084507042256"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="F7F9FE">
+            <color red="0.32899999618530273" green="0.32400000095367432" blue="0.4779999852180481" alpha="0.33000001311302185" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primaryText">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primaryText_Dark">
+            <color red="0.0" green="0.20784313725490197" blue="0.1803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="textfieldBg_Dark">
+            <color red="0.8666666666666667" green="0.84313725490196079" blue="0.81176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="textfield_border">
+            <color red="0.8666666666666667" green="0.84313725490196079" blue="0.81176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

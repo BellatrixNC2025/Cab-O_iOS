@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="223.449" height="179.637" viewBox="0 0 223.449 179.637">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#00d3f2"/>
+      <stop offset="1" stop-color="#00d48d"/>
+    </linearGradient>
+    <filter id="Rectangle_6017" x="14.371" y="21.293" width="145.374" height="100.682" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.078"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Rectangle_6016" x="56.511" y="63.662" width="147.608" height="100.682" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-2"/>
+      <feFlood flood-opacity="0.078"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_37953" data-name="Group 37953" transform="translate(-78.629 -229.305)">
+    <ellipse id="Ellipse_3328" data-name="Ellipse 3328" cx="89.818" cy="89.818" rx="89.818" ry="89.818" transform="translate(98 229.305)" fill="url(#linear-gradient)"/>
+    <g id="Group_37952" data-name="Group 37952" transform="translate(8.096 1.631)">
+      <g transform="matrix(1, 0, 0, 1, 70.53, 227.67)" filter="url(#Rectangle_6017)">
+        <rect id="Rectangle_6017-2" data-name="Rectangle 6017" width="127.374" height="82.682" rx="9.9" transform="translate(23.37 27.29)" fill="#e8e8e8"/>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 70.53, 227.67)" filter="url(#Rectangle_6016)">
+        <rect id="Rectangle_6016-2" data-name="Rectangle 6016" width="129.608" height="82.682" rx="9.9" transform="translate(65.51 69.66)" fill="#fff"/>
+      </g>
+      <rect id="Rectangle_6018" data-name="Rectangle 6018" width="127.374" height="15.642" transform="translate(93.905 269.492)" fill="#cfd5d2"/>
+      <rect id="Rectangle_6019" data-name="Rectangle 6019" width="22.346" height="16.76" rx="2.142" transform="translate(149.452 311.302)" fill="#dfebe5"/>
+      <rect id="Rectangle_6020" data-name="Rectangle 6020" width="22.346" height="5.587" rx="2.142" transform="translate(149.452 355.436)" fill="#dfebe5"/>
+      <rect id="Rectangle_6021" data-name="Rectangle 6021" width="22.346" height="5.587" rx="2.142" transform="translate(176.269 355.436)" fill="#dfebe5"/>
+      <rect id="Rectangle_6022" data-name="Rectangle 6022" width="22.346" height="5.587" rx="2.142" transform="translate(203.084 355.436)" fill="#dfebe5"/>
+      <rect id="Rectangle_6023" data-name="Rectangle 6023" width="22.346" height="5.587" rx="2.142" transform="translate(229.899 355.436)" fill="#dfebe5"/>
+      <circle id="Ellipse_3329" data-name="Ellipse 3329" cx="10.056" cy="10.056" r="10.056" transform="translate(219.844 309.626)" fill="#cd0100"/>
+      <circle id="Ellipse_3330" data-name="Ellipse 3330" cx="10.056" cy="10.056" r="10.056" transform="translate(232.134 309.626)" fill="#fe9901"/>
+    </g>
+    <ellipse id="Ellipse_3331" data-name="Ellipse 3331" cx="9.165" cy="9.165" rx="9.165" ry="9.165" transform="translate(84.74 375.947)" fill="#9cd161"/>
+    <ellipse id="Ellipse_3332" data-name="Ellipse 3332" cx="5.499" cy="5.499" rx="5.499" ry="5.499" transform="translate(78.629 275.741)" fill="#f35d86"/>
+    <ellipse id="Ellipse_3333" data-name="Ellipse 3333" cx="7.943" cy="7.943" rx="7.943" ry="7.943" transform="translate(277.637 260.264)" fill="#12d7c0"/>
+    <ellipse id="Ellipse_3334" data-name="Ellipse 3334" cx="6.11" cy="6.11" rx="6.11" ry="6.11" transform="translate(289.858 237.045)" fill="#ffbe16"/>
+  </g>
+</svg>

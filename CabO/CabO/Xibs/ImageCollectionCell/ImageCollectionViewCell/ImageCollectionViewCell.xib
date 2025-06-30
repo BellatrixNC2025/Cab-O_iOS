@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ImageCollectionViewCell" customModule="EcoCarpool" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OsQ-2Z-oJ9" customClass="NRoundView" customModule="EcoCarpool" customModuleProvider="target">
+                        <rect key="frame" x="4" y="4" width="42" height="42"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_apple" translatesAutoresizingMaskIntoConstraints="NO" id="EaB-1i-gYj">
+                                <rect key="frame" x="0.0" y="0.0" width="42" height="42"/>
+                                <color key="backgroundColor" name="appBg"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBlueColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="EaB-1i-gYj" secondAttribute="trailing" id="KUA-C4-hiA"/>
+                            <constraint firstItem="EaB-1i-gYj" firstAttribute="top" secondItem="OsQ-2Z-oJ9" secondAttribute="top" id="b1J-l1-RwF"/>
+                            <constraint firstAttribute="bottom" secondItem="EaB-1i-gYj" secondAttribute="bottom" id="chg-TR-q8O"/>
+                            <constraint firstItem="EaB-1i-gYj" firstAttribute="leading" secondItem="OsQ-2Z-oJ9" secondAttribute="leading" id="eDq-gh-Eed"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadious">
+                                <real key="value" value="12"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" name="primaryText"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cZ9-Kk-Rmx" customClass="NFixRoundShadowView" customModule="EcoCarpool" customModuleProvider="target">
+                        <rect key="frame" x="32" y="-4" width="22" height="22"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_delete" translatesAutoresizingMaskIntoConstraints="NO" id="VBV-gi-jc6" customClass="RoundTintImageView" customModule="EcoCarpool" customModuleProvider="target">
+                                <rect key="frame" x="3" y="3" width="16" height="16"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadious">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K0y-eq-OxW">
+                                <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <connections>
+                                    <action selector="btnDeleteTap:" destination="gTV-IL-0wX" eventType="touchUpInside" id="vf1-eZ-g7p"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="K0y-eq-OxW" firstAttribute="top" secondItem="cZ9-Kk-Rmx" secondAttribute="top" id="5sW-y8-7U5"/>
+                            <constraint firstAttribute="trailing" secondItem="K0y-eq-OxW" secondAttribute="trailing" id="85Q-6I-Dck"/>
+                            <constraint firstItem="VBV-gi-jc6" firstAttribute="leading" secondItem="cZ9-Kk-Rmx" secondAttribute="leading" constant="3" id="JSg-Ni-ndO">
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isWidthResize" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </constraint>
+                            <constraint firstAttribute="bottom" secondItem="VBV-gi-jc6" secondAttribute="bottom" constant="3" id="SyH-ly-dwy">
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeightResize" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </constraint>
+                            <constraint firstAttribute="trailing" secondItem="VBV-gi-jc6" secondAttribute="trailing" constant="3" id="YZn-if-3ne">
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isWidthResize" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </constraint>
+                            <constraint firstItem="K0y-eq-OxW" firstAttribute="leading" secondItem="cZ9-Kk-Rmx" secondAttribute="leading" id="cxM-fF-XNy"/>
+                            <constraint firstAttribute="height" constant="22" id="mWX-rN-6a8">
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeightResize" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </constraint>
+                            <constraint firstAttribute="bottom" secondItem="K0y-eq-OxW" secondAttribute="bottom" id="wzg-9R-Iys"/>
+                            <constraint firstItem="VBV-gi-jc6" firstAttribute="top" secondItem="cZ9-Kk-Rmx" secondAttribute="top" constant="3" id="yXF-6n-M18">
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeightResize" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </constraint>
+                            <constraint firstAttribute="width" secondItem="cZ9-Kk-Rmx" secondAttribute="height" multiplier="1:1" id="yYv-KL-BkG"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadious">
+                                <real key="value" value="11"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isRatioAppliedOnSize" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="OsQ-2Z-oJ9" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="4" id="8jr-TT-fVN"/>
+                <constraint firstAttribute="bottom" secondItem="OsQ-2Z-oJ9" secondAttribute="bottom" constant="4" id="8oj-dh-K9e"/>
+                <constraint firstItem="OsQ-2Z-oJ9" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="4" id="Lho-RJ-2dM"/>
+                <constraint firstItem="cZ9-Kk-Rmx" firstAttribute="trailing" secondItem="OsQ-2Z-oJ9" secondAttribute="trailing" constant="8" id="Zqe-S1-tbu">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isWidthResize" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </constraint>
+                <constraint firstItem="cZ9-Kk-Rmx" firstAttribute="top" secondItem="OsQ-2Z-oJ9" secondAttribute="top" constant="-8" id="kEZ-g0-3vO">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeightResize" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </constraint>
+                <constraint firstAttribute="trailing" secondItem="OsQ-2Z-oJ9" secondAttribute="trailing" constant="4" id="l4y-2H-sko"/>
+            </constraints>
+            <connections>
+                <outlet property="buttonDelete" destination="K0y-eq-OxW" id="SkN-w7-yCo"/>
+                <outlet property="deleteBtnHeight" destination="mWX-rN-6a8" id="Fiw-Um-jVz"/>
+                <outlet property="imgView" destination="EaB-1i-gYj" id="Dls-l6-i5W"/>
+            </connections>
+            <point key="canvasLocation" x="132" y="-11"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="ic_apple" width="24" height="24"/>
+        <image name="ic_delete" width="19.466999053955078" height="19.466999053955078"/>
+        <namedColor name="appBg">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primaryText">
+            <color red="0.22352941176470589" green="0.27450980392156865" blue="0.45882352941176469" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

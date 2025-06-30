@@ -1,0 +1,55 @@
+# Uncomment the next line to define a global platform for your project
+ platform :ios, '14.1'
+
+source 'https://cdn.cocoapods.org/'
+source 'https://github.com/CocoaPods/Specs.git'
+
+target 'CabO' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+#pod "ViewAnimator"
+#pod 'lottie-ios'
+#pod 'NVActivityIndicatorView'
+pod 'VHUD'
+
+pod 'PhoneNumberKit'
+#pod 'Alamofire'
+
+#pod 'Kingfisher', '~> 5.0'
+#pod 'RSKImageCropper'
+
+#pod 'Firebase/Analytics'
+#pod 'Firebase/Core'
+#pod 'Firebase/Crashlytics'
+#pod 'Firebase/Messaging'
+
+#pod 'Socket.IO-Client-Swift', '~> 16.0'
+#pod 'Stripe'
+
+#pod 'GoogleMaps'
+#pod 'MapboxNavigation', '~> 2.17'
+# will need a .netrc file in the ursers home directory to access Mapbox access tokens
+# file should look like this:
+# machine api.mapbox.com login <private access token>
+
+#pod 'AWSS3'
+
+#pod 'GoogleSignIn'
+#pod 'GooglePlaces'
+
+#pod 'Toast-Swift', '5.0.1'
+
+pod 'RangeSeekSlider'
+
+end
+
+post_install do |installer|
+  installer.generated_projects.each do |project|
+    project.targets.each do |target|
+        target.build_configurations.each do |config|
+            config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '14.1'
+         end
+    end
+  end
+end

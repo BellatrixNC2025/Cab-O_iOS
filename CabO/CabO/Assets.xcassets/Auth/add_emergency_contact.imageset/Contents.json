@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "add_emergency_contact.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="CreateRidePreferenceCollectionCell" customModule="EcoCarpool">
+            <rect key="frame" x="0.0" y="0.0" width="132" height="40"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="132" height="40"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yzr-uW-iCU" customClass="NRoundView" customModule="EcoCarpool" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="132" height="40"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_person" translatesAutoresizingMaskIntoConstraints="NO" id="NqS-dN-lBK" customClass="TintImageView" customModule="EcoCarpool">
+                                <rect key="frame" x="12" y="13" width="14" height="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="14" id="Gd9-OW-6UD">
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isHeightResize" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </constraint>
+                                    <constraint firstAttribute="width" secondItem="NqS-dN-lBK" secondAttribute="height" multiplier="1:1" id="fn3-og-74t"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MGX-qx-Lte">
+                                <rect key="frame" x="34" y="11.666666666666664" width="6.6666666666666643" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" name="primaryText"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="FontType">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" name="headerBG"/>
+                        <constraints>
+                            <constraint firstItem="MGX-qx-Lte" firstAttribute="leading" secondItem="NqS-dN-lBK" secondAttribute="trailing" constant="8" id="OXn-NB-W16">
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isWidthResize" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </constraint>
+                            <constraint firstItem="NqS-dN-lBK" firstAttribute="leading" secondItem="Yzr-uW-iCU" secondAttribute="leading" constant="12" id="SOX-gK-wXJ">
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isWidthResize" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </constraint>
+                            <constraint firstItem="NqS-dN-lBK" firstAttribute="centerY" secondItem="Yzr-uW-iCU" secondAttribute="centerY" id="VhL-JI-aLm"/>
+                            <constraint firstItem="MGX-qx-Lte" firstAttribute="centerY" secondItem="Yzr-uW-iCU" secondAttribute="centerY" id="j2z-My-2IE"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="MGX-qx-Lte" secondAttribute="trailing" constant="12" id="pRp-nZ-YAS">
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isWidthResize" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </constraint>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" name="appBg"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadious">
+                                <real key="value" value="12"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="Yzr-uW-iCU" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="2uj-0Y-6bq"/>
+                <constraint firstItem="Yzr-uW-iCU" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="34u-4M-23g"/>
+                <constraint firstItem="Yzr-uW-iCU" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="L4t-0f-NUk"/>
+                <constraint firstAttribute="bottom" secondItem="Yzr-uW-iCU" secondAttribute="bottom" id="mND-d5-079"/>
+                <constraint firstAttribute="trailing" secondItem="Yzr-uW-iCU" secondAttribute="trailing" id="x47-nX-SF2"/>
+                <constraint firstItem="Yzr-uW-iCU" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="y7b-0T-e3F"/>
+            </constraints>
+            <size key="customSize" width="132" height="40"/>
+            <connections>
+                <outlet property="bgView" destination="Yzr-uW-iCU" id="lPh-CN-pxz"/>
+                <outlet property="imgPref" destination="NqS-dN-lBK" id="JKh-cG-UW7"/>
+                <outlet property="labelPrefName" destination="MGX-qx-Lte" id="o66-QK-SPE"/>
+            </connections>
+            <point key="canvasLocation" x="-96.18320610687023" y="26.056338028169016"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="ic_person" width="10.5" height="12"/>
+        <namedColor name="appBg">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="headerBG">
+            <color red="0.96078431372549022" green="0.95294117647058818" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primaryText">
+            <color red="0.22352941176470589" green="0.27450980392156865" blue="0.45882352941176469" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

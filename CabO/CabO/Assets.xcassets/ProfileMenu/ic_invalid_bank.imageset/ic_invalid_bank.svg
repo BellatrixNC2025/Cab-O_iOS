@@ -1,0 +1,6 @@
+<svg id="danger" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <path id="Vector" d="M8.333,15.681H3.283c-2.892,0-4.1-2.067-2.7-4.592l2.6-4.683,2.45-4.4c1.483-2.675,3.917-2.675,5.4,0l2.45,4.408,2.6,4.683c1.4,2.525.183,4.592-2.7,4.592H8.333Z" transform="translate(1.667 2.16)" fill="#f92525"/>
+  <path id="Vector-2" data-name="Vector" d="M-.159.667H-.167A.833.833,0,0,1-1-.167.833.833,0,0,1-.167-1h.007a.833.833,0,0,1,.833.833A.833.833,0,0,1-.159.667Z" transform="translate(10.162 14.333)" fill="#fff"/>
+  <path id="Vector-3" data-name="Vector" d="M0,0H20V20H0Z" fill="none" opacity="0"/>
+  <path id="Vector-4" data-name="Vector" d="M-.125,4.667A.625.625,0,0,1-.75,4.042V-.125A.625.625,0,0,1-.125-.75.625.625,0,0,1,.5-.125V4.042A.625.625,0,0,1-.125,4.667Z" transform="translate(10.125 7.625)" fill="#fff"/>
+</svg>

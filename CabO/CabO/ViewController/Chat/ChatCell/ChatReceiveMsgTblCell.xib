@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="receiveMsgCell" rowHeight="56" id="EJ2-CZ-OfG" customClass="ChatMsgTblCell" customModule="EcoCarpool" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EJ2-CZ-OfG" id="sI7-oU-PjA">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" semanticContentAttribute="forceLeftToRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chat_tail" translatesAutoresizingMaskIntoConstraints="NO" id="Iqh-uR-SSn" customClass="TintImageView" customModule="EcoCarpool" customModuleProvider="target">
+                        <rect key="frame" x="4" y="12" width="24" height="24"/>
+                        <color key="tintColor" name="headerBG_Dark"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="Iqh-uR-SSn" secondAttribute="height" id="Bam-Jf-y1f"/>
+                            <constraint firstAttribute="width" constant="24" id="dVP-xv-mnH">
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isWidthResize" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </constraint>
+                        </constraints>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="txT-Al-HnL" customClass="NRoundView" customModule="EcoCarpool" customModuleProvider="target">
+                        <rect key="frame" x="12" y="0.0" width="88.5" height="38"/>
+                        <color key="backgroundColor" name="headerBG_Dark"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadious">
+                                <real key="value" value="12"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello, there!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oIy-je-W4P">
+                        <rect key="frame" x="24" y="12" width="64.5" height="14"/>
+                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
+                        <color key="textColor" name="primaryText_Dark"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="FontType">
+                                <integer key="value" value="0"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01:44 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4gQ-lR-KBl">
+                        <rect key="frame" x="12" y="40" width="39" height="10.5"/>
+                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="9"/>
+                        <color key="textColor" name="placeholderText"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="FontType">
+                                <integer key="value" value="0"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="oIy-je-W4P" secondAttribute="trailing" constant="70" id="McL-81-wfJ"/>
+                    <constraint firstItem="oIy-je-W4P" firstAttribute="top" secondItem="txT-Al-HnL" secondAttribute="top" constant="12" id="MgW-ik-lpN"/>
+                    <constraint firstItem="Iqh-uR-SSn" firstAttribute="bottom" secondItem="txT-Al-HnL" secondAttribute="bottom" constant="-2" id="RnU-ZT-MwD">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isWidthResize" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </constraint>
+                    <constraint firstItem="txT-Al-HnL" firstAttribute="leading" secondItem="sI7-oU-PjA" secondAttribute="leading" constant="12" id="SPx-ES-hxA">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isWidthResize" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </constraint>
+                    <constraint firstItem="4gQ-lR-KBl" firstAttribute="top" secondItem="txT-Al-HnL" secondAttribute="bottom" constant="2" id="cS7-M0-fQg">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isWidthResize" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </constraint>
+                    <constraint firstItem="4gQ-lR-KBl" firstAttribute="leading" secondItem="sI7-oU-PjA" secondAttribute="leading" constant="12" id="e9l-bX-0Ox">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isWidthResize" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </constraint>
+                    <constraint firstItem="oIy-je-W4P" firstAttribute="bottom" secondItem="txT-Al-HnL" secondAttribute="bottom" constant="-12" id="gwc-Mp-lxO"/>
+                    <constraint firstItem="oIy-je-W4P" firstAttribute="trailing" secondItem="txT-Al-HnL" secondAttribute="trailing" constant="-12" id="oxc-ZO-2k6"/>
+                    <constraint firstItem="Iqh-uR-SSn" firstAttribute="leading" secondItem="sI7-oU-PjA" secondAttribute="leading" constant="4" id="t5S-9t-tPn">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isWidthResize" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </constraint>
+                    <constraint firstItem="oIy-je-W4P" firstAttribute="leading" secondItem="txT-Al-HnL" secondAttribute="leading" constant="12" id="uYz-dD-JgJ"/>
+                    <constraint firstItem="oIy-je-W4P" firstAttribute="top" secondItem="sI7-oU-PjA" secondAttribute="top" constant="12" id="wwd-zz-hRF"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="GoG-ni-7Wu"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="lblMsg" destination="oIy-je-W4P" id="KwC-Vo-qvJ"/>
+                <outlet property="lblTime" destination="4gQ-lR-KBl" id="DtL-ys-GzU"/>
+                <outlet property="tailImg" destination="Iqh-uR-SSn" id="oi3-Q0-Jl5"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="75"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="chat_tail" width="512" height="512"/>
+        <namedColor name="headerBG_Dark">
+            <color red="0.22352941176470589" green="0.27450980392156865" blue="0.45882352941176469" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="placeholderText">
+            <color red="0.72941176470588232" green="0.74509803921568629" blue="0.81568627450980391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primaryText_Dark">
+            <color red="1" green="0.99215686274509807" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

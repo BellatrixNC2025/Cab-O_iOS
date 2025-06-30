@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="sendImgCell" rowHeight="145" id="1dh-W5-hs7" customClass="ChatMsgTblCell" customModule="EcoCarpool" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="145"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1dh-W5-hs7" id="esg-RH-e34">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="145"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chat_tail" translatesAutoresizingMaskIntoConstraints="NO" id="e6i-Lv-DKa" customClass="TintImageView" customModule="EcoCarpool" customModuleProvider="target">
+                        <rect key="frame" x="292" y="100" width="24" height="24"/>
+                        <color key="tintColor" name="headerBG"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="24" id="1Bn-11-rB2">
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isWidthResize" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </constraint>
+                            <constraint firstAttribute="width" secondItem="e6i-Lv-DKa" secondAttribute="height" id="URS-gL-90m"/>
+                        </constraints>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C4e-nd-o67" customClass="NRoundView" customModule="EcoCarpool" customModuleProvider="target">
+                        <rect key="frame" x="183" y="0.0" width="126" height="126"/>
+                        <color key="backgroundColor" name="headerBG"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadious">
+                                <real key="value" value="12"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Sso-bZ-hR4" customClass="NRoundImageView" customModule="EcoCarpool" customModuleProvider="target">
+                        <rect key="frame" x="184" y="1" width="124" height="124"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="Sso-bZ-hR4" secondAttribute="height" multiplier="1:1" id="3Tm-nE-S47"/>
+                            <constraint firstAttribute="width" constant="124" id="OcK-Ef-ZQu">
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isWidthResize" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </constraint>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadious">
+                                <real key="value" value="12"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01:44 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pcO-lM-Ols">
+                        <rect key="frame" x="269" y="128" width="39" height="10.5"/>
+                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="9"/>
+                        <color key="textColor" name="placeholderText"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="FontType">
+                                <integer key="value" value="0"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cJk-dL-Mfw">
+                        <rect key="frame" x="184" y="1" width="124" height="124"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <connections>
+                            <action selector="btnIMageTap:" destination="1dh-W5-hs7" eventType="touchUpInside" id="OTh-1D-VTx"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="Sso-bZ-hR4" secondAttribute="trailing" constant="12" id="38t-PG-WI9">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isWidthResize" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </constraint>
+                    <constraint firstItem="cJk-dL-Mfw" firstAttribute="bottom" secondItem="Sso-bZ-hR4" secondAttribute="bottom" id="CcZ-Ff-oCs"/>
+                    <constraint firstItem="cJk-dL-Mfw" firstAttribute="trailing" secondItem="Sso-bZ-hR4" secondAttribute="trailing" id="LXx-dh-zX8"/>
+                    <constraint firstItem="e6i-Lv-DKa" firstAttribute="bottom" secondItem="C4e-nd-o67" secondAttribute="bottom" constant="-2" id="PUE-wi-Use">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isWidthResize" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </constraint>
+                    <constraint firstItem="Sso-bZ-hR4" firstAttribute="bottom" secondItem="C4e-nd-o67" secondAttribute="bottom" constant="-1" id="Shz-Yo-vxQ"/>
+                    <constraint firstAttribute="trailing" secondItem="pcO-lM-Ols" secondAttribute="trailing" constant="12" id="T25-bu-9w4">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isWidthResize" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </constraint>
+                    <constraint firstItem="Sso-bZ-hR4" firstAttribute="trailing" secondItem="C4e-nd-o67" secondAttribute="trailing" constant="-1" id="T6t-Rl-WWM"/>
+                    <constraint firstItem="cJk-dL-Mfw" firstAttribute="top" secondItem="Sso-bZ-hR4" secondAttribute="top" id="XIa-zs-CBU"/>
+                    <constraint firstItem="Sso-bZ-hR4" firstAttribute="top" secondItem="C4e-nd-o67" secondAttribute="top" constant="1" id="Z4Y-bf-SWc"/>
+                    <constraint firstItem="pcO-lM-Ols" firstAttribute="top" secondItem="C4e-nd-o67" secondAttribute="bottom" constant="2" id="hyD-iR-Z6a"/>
+                    <constraint firstItem="cJk-dL-Mfw" firstAttribute="leading" secondItem="Sso-bZ-hR4" secondAttribute="leading" id="jDf-Zx-N3k"/>
+                    <constraint firstItem="Sso-bZ-hR4" firstAttribute="leading" secondItem="C4e-nd-o67" secondAttribute="leading" constant="1" id="lCF-Ih-KIo"/>
+                    <constraint firstAttribute="trailing" secondItem="e6i-Lv-DKa" secondAttribute="trailing" constant="4" id="mDO-fm-y81">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isWidthResize" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </constraint>
+                    <constraint firstItem="Sso-bZ-hR4" firstAttribute="top" secondItem="esg-RH-e34" secondAttribute="top" constant="1" id="yop-cm-s4k"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="iIk-9I-hEZ"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="imgView" destination="Sso-bZ-hR4" id="hYa-ep-S2d"/>
+                <outlet property="lblTime" destination="pcO-lM-Ols" id="oSV-QC-FyP"/>
+                <outlet property="tailImg" destination="e6i-Lv-DKa" id="mwI-W3-qgO"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="105.46875"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="chat_tail" width="512" height="512"/>
+        <namedColor name="headerBG">
+            <color red="0.96078431372549022" green="0.95294117647058818" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="placeholderText">
+            <color red="0.72941176470588232" green="0.74509803921568629" blue="0.81568627450980391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

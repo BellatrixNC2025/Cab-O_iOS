@@ -1,0 +1,10 @@
+diff a/EcoCarpool/OtherClasses/WebCall.swift b/EcoCarpool/OtherClasses/WebCall.swift	(rejected hunks)
+@@ -2,7 +2,7 @@ import Alamofire
+ import Foundation
+ 
+ // Hosting mode
+-let _hostMode = HostMode.dev
++let _hostMode = HostMode.staging
+ let _socket_url = URL(string: _hostMode.basePath_Socket)!
+ let _aws_bucket_name: String = _appDelegator.config.aws_bucket
+ 

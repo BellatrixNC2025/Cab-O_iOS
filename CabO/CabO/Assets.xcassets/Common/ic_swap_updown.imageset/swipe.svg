@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="15.568" height="15.568" viewBox="0 0 15.568 15.568">
+  <g id="vuesax_linear_arrow-3" data-name="vuesax/linear/arrow-3" transform="translate(-300 -188)">
+    <g id="arrow-3" transform="translate(300 188)">
+      <g id="Group" transform="translate(1.953 1.946)">
+        <path id="Vector" d="M4.826,2.413,2.413,0,0,2.413" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+        <path id="Vector-2" data-name="Vector" d="M0,11.676V0" transform="translate(2.413)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+        <path id="Vector-3" data-name="Vector" d="M0,0,2.413,2.413,4.826,0" transform="translate(6.837 9.263)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+        <path id="Vector-4" data-name="Vector" d="M0,0V11.676" transform="translate(9.25)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+      </g>
+      <path id="Vector-5" data-name="Vector" d="M0,0H15.568V15.568H0Z" fill="none" opacity="0"/>
+    </g>
+  </g>
+</svg>

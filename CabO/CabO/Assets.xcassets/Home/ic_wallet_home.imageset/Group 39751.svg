@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
+  <g id="Group_39751" data-name="Group 39751" transform="translate(-210 -62)">
+    <circle id="Ellipse_4229" data-name="Ellipse 4229" cx="18" cy="18" r="18" transform="translate(210 62)" fill="#fff"/>
+    <g id="Group_39753" data-name="Group 39753" transform="translate(11795 14069)">
+      <path id="Subtraction_6" data-name="Subtraction 6" d="M16,16H4a4,4,0,0,1-4-4V4A4,4,0,0,1,4,0H16a4,4,0,0,1,4,4H13a3,3,0,0,0-3,3V9a3,3,0,0,0,3,3h7A4,4,0,0,1,16,16Z" transform="translate(-11578 -13996)" fill="#11d16e"/>
+      <rect id="Rectangle_17448" data-name="Rectangle 17448" width="11" height="6" rx="2" transform="translate(-11567 -13991)" fill="#00352e"/>
+      <circle id="Ellipse_4232" data-name="Ellipse 4232" cx="1" cy="1" r="1" transform="translate(-11565 -13989)" fill="#11d16e"/>
+      <path id="Path_34545" data-name="Path 34545" d="M152.268,32.2H142.45l-.01-.038a2.362,2.362,0,0,1,.224-.08l7.526-2.231c.942-.28,1.5.061,1.763,1.092C152.057,31.349,152.16,31.758,152.268,32.2Z" transform="translate(-11712.855 -14028.572)" fill="#00352e"/>
+      <path id="Path_34546" data-name="Path 34546" d="M80.572,1.7c-.093.035-.16.064-.23.085-2.7.8-5.395,1.611-8.1,2.386a3.649,3.649,0,0,1-1.294.044,1.627,1.627,0,0,1,.165-.117Q74.75,2.147,78.386.2a1.19,1.19,0,0,1,1.808.675C80.319,1.141,80.441,1.412,80.572,1.7Z" transform="translate(-11645.37 -14000.624)" fill="#00352e"/>
+    </g>
+  </g>
+</svg>

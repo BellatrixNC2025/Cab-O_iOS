@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="RideFilterStatusCollectionCell" customModule="EcoCarpool" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aEm-Gn-nDs" customClass="NRoundView" customModule="EcoCarpool" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B29-py-5cN" customClass="RoundGradientView" customModule="EcoCarpool" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xNe-DO-wnR">
+                                <rect key="frame" x="21.666666666666668" y="16.666666666666668" width="6.6666666666666679" height="17.000000000000004"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" name="primaryText"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="FontType">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" name="headerBG"/>
+                        <constraints>
+                            <constraint firstItem="xNe-DO-wnR" firstAttribute="centerY" secondItem="aEm-Gn-nDs" secondAttribute="centerY" id="AmH-gj-Pw5"/>
+                            <constraint firstItem="B29-py-5cN" firstAttribute="top" secondItem="aEm-Gn-nDs" secondAttribute="top" id="Dwv-iS-vbx"/>
+                            <constraint firstAttribute="trailing" secondItem="B29-py-5cN" secondAttribute="trailing" id="P8s-RK-dnF"/>
+                            <constraint firstItem="B29-py-5cN" firstAttribute="leading" secondItem="aEm-Gn-nDs" secondAttribute="leading" id="PYI-S4-gx8"/>
+                            <constraint firstAttribute="bottom" secondItem="B29-py-5cN" secondAttribute="bottom" id="QRP-tJ-ae3"/>
+                            <constraint firstItem="xNe-DO-wnR" firstAttribute="centerX" secondItem="aEm-Gn-nDs" secondAttribute="centerX" id="xY4-BI-KNK"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" name="appBg"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadious">
+                                <real key="value" value="12"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="aEm-Gn-nDs" secondAttribute="bottom" id="ApH-zD-6AE"/>
+                <constraint firstAttribute="trailing" secondItem="aEm-Gn-nDs" secondAttribute="trailing" id="DVn-id-W8q"/>
+                <constraint firstItem="aEm-Gn-nDs" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="SsF-Sw-FYJ"/>
+                <constraint firstItem="aEm-Gn-nDs" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="rk6-ht-AwR"/>
+            </constraints>
+            <connections>
+                <outlet property="bgView" destination="aEm-Gn-nDs" id="DDJ-eA-TDT"/>
+                <outlet property="gradientView" destination="B29-py-5cN" id="EZv-eB-RMz"/>
+                <outlet property="lblTitle" destination="xNe-DO-wnR" id="jxK-s9-B0t"/>
+            </connections>
+            <point key="canvasLocation" x="80" y="-11"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <namedColor name="appBg">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="headerBG">
+            <color red="0.96078431372549022" green="0.95294117647058818" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primaryText">
+            <color red="0.22352941176470589" green="0.27450980392156865" blue="0.45882352941176469" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

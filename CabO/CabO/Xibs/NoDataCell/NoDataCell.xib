@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="CircularStd-Bold.ttf">
+            <string>CircularStd-Bold</string>
+        </array>
+        <array key="CircularStd-Book.ttf">
+            <string>CircularStd-Book</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="417" id="KGk-i7-Jjw" customClass="NoDataCell" customModule="EcoCarpool" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="417"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="417"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_add_card" translatesAutoresizingMaskIntoConstraints="NO" id="9Ql-5B-0So">
+                        <rect key="frame" x="77" y="38.666666666666657" width="166" height="166"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="166" id="AEP-nV-ISG">
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isWidthResize" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </constraint>
+                            <constraint firstAttribute="width" secondItem="9Ql-5B-0So" secondAttribute="height" multiplier="1:1" id="ukd-wn-f7j"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Data Found" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dEf-TY-8co">
+                        <rect key="frame" x="12" y="216.66666666666666" width="296" height="23.333333333333343"/>
+                        <fontDescription key="fontDescription" name="CircularStd-Bold" family="Circular Std" pointSize="20"/>
+                        <color key="textColor" name="primaryText"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="FontType">
+                                <integer key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No data found to show" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sh9-yE-IIz">
+                        <rect key="frame" x="12" y="248.00000000000003" width="296" height="16.333333333333343"/>
+                        <fontDescription key="fontDescription" name="CircularStd-Book" family="Circular Std" pointSize="14"/>
+                        <color key="textColor" name="primaryText"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="FontType">
+                                <integer key="value" value="0"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JUJ-cq-VVL">
+                        <rect key="frame" x="77" y="38.666666666666657" width="166" height="166"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <connections>
+                            <action selector="btnCreateTap:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="qQB-pH-4eP"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="9Ql-5B-0So" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="1YQ-H7-4TH"/>
+                    <constraint firstItem="JUJ-cq-VVL" firstAttribute="bottom" secondItem="9Ql-5B-0So" secondAttribute="bottom" id="8gZ-zm-hey"/>
+                    <constraint firstItem="dEf-TY-8co" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="8" id="NjX-So-njn"/>
+                    <constraint firstItem="dEf-TY-8co" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="REM-Sv-0ea">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isWidthResize" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </constraint>
+                    <constraint firstAttribute="trailing" secondItem="Sh9-yE-IIz" secondAttribute="trailing" constant="12" id="TqF-ca-AI1">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isWidthResize" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </constraint>
+                    <constraint firstAttribute="trailing" secondItem="dEf-TY-8co" secondAttribute="trailing" constant="12" id="UNK-6n-z9I">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isWidthResize" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </constraint>
+                    <constraint firstItem="Sh9-yE-IIz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="UzV-UB-n07">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isWidthResize" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </constraint>
+                    <constraint firstItem="Sh9-yE-IIz" firstAttribute="top" secondItem="dEf-TY-8co" secondAttribute="bottom" constant="8" id="c6D-Ak-lsc">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isHeightResize" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </constraint>
+                    <constraint firstItem="JUJ-cq-VVL" firstAttribute="top" secondItem="9Ql-5B-0So" secondAttribute="top" id="oFk-co-PEk"/>
+                    <constraint firstItem="JUJ-cq-VVL" firstAttribute="trailing" secondItem="9Ql-5B-0So" secondAttribute="trailing" id="p3v-KD-vWm"/>
+                    <constraint firstItem="JUJ-cq-VVL" firstAttribute="leading" secondItem="9Ql-5B-0So" secondAttribute="leading" id="vBF-Q7-hf7"/>
+                    <constraint firstItem="9Ql-5B-0So" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="-4" id="vZu-4i-ZAl">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isHeightResize" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </constraint>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="btnCreate" destination="JUJ-cq-VVL" id="n4r-GF-Vsv"/>
+                <outlet property="imgView" destination="9Ql-5B-0So" id="6QR-a1-B0j"/>
+                <outlet property="lblSubTitle" destination="Sh9-yE-IIz" id="Adb-kH-Nrh"/>
+                <outlet property="lblTitle" destination="dEf-TY-8co" id="fs1-Ao-2py"/>
+                <outletCollection property="verticalConstraints" destination="NjX-So-njn" collectionClass="NSMutableArray" id="d58-Qf-wtN"/>
+                <outletCollection property="horizontalConstraints" destination="REM-Sv-0ea" collectionClass="NSMutableArray" id="o4d-rM-k5D"/>
+                <outletCollection property="horizontalConstraints" destination="UNK-6n-z9I" collectionClass="NSMutableArray" id="JtY-LY-JEz"/>
+                <outletCollection property="horizontalConstraints" destination="TqF-ca-AI1" collectionClass="NSMutableArray" id="lDU-p6-PUm"/>
+                <outletCollection property="horizontalConstraints" destination="UzV-UB-n07" collectionClass="NSMutableArray" id="Nd0-cN-LSK"/>
+                <outletCollection property="verticalConstraints" destination="c6D-Ak-lsc" collectionClass="NSMutableArray" id="K81-2T-VjC"/>
+            </connections>
+            <point key="canvasLocation" x="129.7709923664122" y="3.8732394366197185"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ic_add_card" width="194.57600402832031" height="153.5469970703125"/>
+        <namedColor name="primaryText">
+            <color red="0.22352941176470589" green="0.27450980392156865" blue="0.45882352941176469" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

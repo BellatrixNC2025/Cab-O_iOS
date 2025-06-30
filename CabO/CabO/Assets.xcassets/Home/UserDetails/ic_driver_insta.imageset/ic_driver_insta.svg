@@ -1,0 +1,16 @@
+<svg id="_3-instagram" data-name="3-instagram" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="28" height="28" viewBox="0 0 28 28">
+  <defs>
+    <radialGradient id="radial-gradient" cx="1.02" cy="0.02" r="2.309" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#f9ed32"/>
+      <stop offset="0.36" stop-color="#ee2a7b"/>
+      <stop offset="0.44" stop-color="#d22a8a"/>
+      <stop offset="0.6" stop-color="#8b2ab2"/>
+      <stop offset="0.83" stop-color="#1b2af0"/>
+      <stop offset="0.88" stop-color="#002aff"/>
+    </radialGradient>
+  </defs>
+  <rect id="Rectangle_8881" data-name="Rectangle 8881" width="28" height="28" rx="5" transform="translate(28 28) rotate(180)" fill="url(#radial-gradient)"/>
+  <path id="Path_33163" data-name="Path 33163" d="M23.75,29H13.25A5.25,5.25,0,0,1,8,23.75V13.25A5.25,5.25,0,0,1,13.25,8h10.5A5.25,5.25,0,0,1,29,13.25v10.5A5.25,5.25,0,0,1,23.75,29ZM13.25,10.1a3.154,3.154,0,0,0-3.15,3.15v10.5a3.154,3.154,0,0,0,3.15,3.15h10.5a3.154,3.154,0,0,0,3.15-3.15V13.25a3.154,3.154,0,0,0-3.15-3.15Z" transform="translate(-4.5 -4.5)" fill="#fff"/>
+  <path id="Path_33164" data-name="Path 33164" d="M24.35,30.3a5.95,5.95,0,1,1,5.95-5.95A5.95,5.95,0,0,1,24.35,30.3Zm0-9.8a3.85,3.85,0,1,0,3.85,3.85A3.85,3.85,0,0,0,24.35,20.5Z" transform="translate(-10.35 -10.35)" fill="#fff"/>
+  <circle id="Ellipse_4221" data-name="Ellipse 4221" cx="1.05" cy="1.05" r="1.05" transform="translate(18.9 7.35)" fill="#fff"/>
+</svg>

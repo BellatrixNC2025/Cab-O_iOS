@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="19.8" height="37.928" viewBox="0 0 19.8 37.928">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.25" y1="0.868" x2="0.662" y2="0.094" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#12a8f5"/>
+      <stop offset="1" stop-color="#00d48d"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="0.341" y1="0.976" x2="0.66" y2="0.021" xlink:href="#linear-gradient"/>
+  </defs>
+  <g id="Group_39680" data-name="Group 39680" transform="translate(15478.711 8987)">
+    <path id="Path_33433" data-name="Path 33433" d="M1467.9-338.5s-2.172.452-1.9,1.719,2.036-.543,2.081-.679A5.448,5.448,0,0,0,1467.9-338.5Z" transform="translate(-16944.693 -8635.735)" fill="#00d48d"/>
+    <path id="Path_33434" data-name="Path 33434" d="M1857.168-338.5s2.172.452,1.9,1.719-2.036-.543-2.081-.679A5.447,5.447,0,0,1,1857.168-338.5Z" transform="translate(-17318.004 -8635.735)" fill="#00d48d"/>
+    <path id="Path_33432" data-name="Path 33432" d="M1495.392-603.914s-.181-4.931-.317-7.555c-.111-2.153-.052-4.537,1.172-6.43,1.267-1.96,3.5-2.572,5.712-2.7,2.475-.139,5.305.009,7.359,1.568,2.772,2.1,2.493,5.724,2.279,8.824-.209,3.022-.225,6.04-.287,9.064-.063,3.076.4,6.312.485,9.383a11.266,11.266,0,0,1-1.285,6.343c-1.243,1.972-3.093,2.411-5.264,2.547a31.89,31.89,0,0,1-3.869.135,6.945,6.945,0,0,1-4.563-1.765c-3.109-3.121-1.882-8.906-1.539-12.763A63.2,63.2,0,0,0,1495.392-603.914Z" transform="translate(-16972.158 -8366.362)" fill="url(#linear-gradient)"/>
+    <path id="Intersection_3" data-name="Intersection 3" d="M1.192,1.995A5.3,5.3,0,0,1,3.594,0l.041.017S2.012,5.051,0,6.275A8.505,8.505,0,0,1,1.192,1.995Z" transform="translate(-15477.104 -8986.257)" fill="#0df6a8"/>
+    <path id="Intersection_4" data-name="Intersection 4" d="M1.192,4.189a5.277,5.277,0,0,0,2.4,1.952l.041-.016S2.012,1.2,0,0A8.189,8.189,0,0,0,1.192,4.189Z" transform="translate(-15460.422 -8979.981) rotate(180)" fill="#0df6a8"/>
+    <path id="Rectangle_17370" data-name="Rectangle 17370" d="M0,0H14.387a0,0,0,0,1,0,0V16.142a7.194,7.194,0,0,1-7.194,7.194h0A7.194,7.194,0,0,1,0,16.142V0A0,0,0,0,1,0,0Z" transform="translate(-15476.065 -8975.909)" fill="#2d3861"/>
+    <path id="Intersection_5" data-name="Intersection 5" d="M0,0H14.8A7.464,7.464,0,0,1,7.4,6.494,7.464,7.464,0,0,1,0,0Z" transform="translate(-15476.272 -8958.934)" fill="#12a8f5"/>
+    <path id="Rectangle_17374" data-name="Rectangle 17374" d="M0,0H2.58a0,0,0,0,1,0,0V.86a0,0,0,0,1,0,0H.86A.86.86,0,0,1,0,0V0A0,0,0,0,1,0,0Z" transform="translate(-15473.635 -8951.743)" fill="#2cb7ff"/>
+    <path id="Rectangle_17375" data-name="Rectangle 17375" d="M0,0H2.58a0,0,0,0,1,0,0V0a.86.86,0,0,1-.86.86H0a0,0,0,0,1,0,0V0A0,0,0,0,1,0,0Z" transform="translate(-15466.47 -8951.743)" fill="#2cb7ff"/>
+    <path id="Path_34567" data-name="Path 34567" d="M-16077.421-9158.743l-1.964-1.371,1.6-4.112v-8.225l-1.6-6.9s8.91-3.93,15.626.412c.046.091-1.324,6.487-1.324,6.487v8.225l1.324,4.342A11.976,11.976,0,0,1-16077.421-9158.743Z" transform="translate(602.678 201)" fill="url(#linear-gradient-2)"/>
+    <path id="Intersection_7" data-name="Intersection 7" d="M.126,5.014,0,4.926.335.124A15.936,15.936,0,0,0,10.653,0c-.024.071.338,4.681.37,5.081a11.163,11.163,0,0,1-5.4,1.448A11.093,11.093,0,0,1,.126,5.014Z" transform="translate(-15474.385 -8963.608)" fill="#2d3861"/>
+    <path id="Intersection_6" data-name="Intersection 6" d="M1.562,7.574,0,1.278c1.864-.691,8.109-2.625,13.221.255C12.8,3.281,11.736,7.678,11.755,7.7,7.018,5.516,1.562,7.574,1.562,7.574Z" transform="translate(-15475.51 -8978.993)" fill="#2d3861"/>
+  </g>
+</svg>

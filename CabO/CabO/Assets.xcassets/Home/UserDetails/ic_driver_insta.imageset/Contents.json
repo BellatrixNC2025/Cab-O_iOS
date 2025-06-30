@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "ic_driver_insta.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

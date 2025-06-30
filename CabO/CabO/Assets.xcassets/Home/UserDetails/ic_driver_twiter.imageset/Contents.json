@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "ic_driver_twiter.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

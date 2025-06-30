@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="260" height="260" viewBox="0 0 260 260">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#00d3f2"/>
+      <stop offset="1" stop-color="#00d48d"/>
+    </linearGradient>
+  </defs>
+  <g id="Group_39660" data-name="Group 39660" transform="translate(-60 -251)">
+    <rect id="Rectangle_17699" data-name="Rectangle 17699" width="260" height="260" transform="translate(60 251)" fill="none"/>
+    <g id="Group_37953" data-name="Group 37953" transform="translate(0 61.695)">
+      <ellipse id="Ellipse_3328" data-name="Ellipse 3328" cx="89.818" cy="89.818" rx="89.818" ry="89.818" transform="translate(98 229.305)" fill="url(#linear-gradient)"/>
+      <ellipse id="Ellipse_3331" data-name="Ellipse 3331" cx="9.165" cy="9.165" rx="9.165" ry="9.165" transform="translate(84.74 375.947)" fill="#9cd161"/>
+      <ellipse id="Ellipse_3332" data-name="Ellipse 3332" cx="5.499" cy="5.499" rx="5.499" ry="5.499" transform="translate(78.629 275.741)" fill="#f35d86"/>
+      <ellipse id="Ellipse_3333" data-name="Ellipse 3333" cx="7.943" cy="7.943" rx="7.943" ry="7.943" transform="translate(277.637 260.264)" fill="#12d7c0"/>
+      <ellipse id="Ellipse_3334" data-name="Ellipse 3334" cx="6.11" cy="6.11" rx="6.11" ry="6.11" transform="translate(289.858 237.045)" fill="#ffbe16"/>
+      <g id="Group_39647" data-name="Group 39647" transform="translate(4785.279 -18591.547)">
+        <rect id="Rectangle_6040" data-name="Rectangle 6040" width="41.689" height="2.606" rx="1.303" transform="translate(-4631.155 18868.576)" fill="#fff"/>
+        <path id="Path_13361" data-name="Path 13361" d="M331.2-1207.5a5.705,5.705,0,0,0-5.7,5.7v104.105a5.705,5.705,0,0,0,5.7,5.7h77.181a5.705,5.705,0,0,0,5.7-5.7v-80.668L387.335-1207.5Z" transform="translate(-4967.946 20061.311)" fill="#fff"/>
+        <rect id="Rectangle_6041" data-name="Rectangle 6041" width="17.371" height="2.606" rx="1.303" transform="translate(-4631.155 18877.262)" fill="#e8e8e8"/>
+        <rect id="Rectangle_6042" data-name="Rectangle 6042" width="17.371" height="2.606" rx="1.303" transform="translate(-4631.155 18950.217)" fill="#e8e8e8"/>
+        <path id="Path_13363" data-name="Path 13363" d="M37.781,0A37.781,37.781,0,1,1,0,37.781,37.781,37.781,0,0,1,37.781,0Z" transform="translate(-4634.629 18879.865)" fill="#394675"/>
+        <circle id="Ellipse_3361" data-name="Ellipse 3361" cx="28.227" cy="28.227" r="28.227" transform="translate(-4625.075 18889.42)" fill="#fff"/>
+        <circle id="Ellipse_3362" data-name="Ellipse 3362" cx="3.474" cy="3.474" r="3.474" transform="translate(-4612.048 18916.346)" fill="#394675"/>
+        <circle id="Ellipse_3363" data-name="Ellipse 3363" cx="3.474" cy="3.474" r="3.474" transform="translate(-4600.756 18924.9)" fill="#394675"/>
+        <circle id="Ellipse_3364" data-name="Ellipse 3364" cx="3.474" cy="3.474" r="3.474" transform="translate(-4589.466 18916.346)" fill="#394675"/>
+        <path id="Line_59" data-name="Line 59" d="M-.2,4.949a.8.8,0,0,1-.682-.378A.8.8,0,0,1-.622,3.465L6.326-.878a.8.8,0,0,1,1.107.255A.8.8,0,0,1,7.177.485L.229,4.827A.8.8,0,0,1-.2,4.949Z" transform="translate(-4614.457 18910.461)" fill="#394675"/>
+        <path id="Line_60" data-name="Line 60" d="M6.751,4.949a.8.8,0,0,1-.425-.122L-.622.485A.8.8,0,0,1-.878-.622.8.8,0,0,1,.229-.878L7.177,3.465a.8.8,0,0,1-.427,1.485Z" transform="translate(-4585.795 18910.461)" fill="#394675"/>
+        <rect id="Rectangle_6043" data-name="Rectangle 6043" width="8.685" height="40.603" rx="4.343" transform="translate(-4576.952 18942.818) rotate(-45)" fill="#394675"/>
+        <path id="Path_13362" data-name="Path 13362" d="M423.424-1177.97H403.951a7.451,7.451,0,0,1-7.451-7.451V-1207.5Z" transform="translate(-4977.281 20061.311)" fill="#e8e8e8"/>
+        <rect id="Rectangle_6045" data-name="Rectangle 6045" width="38.563" height="2.41" rx="1.205" transform="translate(-4631.155 18871.311)" fill="#e8e8e8"/>
+      </g>
+    </g>
+  </g>
+</svg>
