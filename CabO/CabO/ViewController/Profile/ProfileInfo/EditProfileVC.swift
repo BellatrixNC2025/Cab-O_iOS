@@ -36,13 +36,18 @@ extension EditProfileVC {
     func prepareUI() {
         
         if editType == .profile {
-            arrCells = [.fname, .lname, .mobile, .email,.dob, .gender, .bio, .btn]
+            if _user!.role == .rider {
+                arrCells = [.fname, .lname, .mobile, .mobileVerified, .email, .emailVerified,.dob, .gender, .bio, .btn]
+            }else{
+                arrCells = [.fname, .lname, .mobile, .mobileVerified, .email,.emailVerified,.dob, .gender,.homeAddress, .bio, .btn]
+            }
         }
 //        else if editType == .personal {
 //            arrCells = [, .fb, .twit, .insta, .btn]
 //        }
-        else {
-            arrCells = [.eInfo, .eContact, .addMore, .btn]
+        else if editType == .emergency {
+            arrCells = [.eContact, .addMore, .btn]
+            self.setHeaderView()
         }
         tableView.reloadData()
         
@@ -56,7 +61,18 @@ extension EditProfileVC {
         AddEmergencyContactCell.prepareToRegisterCells(tableView)
         ButtonTableCell.prepareToRegisterCells(tableView)
     }
-    
+    func setHeaderView() {
+        // Dequeue an instance of your cell
+      guard let headerCell = tableView.dequeueReusableCell(withIdentifier: "emergencyInfoCell") as? UITableViewCell else {
+                   fatalError("Could not dequeue MyTableHeaderCell")
+               }
+        tableView.tableHeaderView = headerCell.contentView
+        // Set the frame, only the height matters for tableHeaderView
+        headerCell.contentView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 130 * _widthRatio)
+
+                // Very important: Tell the header view to lay out its subviews
+                headerCell.contentView.layoutIfNeeded()
+    }
     func openEditPopUp(_ isEmail: Bool) {
         let editPopup = InputPopView.initWith(
                                         title: "Edit",
@@ -101,7 +117,15 @@ extension EditProfileVC {
         }
         self.present(alert, animated: true, completion: nil)
     }
-    
+    func openLocationPickerFor(_ tag: Int) {
+        let vc = SearchVC.instantiate(from: .Home)
+        vc.selectionBlock = { [weak self] (address) in
+            guard let self = self else { return }
+            self.data.homeAddress = address
+            self.tableView.reloadData()
+        }
+        self.present(vc, animated: true)
+    }
     func btnContinueTap() {
         if editType == .profile {
             let valid = data.isValidData(editType)
@@ -142,20 +166,82 @@ extension EditProfileVC : UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let cellType = arrCells[indexPath.row]
+        if cellType == .mobileVerified || cellType == .emailVerified {
+            return UITableView.automaticDimension
+        }
         return arrCells[indexPath.row].cellHeight
     }
-    
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        if editType == .emergency {
+//            // Dequeue as if it's a cell
+//            guard let headerCell = tableView.dequeueReusableCell(withIdentifier: "emergencyInfoCell") else {
+//                return nil
+//            }
+//
+//            // Configure cell content based on section
+//    //        headerCell.titleLabel.text = "Section \(section + 1) Header"
+//            // ... configure other properties
+//
+//            // Important: Set the frame of the cell's contentView.
+//            // This is crucial for Auto Layout and sizing.
+//            // You might need to calculate the height based on content.
+//            let headerWidth = tableView.bounds.width
+//            let desiredHeaderHeight: CGFloat = 130 * _widthRatio // Your desired section header height
+//            headerCell.contentView.frame = CGRect(x: 0, y: 0, width: headerWidth, height: desiredHeaderHeight)
+//            headerCell.contentView.layoutIfNeeded() // Force layout for Auto Layout subviews
+//
+//            return headerCell.contentView // Return the cell's content view
+//        }
+//        return nil
+//        
+//    }
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//            // Return the height you set in viewForHeaderInSection.
+//            // If dynamic, calculate it here or use UITableView.automaticDimension
+//            // along with proper Auto Layout constraints in your cell.
+//        if editType == .emergency {
+//            return 130 * _widthRatio // Or your calculated height
+//        }else{
+//            return 0
+//        }
+//    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cellType = arrCells[indexPath.row]
+        if cellType == .emailVerified || cellType == .mobileVerified {
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "dataVerifiedCell", for: indexPath) as! DataVerifiedCell
+            cell.prepareUI(cellType)
+            cell.btnChangeTap = {
+                if cellType == .emailVerified && _user?.emailVerify == false{
+                    let vc = VerifyOtpVC.instantiate(from: .Auth)
+                    vc.screenType = .updateMobile
+                    vc.emailMobile = _user?.emailAddress
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }else if cellType == .mobileVerified && _user?.mobileVerify == false{
+                    let vc = VerifyOtpVC.instantiate(from: .Auth)
+                    vc.screenType = .updateMobile
+                    vc.emailMobile = _user?.mobileNumber
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }else{
+                    self.openEditPopUp(cellType == .emailVerified ? true : false)
+                }
+            }
+            applyRoundedBackground(to: cell, at: indexPath, in: tableView)
+            return cell
+        }
         return tableView.dequeueReusableCell(withIdentifier: arrCells[indexPath.row].identifier, for: indexPath)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let cellType = arrCells[indexPath.row]
         if let cell = cell as? InputCell {
             cell.tag = indexPath.row
             cell.delegate = self
+            applyRoundedBackground(to: cell, at: indexPath, in: tableView, isBottomRadius: cellType == .bio ? true : false)
         }
         else if let cell = cell as? AddEmergencyContactCell {
-            cell.tag = indexPath.row - 1
+            cell.tag = indexPath.row 
             cell.delegate = self
             
             cell.btnRemoveCallBack = { [weak self] (indx) in
@@ -172,10 +258,11 @@ extension EditProfileVC : UITableViewDataSource, UITableViewDelegate {
                     }
                 }
             }
+            applyRoundedBackground(to: cell, at: indexPath, in: self.tableView )
         }
         else if let cell = cell as? CenterButtonTableCell {
-            cell.btn.setAttributedText(texts: ["Add more contact"], attributes: [[NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue]], state: .normal)
-            var img = UIImage(named: "add_emergency_contact")!.withTintColor(AppColor.primaryText)
+//            cell.btn.setAttributedText(texts: ["Add More"], attributes: [[NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue],[NSAttributedString.Key.foregroundColor: AppColor.primaryTextDark]], state: .normal)
+            var img = UIImage(systemName: "plus.circle.fill")!.withTintColor(AppColor.themeGreen)
             img = img.scaleImage(toSize: img.size * _widthRatio)!
             cell.btn.setImage(img, for: .normal)
             
@@ -192,6 +279,7 @@ extension EditProfileVC : UITableViewDataSource, UITableViewDelegate {
                     ValidationToast.showStatusMessage(message: "You can add upto max 3 contacts", yCord: _navigationHeight)
                 }
             }
+            applyRoundedBackground(to: cell, at: indexPath, in: self.tableView, isBottomRadius: true)
         }
         else if let cell = cell as? ButtonTableCell {
             cell.btn.setTitle("Update", for: .normal)
@@ -201,6 +289,7 @@ extension EditProfileVC : UITableViewDataSource, UITableViewDelegate {
                 weakSelf.btnContinueTap()
             }
         }
+        
     }
 }
 
@@ -251,7 +340,7 @@ extension EditProfileVC {
         WebCall.call.getUserProfile { [weak self] (json, status) in
             guard let `self` = self else { return }
             self.hideCentralSpinner()
-            self.arrCells = [.eInfo, .addMore, .btn]
+            self.arrCells = [.addMore, .btn]
             self.arrEmergencyContacts = []
             
             if status == 200, let dict = json as? NSDictionary, let dData = dict["data"] as? NSDictionary, let data = dData["emergency_contacts"] as? [NSDictionary] {
@@ -259,16 +348,16 @@ extension EditProfileVC {
                     data.forEach { contactDict in
                         let contact = EmergencyContactData(contactDict)
                         self.arrEmergencyContacts.append(contact)
-                        self.arrCells.insert(.eContact, at: 1)
+                        self.arrCells.insert(.eContact, at: 0)
                     }
                 } else {
                     self.arrEmergencyContacts.append(EmergencyContactData())
-                    self.arrCells.insert(.eContact, at: 1)
+                    self.arrCells.insert(.eContact, at: 0)
                 }
                 self.tableView.reloadData()
             } else {
                 self.arrEmergencyContacts.append(EmergencyContactData())
-                self.arrCells.insert(.eContact, at: 1)
+                self.arrCells.insert(.eContact, at: 0)
                 self.tableView.reloadData()
 //                showError(data: json)
             }

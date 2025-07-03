@@ -73,7 +73,8 @@ extension SupportTicketListVC {
     
     func prepareTabSelectionUI() {
         tabButtonGradientBg.forEach({$0.isHidden = selectedTab != $0.tag})
-        tabButtons?.forEach({$0.setTitleColor(selectedTab == $0.tag ? UIColor.white : AppColor.primaryText, for: .normal)})
+        tabButtons?.forEach({$0.setTitleColor(selectedTab == $0.tag ? UIColor.white : AppColor.primaryTextDark, for: .normal)})
+        tabButtons?.forEach({$0.backgroundColor = (selectedTab == $0.tag ? AppColor.themeGreen : .white)})
     }
 }
 

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 72 72">
+  <g id="Group_39992" data-name="Group 39992" transform="translate(-152 -660)">
+    <circle id="Ellipse_4269" data-name="Ellipse 4269" cx="36" cy="36" r="36" transform="translate(152 660)" fill="#11d16e"/>
+    <g id="Ellipse_4270" data-name="Ellipse 4270" transform="translate(159 667)" fill="none" stroke="#00352e" stroke-width="1" stroke-dasharray="2">
+      <circle cx="29" cy="29" r="29" stroke="none"/>
+      <circle cx="29" cy="29" r="28.5" fill="none"/>
+    </g>
+    <g id="Iconly_Light_Camera" data-name="Iconly/Light/Camera" transform="translate(170.52 679.258)">
+      <g id="Camera" transform="translate(2.75 3.75)">
+        <path id="Stroke-1" d="M20.322,1.23c1.608.64,2.1,2.87,2.758,3.586a3.087,3.087,0,0,0,2.12.96,5.011,5.011,0,0,1,5.012,5.01v9.229a6.722,6.722,0,0,1-6.72,6.72H7.471a6.721,6.721,0,0,1-6.72-6.72V10.787a5.011,5.011,0,0,1,5.012-5.01,3.093,3.093,0,0,0,2.12-.96C8.539,4.1,9.03,1.87,10.638,1.23S18.714.59,20.322,1.23Z" transform="translate(-0.75 -0.75)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill-rule="evenodd"/>
+        <line id="Stroke-13" x2="0.014" transform="translate(23.482 9.157)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <path id="Stroke-5" d="M16.307,11.692a4.743,4.743,0,1,0-4.743,4.743A4.742,4.742,0,0,0,16.307,11.692Z" transform="translate(3.166 3.055)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" fill-rule="evenodd"/>
+      </g>
+    </g>
+  </g>
+</svg>

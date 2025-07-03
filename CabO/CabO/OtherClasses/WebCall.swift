@@ -442,7 +442,7 @@ extension WebCall {
     ///   - progressB: upload progress
     func uploadFileToUrl(relPath: String, data: Data, block: @escaping WSBlock, progressB: WSProgress?) {
         
-        var request = URLRequest(url: URL(string: relPath)!, timeoutInterval: Double.infinity)
+        var request = URLRequest(url: URL(string: relPath)!, timeoutInterval: 360)
         request.addValue("image/jpeg", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "PUT"
         request.httpBody = data

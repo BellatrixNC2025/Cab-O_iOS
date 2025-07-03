@@ -602,157 +602,329 @@ class RoundDottedView: UIView {
 
 
 class CircularProgressView: UIView {
-    
-    
+
     fileprivate var progressLayer = CAShapeLayer()
     fileprivate var trackLayer = CAShapeLayer()
-    fileprivate var didConfigureLabel = false
+    fileprivate var didConfigureLabel = false // Not used, consider removing
     fileprivate var rounded: Bool
     fileprivate var filled: Bool
-    
-    
+
     fileprivate let lineWidth: CGFloat?
-    
-    
-    
+
     var timeToFill = 3.43
-    
-    
-    
+
     var progressColor = UIColor.white {
-        didSet{
+        didSet {
             progressLayer.strokeColor = progressColor.cgColor
         }
     }
-    
+
     var trackColor = UIColor.white {
-        didSet{
+        didSet {
             trackLayer.strokeColor = trackColor.cgColor
         }
     }
-    
-    
+
     var progress: Float {
-        didSet{
+        didSet {
             var pathMoved = progress - oldValue
             if pathMoved < 0{
                 pathMoved = 0 - pathMoved
             }
             
             setProgress(duration: timeToFill * Double(pathMoved), to: progress)
+//            // Only animate if the new progress is different from the current
+//            if progress != oldValue {
+//                // Calculate duration based on the absolute change in progress
+//                let durationForAnimation = timeToFill * Double(abs(progress - oldValue))
+//                setProgress(duration: durationForAnimation, to: progress)
+//            }
         }
     }
-    
-    
-    
-    
-    fileprivate func createProgressView(){
-        
+
+
+    // MARK: - Core Drawing Logic
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        // Ensure layers are configured only once, or reconfigure if bounds change significantly
+        // A simple check like `trackLayer.superlayer == nil` is good for initial setup.
+        // For updates due to bounds changes, `updatePathForLayers` should be called.
+        if trackLayer.superlayer == nil {
+            configureLayers()
+        }
+        updatePathForLayers() // Always update path if layout changes
+    }
+
+    fileprivate func configureLayers() {
         self.backgroundColor = .clear
         self.layer.cornerRadius = frame.size.width / 2
-        let circularPath = UIBezierPath(arcCenter: center, radius: frame.width / 2, startAngle: CGFloat(-0.5 * .pi), endAngle: CGFloat(1.5 * .pi), clockwise: true)
-        trackLayer.fillColor = UIColor.blue.cgColor
+
+        layer.addSublayer(trackLayer)
+        layer.addSublayer(progressLayer)
         
-        
+        // No need to set initial strokeEnd here, `updatePathForLayers` will handle it.
+    }
+
+    fileprivate func updatePathForLayers() {
+        let centerPoint = CGPoint(x: bounds.midX, y: bounds.midY)
+        let radius = min(bounds.width, bounds.height) / 2
+        let circularPath = UIBezierPath(arcCenter: centerPoint, radius: radius, startAngle: CGFloat(-0.5 * .pi), endAngle: CGFloat(1.5 * .pi), clockwise: true)
+
+        // Track Layer Configuration
         trackLayer.path = circularPath.cgPath
         trackLayer.fillColor = .none
         trackLayer.strokeColor = trackColor.cgColor
         if filled {
             trackLayer.lineCap = .butt
-            trackLayer.lineWidth = frame.width
-        }else{
-            trackLayer.lineWidth = lineWidth!
+            trackLayer.lineWidth = bounds.width
+        } else {
+            trackLayer.lineWidth = lineWidth ?? 2
         }
-        trackLayer.strokeEnd = 1
-        layer.addSublayer(trackLayer)
-        
+        trackLayer.strokeEnd = 1.0 // Track always full
+
+        // Progress Layer Configuration
         progressLayer.path = circularPath.cgPath
         progressLayer.fillColor = .none
         progressLayer.strokeColor = progressColor.cgColor
         if filled {
             progressLayer.lineCap = .butt
-            progressLayer.lineWidth = frame.width
-        }else{
-            progressLayer.lineWidth = lineWidth!
+            progressLayer.lineWidth = bounds.width
+        } else {
+            progressLayer.lineWidth = lineWidth ?? 2
         }
-        progressLayer.strokeEnd = 0
-        if rounded{
+        if rounded {
             progressLayer.lineCap = .round
         }
-        
-        
-        layer.addSublayer(progressLayer)
-        
+
+        // IMPORTANT: Ensure the progressLayer's strokeEnd reflects the current `progress` value
+        // before any animation starts or if no animation is happening.
+        // This sets the *model* layer's state.
+        progressLayer.strokeEnd = CGFloat(progress)
     }
-    
-    
-    
-    
-    
-    func trackColorToProgressColor() -> Void{
+
+    func trackColorToProgressColor() -> Void {
         trackColor = progressColor
-        trackColor = UIColor(red: progressColor.cgColor.components![0], green: progressColor.cgColor.components![1], blue: progressColor.cgColor.components![2], alpha: 0.2)
+        if let components = progressColor.cgColor.components, components.count >= 3 {
+             trackColor = UIColor(red: components[0], green: components[1], blue: components[2], alpha: 0.2)
+        } else {
+            trackColor = progressColor.withAlphaComponent(0.2)
+        }
     }
-    
-    
-    
-    func setProgress(duration: TimeInterval = 3, to newProgress: Float) -> Void{
+
+    func setProgress(duration: TimeInterval = 3, to newProgress: Float) -> Void {
         let animation = CABasicAnimation(keyPath: "strokeEnd")
         animation.duration = duration
-        
-        animation.fromValue = progressLayer.strokeEnd
+
+        // The 'fromValue' should be the current visual state of the layer.
+        // If you want to animate from 0 every time, you would set `animation.fromValue = 0`
+        // but this would mean it jumps to 0 and then animates up, which might not be smooth
+        // if the progress is already at, say, 20% and you then set it to 40%.
+
+        // To animate from the *current visual progress* to the `newProgress`:
+        animation.fromValue =  progressLayer.strokeStart
+
+        // Set the final state for the animation. This is the value the layer will have
+        // once the animation completes.
         animation.toValue = newProgress
-        
+
+        // Update the model layer's property immediately so that if another animation
+        // starts before this one finishes, it starts from the correct new value.
         progressLayer.strokeEnd = CGFloat(newProgress)
-        
+
+        // Add the animation
         progressLayer.add(animation, forKey: "animationProgress")
-        
     }
-    
-    
-    
-    override init(frame: CGRect){
-        progress = 0
-        rounded = true
-        filled = false
-        lineWidth = 2
+
+
+    // MARK: - Initializers
+
+    override init(frame: CGRect) {
+        self.progress = 0 // Initializing progress
+        self.rounded = true
+        self.filled = false
+        self.lineWidth = 4
         super.init(frame: frame)
-        filled = false
-        createProgressView()
+        // No configureLayers() call here, let layoutSubviews handle initial setup.
     }
-    
+
     required init?(coder: NSCoder) {
-        progress = 0
-        rounded = true
-        filled = false
-        lineWidth = 2
+        self.progress = 0 // Initializing progress
+        self.rounded = true
+        self.filled = false
+        self.lineWidth = 4
         super.init(coder: coder)
-        createProgressView()
-        
+        // No configureLayers() call here, let layoutSubviews handle initial setup.
     }
-    
-    
+
     init(frame: CGRect, lineWidth: CGFloat?, rounded: Bool) {
-        
-        
-        progress = 0
-        
-        if lineWidth == nil{
+        self.progress = 0 // Initializing progress
+
+        self.lineWidth = lineWidth
+        self.rounded = rounded
+
+        if lineWidth == nil {
             self.filled = true
             self.rounded = false
-        }else{
-            if rounded{
-                self.rounded = true
-            }else{
-                self.rounded = false
-            }
+        } else {
             self.filled = false
         }
-        self.lineWidth = lineWidth
-        
         super.init(frame: frame)
-        createProgressView()
-        
+        // No configureLayers() call here, let layoutSubviews handle initial setup.
     }
-    
 }
+//class CircularProgressView: UIView {
+//    
+//    
+//    fileprivate var progressLayer = CAShapeLayer()
+//    fileprivate var trackLayer = CAShapeLayer()
+//    fileprivate var didConfigureLabel = false
+//    fileprivate var rounded: Bool
+//    fileprivate var filled: Bool
+//    
+//    
+//    fileprivate let lineWidth: CGFloat?
+//    
+//    
+//    
+//    var timeToFill = 3.43
+//    
+//    
+//    
+//    var progressColor = UIColor.white {
+//        didSet{
+//            progressLayer.strokeColor = progressColor.cgColor
+//        }
+//    }
+//    
+//    var trackColor = UIColor.white {
+//        didSet{
+//            trackLayer.strokeColor = trackColor.cgColor
+//        }
+//    }
+//    
+//    
+//    var progress: Float {
+//        didSet{
+//            var pathMoved = progress - oldValue
+//            if pathMoved < 0{
+//                pathMoved = 0 - pathMoved
+//            }
+//            
+//            setProgress(duration: timeToFill * Double(pathMoved), to: progress)
+//        }
+//    }
+//    
+//    
+//    
+//
+//    fileprivate func createProgressView(){
+//        
+//        self.backgroundColor = .clear
+//        self.layer.cornerRadius = frame.size.width / 2
+//        let circularPath = UIBezierPath(arcCenter: center, radius: frame.width / 2, startAngle: CGFloat(-0.5 * .pi), endAngle: CGFloat(1.5 * .pi), clockwise: true)
+//        trackLayer.fillColor = UIColor.blue.cgColor
+//        
+//        
+//        trackLayer.path = circularPath.cgPath
+//        trackLayer.fillColor = .none
+//        trackLayer.strokeColor = trackColor.cgColor
+//        if filled {
+//            trackLayer.lineCap = .butt
+//            trackLayer.lineWidth = frame.width
+//        }else{
+//            trackLayer.lineWidth = lineWidth!
+//        }
+//        trackLayer.strokeEnd = 1
+//        layer.addSublayer(trackLayer)
+//        
+//        progressLayer.path = circularPath.cgPath
+//        progressLayer.fillColor = .none
+//        progressLayer.strokeColor = progressColor.cgColor
+//        if filled {
+//            progressLayer.lineCap = .butt
+//            progressLayer.lineWidth = frame.width
+//        }else{
+//            progressLayer.lineWidth = lineWidth!
+//        }
+//        progressLayer.strokeEnd = 0
+//        if rounded{
+//            progressLayer.lineCap = .round
+//        }
+//        
+//        
+//        layer.addSublayer(progressLayer)
+//        
+//    }
+//    
+//    
+//    
+//    
+//    
+//    func trackColorToProgressColor() -> Void{
+//        trackColor = progressColor
+//        trackColor = UIColor(red: progressColor.cgColor.components![0], green: progressColor.cgColor.components![1], blue: progressColor.cgColor.components![2], alpha: 0.2)
+//    }
+//    
+//    
+//    
+//    func setProgress(duration: TimeInterval = 3, to newProgress: Float) -> Void{
+//        let animation = CABasicAnimation(keyPath: "strokeEnd")
+//        animation.duration = duration
+//        
+//        animation.fromValue = progressLayer.strokeEnd
+//        animation.toValue = newProgress
+//        
+//        progressLayer.strokeEnd = CGFloat(newProgress)
+//        
+//        progressLayer.add(animation, forKey: "animationProgress")
+//        
+//    }
+//    
+//    
+//    
+//    override init(frame: CGRect){
+//        progress = 0
+//        rounded = true
+//        filled = false
+//        lineWidth = 2
+//        super.init(frame: frame)
+//        filled = false
+//        createProgressView()
+//    }
+//    
+//    required init?(coder: NSCoder) {
+//        progress = 0
+//        rounded = true
+//        filled = false
+//        lineWidth = 2
+//        super.init(coder: coder)
+//        createProgressView()
+//        
+//    }
+//    
+//    
+//    init(frame: CGRect, lineWidth: CGFloat?, rounded: Bool) {
+//        
+//        
+//        progress = 0
+//        
+//        if lineWidth == nil{
+//            self.filled = true
+//            self.rounded = false
+//        }else{
+//            if rounded{
+//                self.rounded = true
+//            }else{
+//                self.rounded = false
+//            }
+//            self.filled = false
+//        }
+//        self.lineWidth = lineWidth
+//        
+//        super.init(frame: frame)
+//        createProgressView()
+//        
+//    }
+//    
+//}

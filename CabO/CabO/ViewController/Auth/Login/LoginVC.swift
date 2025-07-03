@@ -411,6 +411,8 @@ extension LoginVC {
         _user?.initWith(data)
         _user?.pushNotify = data.getBooleanValue(key: "push_notify")
         _user?.textNotify = data.getBooleanValue(key: "text_notification")
+        _user?.emailVerify = data.getBooleanValue(key: "email_verify")
+        _user?.mobileVerify = data.getBooleanValue(key: "mobile_verify")
         _appDelegator.saveContext()
         
         _userDefault.set(data.getBooleanValue(key: "mobile_verify"), forKey: "mobileVerify")
@@ -425,25 +427,27 @@ extension LoginVC {
             }
         }
         
-        if !user.mobileVerify {
-            let vc = VerifyOtpVC.instantiate(from: .Auth)
-            vc.screenType = .registerMobile
-            self.navigationController?.pushViewController(vc, animated: true)
-        }else if !user.emailVerify && _appDelegator.config.isEmailOn {
-            let vc = VerifyOtpVC.instantiate(from: .Auth)
-            vc.screenType = .registerEmail
-            self.navigationController?.pushViewController(vc, animated: true)
-        } else if !user.personalInfoAdded {
+        if !user.personalInfoAdded {
             let vc = SignUpVC.instantiate(from: .Auth)
             vc.screenType = .personal
             vc.loginResponse = user
             self.navigationController?.pushViewController(vc, animated: true)
-        } else if !user.emergencyContactAdded {
-            let vc = SignUpVC.instantiate(from: .Auth)
-            vc.screenType = .emergency
-            vc.loginResponse = user
+        } else if !user.mobileVerify {
+            let vc = VerifyOtpVC.instantiate(from: .Auth)
+            vc.screenType = .registerMobile
             self.navigationController?.pushViewController(vc, animated: true)
-        } else {
+        }
+//        else if !user.emailVerify && _appDelegator.config.isEmailOn {
+//            let vc = VerifyOtpVC.instantiate(from: .Auth)
+//            vc.screenType = .registerEmail
+//            self.navigationController?.pushViewController(vc, animated: true)
+//        }  else if !user.emergencyContactAdded {
+//            let vc = SignUpVC.instantiate(from: .Auth)
+//            vc.screenType = .emergency
+//            vc.loginResponse = user
+//            self.navigationController?.pushViewController(vc, animated: true)
+//        }
+        else {
             _appDelegator.navigateUserToHome()
         }
     }

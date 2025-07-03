@@ -221,6 +221,7 @@ extension AddSupportTicketVC : UITableViewDelegate, UITableViewDataSource {
                 self.updateImageCell()
             }
         }
+        applyRoundedBackground(to: cell, at: indexPath, in: tableView)
     }
 }
 

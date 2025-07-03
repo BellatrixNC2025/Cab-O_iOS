@@ -102,7 +102,7 @@ class SideMenuCell: ConstrainedTableViewCell {
     @IBOutlet weak var vwseperator: UIView!
     
     /// Outlets
-    @IBOutlet weak var imgUserProfile: NRoundImageView!
+    @IBOutlet weak var imgUserProfile: UIImageView!
     @IBOutlet weak var imgVerifyBadgeRight: UIImageView!
     @IBOutlet weak var labelReviews: UILabel!
     @IBOutlet weak var labelRatings: UILabel!
@@ -138,11 +138,12 @@ class SideMenuCell: ConstrainedTableViewCell {
             vwProgress.trackColor = AppColor.placeholderText
             vwProgress.progressColor = AppColor.appBg
             vwProgress.progress = 0.4
-            labelUserName.text = "John" //_user?.fullName
+            labelUserName.text = _user?.fullName
             labelPercentage.text = "40%"
             labelRatings.text = "5.0"
             labelReviews.text = "4 Review(s)"
-            imgUserProfile.image = UIImage(named: "user_place")
+            imgUserProfile.image =  UIImage(named: "user_place")
+            imgUserProfile.loadFromUrlString(_user?.profilePic, placeholder: _userPlaceImage)
         } else if cellType == .version {
             lblTitle?.text = getAppVersionAndBuild()
         } else {

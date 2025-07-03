@@ -26,6 +26,16 @@ extension ChangePasswordVC {
     func prepareU() {
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0)
         registerCells()
+        //Set UItable header
+        guard let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as? UITableViewCell else {
+            fatalError("Could not dequeue MyTableHeaderCell")
+        }
+        tableView.tableHeaderView = headerCell.contentView
+        // Set the frame, only the height matters for tableHeaderView
+        headerCell.contentView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 118 * _widthRatio)
+        
+        // Very important: Tell the header view to lay out its subviews
+        headerCell.contentView.layoutIfNeeded()
     }
     
     func registerCells() {
@@ -64,10 +74,11 @@ extension ChangePasswordVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let _ = arrCells[indexPath.row]
+        let cellType = arrCells[indexPath.row]
         if let cell = cell as? InputCell {
             cell.tag = indexPath.row
             cell.delegate = self
+            applyRoundedBackground(to: cell, at: indexPath, in: self.tableView , isBottomRadius: cellType == .conPass ? true : false)
         }
         else if let cell = cell as? ButtonTableCell {
             cell.btn.setTitle("Update", for: .normal)

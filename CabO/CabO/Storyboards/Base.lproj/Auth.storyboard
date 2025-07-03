@@ -651,7 +651,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ouT-aA-Pxz">
-                                        <rect key="frame" x="72" y="19.5" width="61" height="21.5"/>
+                                        <rect key="frame" x="157" y="19.5" width="61" height="21.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <color key="textColor" name="primaryText"/>
                                         <nil key="highlightedColor"/>
@@ -715,11 +715,12 @@
                                         </userDefinedRuntimeAttributes>
                                     </constraint>
                                     <constraint firstItem="ouT-aA-Pxz" firstAttribute="centerY" secondItem="WYb-eb-Q6O" secondAttribute="centerY" id="AuE-Dr-kil"/>
-                                    <constraint firstItem="ouT-aA-Pxz" firstAttribute="leading" secondItem="uEY-Mf-BrO" secondAttribute="trailing" constant="12" id="cI2-tF-eho">
+                                    <constraint firstItem="ouT-aA-Pxz" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="uEY-Mf-BrO" secondAttribute="trailing" constant="12" id="cI2-tF-eho">
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isWidthResize" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </constraint>
+                                    <constraint firstItem="ouT-aA-Pxz" firstAttribute="centerX" secondItem="WYb-eb-Q6O" secondAttribute="centerX" id="fYz-Z4-wj8"/>
                                     <constraint firstAttribute="trailing" secondItem="Gg9-VE-I3a" secondAttribute="trailing" constant="16" id="pEr-EO-UbO">
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isWidthResize" value="YES"/>
@@ -1165,101 +1166,32 @@ Cab-O</string>
                                             <outlet property="lblTitle" destination="ABn-pm-B2v" id="BiH-5t-v8u"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="emergencyInfoCell" rowHeight="220" id="Vzv-6V-5lp">
-                                        <rect key="frame" x="0.0" y="302" width="375" height="220"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="emergencyInfoCell" id="Vzv-6V-5lp">
+                                        <rect key="frame" x="0.0" y="302" width="375" height="154.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Vzv-6V-5lp" id="4CN-ja-EKj">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="154.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="msX-1c-xC5" customClass="NRoundView" customModule="CabO" customModuleProvider="target">
-                                                    <rect key="frame" x="20" y="12" width="335" height="196"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="msX-1c-xC5">
+                                                    <rect key="frame" x="20" y="12" width="335" height="130.5"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_emergency_info" translatesAutoresizingMaskIntoConstraints="NO" id="QBT-CQ-Ajg">
-                                                            <rect key="frame" x="191" y="50" width="132" height="146"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" secondItem="QBT-CQ-Ajg" secondAttribute="height" multiplier="66:73" id="4n5-ft-mwd"/>
-                                                                <constraint firstAttribute="width" constant="132" id="WQp-zT-pCF">
-                                                                    <userDefinedRuntimeAttributes>
-                                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isWidthResize" value="YES"/>
-                                                                    </userDefinedRuntimeAttributes>
-                                                                </constraint>
-                                                            </constraints>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_emergency_info" translatesAutoresizingMaskIntoConstraints="NO" id="QBT-CQ-Ajg">
+                                                            <rect key="frame" x="47.5" y="0.0" width="240.5" height="130.5"/>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Benefits" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="baw-q6-OhN">
-                                                            <rect key="frame" x="12" y="60" width="72" height="24"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <nil key="highlightedColor"/>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="number" keyPath="FontType">
-                                                                    <integer key="value" value="1"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                            </userDefinedRuntimeAttributes>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can add up to 3 people to your emergency contacts" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5JU-Jb-d36">
-                                                            <rect key="frame" x="12" y="96" width="167" height="29"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <nil key="highlightedColor"/>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="number" keyPath="FontType">
-                                                                    <integer key="value" value="0"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                            </userDefinedRuntimeAttributes>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In case of an emergency you can choose to inform them when you raise an alert" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kjM-8t-Qgp">
-                                                            <rect key="frame" x="12" y="135" width="167" height="43"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <nil key="highlightedColor"/>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="number" keyPath="FontType">
-                                                                    <integer key="value" value="0"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                            </userDefinedRuntimeAttributes>
-                                                        </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" name="theme_primary"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
+                                                        <constraint firstItem="QBT-CQ-Ajg" firstAttribute="centerX" secondItem="msX-1c-xC5" secondAttribute="centerX" id="4pR-if-UHO"/>
                                                         <constraint firstAttribute="bottom" secondItem="QBT-CQ-Ajg" secondAttribute="bottom" id="CYh-hr-Bxv"/>
-                                                        <constraint firstAttribute="trailing" secondItem="QBT-CQ-Ajg" secondAttribute="trailing" constant="12" id="HMZ-x0-pqX"/>
-                                                        <constraint firstItem="QBT-CQ-Ajg" firstAttribute="leading" secondItem="kjM-8t-Qgp" secondAttribute="trailing" constant="12" id="Nb5-6E-GKJ"/>
-                                                        <constraint firstItem="baw-q6-OhN" firstAttribute="top" relation="greaterThanOrEqual" secondItem="msX-1c-xC5" secondAttribute="top" constant="12" id="Qef-R1-lZ4">
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isHeightResize" value="YES"/>
-                                                            </userDefinedRuntimeAttributes>
-                                                        </constraint>
-                                                        <constraint firstItem="5JU-Jb-d36" firstAttribute="leading" secondItem="msX-1c-xC5" secondAttribute="leading" constant="12" id="WoU-yd-QQX"/>
-                                                        <constraint firstAttribute="bottom" secondItem="kjM-8t-Qgp" secondAttribute="bottom" constant="18" id="Y6h-br-95D">
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isHeightResize" value="YES"/>
-                                                            </userDefinedRuntimeAttributes>
-                                                        </constraint>
-                                                        <constraint firstItem="kjM-8t-Qgp" firstAttribute="leading" secondItem="msX-1c-xC5" secondAttribute="leading" constant="12" id="Z2K-i0-98o"/>
-                                                        <constraint firstItem="5JU-Jb-d36" firstAttribute="top" secondItem="baw-q6-OhN" secondAttribute="bottom" constant="12" id="ZYj-co-qq4">
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isHeightResize" value="YES"/>
-                                                            </userDefinedRuntimeAttributes>
-                                                        </constraint>
-                                                        <constraint firstItem="baw-q6-OhN" firstAttribute="leading" secondItem="msX-1c-xC5" secondAttribute="leading" constant="12" id="bgi-Tn-nCc"/>
-                                                        <constraint firstItem="kjM-8t-Qgp" firstAttribute="top" secondItem="5JU-Jb-d36" secondAttribute="bottom" constant="10" id="tdW-3a-ESK">
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isHeightResize" value="YES"/>
-                                                            </userDefinedRuntimeAttributes>
-                                                        </constraint>
-                                                        <constraint firstItem="QBT-CQ-Ajg" firstAttribute="leading" secondItem="5JU-Jb-d36" secondAttribute="trailing" constant="12" id="yd2-BE-BhT"/>
-                                                        <constraint firstItem="QBT-CQ-Ajg" firstAttribute="top" relation="greaterThanOrEqual" secondItem="msX-1c-xC5" secondAttribute="top" constant="12" id="zSf-Yo-mGc">
+                                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="QBT-CQ-Ajg" secondAttribute="trailing" id="HMZ-x0-pqX"/>
+                                                        <constraint firstItem="QBT-CQ-Ajg" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="msX-1c-xC5" secondAttribute="leading" id="lHt-pA-soM"/>
+                                                        <constraint firstItem="QBT-CQ-Ajg" firstAttribute="top" secondItem="msX-1c-xC5" secondAttribute="top" id="zSf-Yo-mGc">
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isHeightResize" value="YES"/>
                                                             </userDefinedRuntimeAttributes>
                                                         </constraint>
                                                     </constraints>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadious">
-                                                            <real key="value" value="12"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
                                             <constraints>
@@ -1280,7 +1212,7 @@ Cab-O</string>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="datePickerCell" rowHeight="102" id="02H-3Y-FEY">
-                                        <rect key="frame" x="0.0" y="522" width="375" height="102"/>
+                                        <rect key="frame" x="0.0" y="456.5" width="375" height="102"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="02H-3Y-FEY" id="K59-HL-DHh">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="102"/>
@@ -1363,14 +1295,14 @@ Cab-O</string>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="addMoreCell" id="2JP-ka-ykz" customClass="CenterButtonTableCell" customModule="CabO" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="624" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="558.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2JP-ka-ykz" id="qYr-rW-IQA">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8fl-vN-jLo" customClass="TintButton" customModule="CabO" customModuleProvider="target">
-                                                    <rect key="frame" x="120" y="16.5" width="135" height="19"/>
+                                                    <rect key="frame" x="120" y="16.5" width="135.5" height="19.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="tintColor" name="primaryText"/>
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -2673,7 +2605,7 @@ Password</string>
         <image name="ic_back" width="40" height="40"/>
         <image name="ic_driver" width="55.818000793457031" height="48.83599853515625"/>
         <image name="ic_edit_pencil" width="17.680999755859375" height="19.5"/>
-        <image name="ic_emergency_info" width="155.88099670410156" height="175.68600463867188"/>
+        <image name="ic_emergency_info" width="240.88099670410156" height="130.52200317382812"/>
         <image name="ic_female" width="12.769000053405762" height="25.003000259399414"/>
         <image name="ic_forgot_pass" width="209.23500061035156" height="253.94500732421875"/>
         <image name="ic_google" width="32" height="32"/>

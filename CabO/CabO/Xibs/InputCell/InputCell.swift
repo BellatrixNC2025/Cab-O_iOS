@@ -119,8 +119,8 @@ class InputCell: ConstrainedTableViewCell {
     
     lazy var inputAccView: NInputAccessoryView = {
         let view = NInputAccessoryView.initView(leftTitle: nil, rightTitle: "Next")
-        view.backgroundColor = AppColor.headerBg
-        view.rightBtn.tintColor = AppColor.primaryText
+        view.backgroundColor = AppColor.roleBgGreen
+        view.rightBtn.tintColor = AppColor.primaryTextDark
         view.rightBtn.target = self
         view.rightBtn.action = #selector(self.btnToolNextTap)
         return view
@@ -136,12 +136,18 @@ class InputCell: ConstrainedTableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         tfContainer?.borderColor = AppColor.textfieldBorder
-        tfContainer?.backgroundColor = AppColor.textfieldBgDark
+        if let textfield = tfInput {
+            tfContainer?.backgroundColor = textfield.isEnabled ? AppColor.textfieldBgDark : AppColor.textfieldBgDark.withAlphaComponent(0.5)
+            tfInput?.textColor = textfield.isEnabled ? AppColor.primaryTextDark : AppColor.primaryTextDark.withAlphaComponent(0.5)
+        }else{
+            tfContainer?.backgroundColor = AppColor.textfieldBgDark
+            tfInput?.textColor = AppColor.primaryTextDark
+        }
         placeholder?.textColor = AppColor.placeholderText
         lblTitle?.font = placeholderFont
         placeholder?.font = placeholderFont
         tfInput?.font = textFont
-        tfInput?.textColor = AppColor.primaryTextDark
+        
         txtView?.font = textFont
         txtView?.textColor = AppColor.primaryTextDark
         imgLeft?.image = imgLeft?.image?.withTintColor(AppColor.primaryText)
@@ -149,7 +155,7 @@ class InputCell: ConstrainedTableViewCell {
         if let _ = delegate as? AddCardVC {
             imgRight?.image = imgRight?.image?.withRenderingMode(.alwaysOriginal)
         } else {
-            imgRight?.image = imgRight?.image?.withTintColor(AppColor.primaryText)
+            imgRight?.image = imgRight?.image?.withTintColor(AppColor.primaryTextDark)
         }
         
         self.labelTextCount?.font = AppFont.fontWithName(.regular, size: (12 * _fontRatio))
@@ -228,9 +234,30 @@ extension InputCell {
             prepareRateReviewUI(parent)
         } else if let parent = delegate as? IdVerificationVC {
             prepareIdVerificationUI(parent)
+        }else if let parent = delegate as? DeleteAccountVC {
+            prepareDeleteAccountUI(parent)
         }
     }
     
+    private func prepareDeleteAccountUI(_ parent: DeleteAccountVC) {
+        let cellType = parent.arrCells[self.tag]
+        lblTitle.text = "Select Reason"
+        tfInput?.text = parent.selectedReasonText
+        tfInput?.setAttributedPlaceHolder(text: "Select Reason", font: placeholderFont, color: AppColor.placeholderText, spacing: 0)
+        inputAccView.rightBtn.title = "Done"
+        placeholder?.text = "Select Reason"
+        placeholder?.isHidden = !parent.selectedReasonText.isEmpty
+        
+        btnInput?.isHidden = cellType != .reasonCell
+        imgRight?.isHidden = cellType != .reasonCell
+        vwRightBg?.isHidden = cellType != .reasonCell
+        
+        imgRight?.image = UIImage(named: "ic_dropdown")?.withTintColor(AppColor.primaryTextDark)
+        
+//        textFieldLeading?.constant = (cellType == .message ? 7 : 12) * _widthRatio
+        vwLeftBg?.isHidden = true
+        imgLeft?.isHidden = true
+    }
     private func prepareIdVerificationUI(_ parent: IdVerificationVC) {
         let cellType = parent.arrCells[self.tag]
         lblTitle.text = cellType.title
@@ -371,7 +398,7 @@ extension InputCell {
         tfInput.isSecureTextEntry = cellType == .pass ? parent.isSecurePass : false
         tfInput.returnKeyType = cellType == .phone ? .next : .done
         tfInput.keyboardType = cellType.keyboard
-        tfInput.inputAccessoryView = nil
+        tfInput.inputAccessoryView = cellType == .phone ? inputAccView : nil
         
         self.maxLength = cellType.maxLength
         
@@ -384,11 +411,11 @@ extension InputCell {
         let cellType = parent.arrCells[self.tag]
         lblTitle.text = cellType.inputTitle
         tfInput.setAttributedPlaceHolder(text: cellType.inputPlaceholder, font: placeholderFont, color: AppColor.placeholderText, spacing: 0)
-        
+        self.maxLength = cellType.maxLength
         tfInput.text = parent.data.getValue(cellType)
-        
+        tfInput.keyboardType = cellType.keyboard
         tfInput.returnKeyType = .done
-        tfInput.inputAccessoryView = nil
+        tfInput.inputAccessoryView = inputAccView
         
         imgLeft?.image = cellType.leftImage
     }
@@ -434,9 +461,10 @@ extension InputCell {
         if EnumHelper.checkCases(cellType, cases: [.pass, .conPass]) {
             prepareEyeUI(false)
         }
+        btnInput?.isHidden = cellType != .homeAddress
         imgRight?.isHidden = cellType != .homeAddress
         vwRightBg?.isHidden = cellType != .homeAddress
-        imgRight?.image = UIImage(named: "ic_map_pin")!.withRenderingMode(.alwaysOriginal)
+        imgRight?.image = UIImage(named: "ic_map_pin")!.withTintColor(AppColor.appBg)
 //        imgRight?.image = imgRight?.image?.withRenderingMode(.alwaysOriginal)
         
         if cellType == .gender {
@@ -487,20 +515,7 @@ extension InputCell {
     }
     
     private func prepareEditProfileInfoUI(_ parent: EditProfileVC) {
-        
-        func prepareDisableUI(_ isDisable: Bool) {
-            tfContainer?.backgroundColor = isDisable ? AppColor.placeholderText : AppColor.textfieldBgDark
-            imgLeft?.tintColor = isDisable ? UIColor.hexStringToUIColor(hexStr: "#A7AECE") : AppColor.primaryText
-            lblTitle?.textColor = isDisable ? UIColor.hexStringToUIColor(hexStr: "#A7AECE") : AppColor.primaryText
-            tfContainer?.borderColor = isDisable ? UIColor.hexStringToUIColor(hexStr: "#DBD5EB") : AppColor.themePrimary
-            
-            if isDisable {
-                tfContainer?.addSubview(changeButton)
-            } else {
-                changeButton.removeFromSuperview()
-            }
-        }
-        
+                
         let cellType = parent.arrCells[self.tag]
         lblTitle?.text = cellType.inputTitle
         tfInput?.text = parent.data.getValue(cellType)
@@ -530,6 +545,12 @@ extension InputCell {
         labelInfoText?.isHidden = cellType.infoText.isEmpty
         labelInfoText?.text = cellType.infoText
         prepareDisableUI(cellType == .mobile || cellType == .email)
+        
+        btnInput?.isHidden = cellType != .homeAddress
+        imgRight?.isHidden = cellType != .homeAddress
+        vwRightBg?.isHidden = cellType != .homeAddress
+        imgRight?.image = UIImage(named: "ic_map_pin")!.withTintColor(AppColor.appBg)
+        
         datePicker.date = parent.data.dob ?? Date().adding(.year, value: -18)
         datePicker.maximumDate = Date().adding(.year, value: -18)
         if cellType == .gender {
@@ -586,7 +607,20 @@ extension InputCell {
         labelInfoText?.text = cellType.infoText
         labelInfoText?.textColor = AppColor.placeholderText
     }
-    
+    func prepareDisableUI(_ isDisable: Bool) {
+        tfContainer?.backgroundColor = isDisable ? AppColor.textfieldBgDark.withAlphaComponent(0.5) : AppColor.textfieldBgDark
+        tfInput?.isEnabled = !isDisable
+        imgLeft?.tintColor = isDisable ? UIColor.hexStringToUIColor(hexStr: "#A7AECE") : AppColor.primaryTextDark
+        lblTitle?.textColor = AppColor.primaryTextDark
+        tfInput?.textColor = isDisable ? AppColor.primaryTextDark.withAlphaComponent(0.5) : AppColor.primaryTextDark
+//        tfContainer?.borderColor = isDisable ? UIColor.hexStringToUIColor(hexStr: "#DBD5EB") : AppColor.themePrimary
+        //Comment this code because change button position changed
+//        if isDisable {
+//            tfContainer?.addSubview(changeButton)
+//        } else {
+//            changeButton.removeFromSuperview()
+//        }
+    }
 }
 
 // MARK: - Actions
@@ -597,11 +631,15 @@ extension InputCell {
             let cellType = parent.arrCells[self.tag]
             if cellType == .gender {
                 parent.openGenderPicker(sender)
+            }else if cellType == .homeAddress {
+                parent.openLocationPickerFor(self.tag)
             }
         } else if let parent = delegate as? EditProfileVC {
             let cellType = parent.arrCells[self.tag]
             if cellType == .gender {
                 parent.openGenderPicker(sender)
+            }else if cellType == .homeAddress {
+                parent.openLocationPickerFor(self.tag)
             }
         } else if let parent = delegate as? AddSupportTicketVC {
             parent.openIssueTypePicker(sender)
@@ -609,6 +647,8 @@ extension InputCell {
             parent.openIssueTypePicker(sender)
         } else if let parent = delegate as? RideHistoryFilterVC {
             parent.openLocationPickerFor(self.tag)
+        }else if let parent = delegate as? DeleteAccountVC {
+            parent.openIssueTypePicker(sender)
         }
     }
     
@@ -852,8 +892,17 @@ extension InputCell: UITextFieldDelegate {
                     return false
                 } else if cellType == .email {
                     return parent.isEditable(cellType) && fullText.count <= maxLength
+                }else if cellType == .homeAddress{
+                    return false
                 }
                 else {
+                    return fullText.count <= maxLength
+                }
+            }else if let parent = delegate as? ForgotPasswordVC {
+                let cellType = parent.arrCells[self.tag]
+                if cellType == .phone {
+                    return string.isNumeric && fullText.trimWhiteSpace().removeSpace().count <= maxLength
+                }else {
                     return fullText.count <= maxLength
                 }
             }
@@ -861,7 +910,9 @@ extension InputCell: UITextFieldDelegate {
                 let cellType = parent.arrCells[self.tag]
                 if cellType == .dob || cellType == .gender {
                     return false
-                } else {
+                } else if cellType == .homeAddress{
+                    return false
+                }else {
                     return fullText.count <= maxLength
                 }
             }

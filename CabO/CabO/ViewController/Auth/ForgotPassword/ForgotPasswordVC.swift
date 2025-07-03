@@ -71,16 +71,12 @@ extension ForgotPasswordVC {
 extension ForgotPasswordVC {
     
     func buttonSendTap() {
-//        let valid = data.isValidForgotData()
-//        if valid.0 {
-//            sendOtp()
-//        } else {
-//            ValidationToast.showStatusMessage(message: valid.1)
-//        }
-        let vc = VerifyOtpVC.instantiate(from: .Auth)
-        vc.emailMobile = "+91 94234 23457"
-        vc.screenType = self.data.emailMobile.isNumber ? .forgotMobile : .forgotEmail
-        self.navigationController?.pushViewController(vc, animated: true)
+        let valid = data.isValidForgotData()
+        if valid.0 {
+            sendOtp()
+        } else {
+            ValidationToast.showStatusMessage(message: valid.1)
+        }
     }
 }
 
@@ -153,7 +149,7 @@ extension ForgotPasswordVC {
         if let userInfo = notification.userInfo {
             if let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
                 guard let _ = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double else {return}
-                tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height + 10, right: 0)
+                tableView.contentInset = UIEdgeInsets(top: _screenSize.height / 2, left: 0, bottom: keyboardSize.height + 10, right: 0)
             }
         }
     }

@@ -30,13 +30,12 @@ enum EditProfileScreenType {
 
 // MARK: - EditProfileCellType
 enum EditProfileCellType {
-    case fname, lname, email, mobile, dob, gender, bio, fb, twit, insta, btn, eInfo, eContact, addMore
+    case fname, lname, email, emailVerified, mobile, mobileVerified, dob, gender,homeAddress, bio, fb, twit, insta, btn, eContact, addMore
     
     var identifier: String {
         switch self {
         case .btn: return ButtonTableCell.identifier
         case .bio: return InputCell.textViewIdentifier
-        case .eInfo: return "emergencyInfoCell"
         case .addMore: return "addMoreCell"
         case .eContact: return AddEmergencyContactCell.identifier
         default: return InputCell.identifier
@@ -48,12 +47,12 @@ enum EditProfileCellType {
         case .btn: return ButtonTableCell.cellHeight + 24
         case .gender: return InputCell.normalHeight
         case .bio: return 140 * _widthRatio
-        case .eInfo:
-            let titleHeight: CGFloat = "Benefits".heightWithConstrainedWidth(width: _screenSize.width - (232 * _widthRatio), font: AppFont.fontWithName(.mediumFont, size: 20 * _fontRatio)) + 24 * _heightRatio
-            let info1Height: CGFloat = "You can add up to 3 people to your emergency contacts".heightWithConstrainedWidth(width: _screenSize.width - (232 * _widthRatio), font: AppFont.fontWithName(.regular, size: 12 * _fontRatio)) + 12 * _heightRatio
-            let info2Height: CGFloat = "In case of an emergency you can choose to inform them when you raise an alert".heightWithConstrainedWidth(width: _screenSize.width - (232 * _widthRatio), font: AppFont.fontWithName(.regular, size: 12 * _fontRatio)) + 22 * _heightRatio
-            let height = titleHeight + info1Height + info2Height
-            return max(height, 220 * _heightRatio)
+//        case .eInfo:
+//            let titleHeight: CGFloat = "Benefits".heightWithConstrainedWidth(width: _screenSize.width - (232 * _widthRatio), font: AppFont.fontWithName(.mediumFont, size: 20 * _fontRatio)) + 24 * _heightRatio
+//            let info1Height: CGFloat = "You can add up to 3 people to your emergency contacts".heightWithConstrainedWidth(width: _screenSize.width - (232 * _widthRatio), font: AppFont.fontWithName(.regular, size: 12 * _fontRatio)) + 12 * _heightRatio
+//            let info2Height: CGFloat = "In case of an emergency you can choose to inform them when you raise an alert".heightWithConstrainedWidth(width: _screenSize.width - (232 * _widthRatio), font: AppFont.fontWithName(.regular, size: 12 * _fontRatio)) + 22 * _heightRatio
+//            let height = titleHeight + info1Height + info2Height
+//            return max(height, 220 * _heightRatio)
         case .addMore: return 44 * _widthRatio
         case .eContact: return AddEmergencyContactCell.normalHeight
         default: return InputCell.normalHeight //UITableView.automaticDimension
@@ -72,6 +71,7 @@ enum EditProfileCellType {
         case .fb: return "Facebook"
         case .twit: return "X"
         case .insta: return "Instagram"
+        case .homeAddress: return "Home Address*"
         default: return ""
         }
     }
@@ -173,7 +173,7 @@ class EditProfileData {
     var fbLink: String = ""
     var twitLink: String = ""
     var instaLink: String = ""
-    
+    var homeAddress: SearchAddress?
     init() { }
     
     init(_ dict: NSDictionary) {
@@ -207,6 +207,16 @@ class EditProfileData {
         param["date_of_birth"] = Date.localDateString(from: dob!, format: DateFormat.serverDateFormat)
         param["gender"] = gender?.title.lowercased()
         param["something_about_you"] = bio
+        if _user?.role == .driver {
+            param["address"] = homeAddress?.formatedAddress
+            param["zipcode"] = homeAddress?.zipcode
+            param["state"] = homeAddress?.state
+            param["city"] = homeAddress?.city
+            param["county"] = homeAddress?.country
+            param["latitude"] = homeAddress?.lat
+            param["longitude"] = homeAddress?.long
+            
+        }
         return param
     }
     
@@ -241,6 +251,8 @@ class EditProfileData {
                 return (false, "Please select date of birth")
             } else if gender == nil {
                 return (false, "Please select gender")
+            }else if homeAddress == nil && _user!.role == .driver {
+                return (false, "Please select your gender")
             }
 //            else if !fbLink.isEmpty && !fbLink.contains(find: "www.facebook.com/"){
 //                return (false, "Please enter valid facebook url")
@@ -334,4 +346,66 @@ class EmergencyContactData{
             default: break
         }
     }
+}
+//MARK: - ProfileMenuCell
+class DataVerifiedCell: ConstrainedTableViewCell {
+    
+
+    /// Outlets
+    @IBOutlet weak var imgVerifyBadgeRight: TintImageView!
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var btnChange: UIButton!
+    
+    /// Variables
+    var btnChangeTap: (() -> ())?
+    
+    weak var parent: ProfileVC!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+    }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+    }
+    
+    func prepareUI(_ cellType: EditProfileCellType) {
+
+        if cellType == .mobileVerified {
+            if _user?.mobileVerify == true{
+                lblTitle?.text = "Verified"
+                btnChange.backgroundColor = AppColor.appBg
+                btnChange.setTitle("Change", for: .normal)
+                lblTitle.textColor = AppColor.themeGreen
+                imgVerifyBadgeRight.tintColor = AppColor.themeGreen
+            }else{
+                lblTitle?.text = "Verified Pending"
+                btnChange.backgroundColor = AppColor.themeGreen
+                btnChange.setTitle("Verify", for: .normal)
+                lblTitle.textColor = AppColor.themeGray
+                imgVerifyBadgeRight.tintColor = AppColor.themeGray
+            }
+        } else {
+            if _user?.emailVerify == true{
+                lblTitle?.text = "Verified"
+                btnChange.backgroundColor = AppColor.appBg
+                btnChange.setTitle("Change", for: .normal)
+                lblTitle.textColor = AppColor.themeGreen
+                imgVerifyBadgeRight.tintColor = AppColor.themeGreen
+            }else{
+                lblTitle?.text = "Verified Pending"
+                btnChange.backgroundColor = AppColor.themeGreen
+                btnChange.setTitle("Verify", for: .normal)
+                lblTitle.textColor = AppColor.themeGray
+                imgVerifyBadgeRight.tintColor = AppColor.themeGray
+            }
+        }
+        self.layoutIfNeeded()
+    }
+    
+    @IBAction func btnRightTap(_ sender: UIButton) {
+        self.btnChangeTap?()
+    }
+    
+   
 }

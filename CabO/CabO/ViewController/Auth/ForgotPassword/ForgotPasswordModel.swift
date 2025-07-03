@@ -10,19 +10,19 @@ import UIKit
 
 // MARK: - ForgotPassCells ENUM
 enum ForgotPassCells: CaseIterable {
-    case title, desc, email, signin
+    case title, desc, phone, signin
     
     var cellId: String {
         switch self {
         case .title, .desc: return TitleTVC.identifier
-        case .email: return InputCell.identifier
+        case .phone: return InputCell.identifier
         case .signin: return ButtonTableCell.identifier
         }
     }
     
     var cellHeight: CGFloat {
         switch self {
-        case .email: return InputCell.normalHeight 
+        case .phone: return InputCell.normalHeight
         case .signin: return ButtonTableCell.cellHeight + 10
         default: return InputCell.normalHeight
         }
@@ -32,22 +32,34 @@ enum ForgotPassCells: CaseIterable {
         switch self {
         case .title: return "Don't worry!"
         case .desc: return "It happens. Please enter the mobile number associated with your account"
-        case .email: return "Mobile Number"
+        case .phone: return "Mobile Number"
         default: return ""
         }
     }
     
     var inputPlaceholder: String {
         switch self {
-        case .email: return "Mobile Number"
+        case .phone: return "Mobile Number"
         default: return ""
         }
     }
     
     var leftImage: UIImage? {
         switch self {
-        case .email: return UIImage(named: "ic_mobile")
+        case .phone: return UIImage(named: "ic_mobile")
         default: return nil
+        }
+    }
+    var maxLength: Int? {
+        switch self {
+        case .phone: return 10
+        default : return 250
+        }
+    }
+    var keyboard: UIKeyboardType {
+        switch self {
+        case .phone: return .phonePad
+        default: return .asciiCapable
         }
     }
 }
@@ -120,7 +132,7 @@ class ResetPasswordData {
     
     func getValue(_ cellType: ForgotPassCells) -> String {
         switch cellType {
-        case .email: return emailMobile
+        case .phone: return emailMobile
         default: return ""
         }
     }
@@ -144,7 +156,7 @@ class ResetPasswordData {
     
     func setValue(_ str: String, _ cellType: ForgotPassCells) {
         switch cellType {
-        case .email: emailMobile = str
+        case .phone: emailMobile = str
         default: break
         }
     }

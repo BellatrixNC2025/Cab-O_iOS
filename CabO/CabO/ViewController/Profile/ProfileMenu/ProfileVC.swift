@@ -81,7 +81,7 @@ extension ProfileVC {
     
     func prepareUI() {
         
-        
+        btnDeleteAcc.setAttributedText(texts: ["Delete account"], attributes: [[NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue]], state: .normal)
         tableView.contentInset = UIEdgeInsets(top: 12, left: 0, bottom: 50, right: 0)
         registerCells()
     }
@@ -120,7 +120,9 @@ extension ProfileVC {
                         if succ {
                             DispatchQueue.main.async {
                                 let vc = DeleteAccountVC.instantiate(from: .Profile)
-                                self.navigationController?.pushViewController(vc, animated: true)
+//                                self.navigationController?.pushViewController(vc, animated: true)
+                                vc.modalPresentationStyle = .overCurrentContext
+                                self.present(vc, animated: true, completion: nil)
                             }
                         }
                     }

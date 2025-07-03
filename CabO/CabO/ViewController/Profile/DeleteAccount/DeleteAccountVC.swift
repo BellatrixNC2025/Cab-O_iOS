@@ -10,14 +10,12 @@ import UIKit
 class DeleteAccountVC: ParentVC {
     
     /// Outlets
-    @IBOutlet weak var buttonContinue: UIButton!
-    @IBOutlet var vwProgress: [UIView]!
+    @IBOutlet var heightConstTable: NSLayoutConstraint!
     
     /// Variables
     var deleteStep: DeleteAccountStep! {
         didSet {
             prepareStepWiseCells()
-            updateProgressView()
         }
     }
     var arrCells: [DeleteAccountCellType]!
@@ -25,6 +23,7 @@ class DeleteAccountVC: ParentVC {
     var arrInfo1: [String] = []
     var arrInfo2: [String] = []
     var selectedReason: Int?
+    var selectedReasonText: String = ""
     var otherReason: String = ""
 
     override func viewDidLoad() {
@@ -57,37 +56,38 @@ class DeleteAccountVC: ParentVC {
 extension DeleteAccountVC {
 
     func prepareUI() {
-        tableView.contentInset = UIEdgeInsets(top: 12, left: 0, bottom: 50, right: 0)
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        tableView.backgroundColor = AppColor.vwBgColor
+        tableView.layer.cornerRadius = 19.0
         deleteStep = .step1
+        self.registerCells()
     }
-
+    func registerCells() {
+        TitleTVC.prepareToRegisterCells(tableView)
+        InputCell.prepareToRegisterCells(tableView)
+        ButtonTableCell.prepareToRegisterCells(tableView)
+    }
     private func prepareStepWiseCells() {
         if deleteStep == .step1 {
-            arrCells = [.title, .info, .linkLabel, .otherReason]
-            if let arrReasons {
-                arrCells.removeAll(where: { $0 == .reasonCell })
-                let resons: [DeleteAccountCellType] = Array.init(repeating: .reasonCell, count: arrReasons.count)
-                arrCells.insert(contentsOf: resons, at: 3)
-            }
+            arrCells = [.title, .info, .reasonCell, .noteTitle, .note1,.note2, .buttonCell]
+           
+            tableView.reloadData()
         } else if deleteStep == .step2 {
-            arrCells = [.title, .linkLabel]
-            arrCells.append(contentsOf: Array.init(repeating: .description, count: arrInfo1.count))
-        } else {
-            arrCells = [.title]
-            arrCells.append(contentsOf: Array.init(repeating: .description, count: arrInfo2.count))
-            delay(0.5) {
-                self.deleteAccount()
+            arrCells = [.title,.deleteSucces, .deleteSuccesTitle]
+//            delay(0.5) {
+//                self.deleteAccount()
+//            }
+            tableView.reloadData()
+            DispatchQueue.main.async {
+                let updatedContentHeight = self.tableView.contentSize.height
+                print("Updated Table View Content Height after reload: \(updatedContentHeight)")
+                self.heightConstTable.constant = updatedContentHeight + 10
             }
         }
-        tableView.reloadData()
+        
+        
     }
 
-    func updateProgressView() {
-        vwProgress.forEach { view in
-            view.backgroundColor = view.tag < deleteStep.rawValue ? AppColor.themeGreen : AppColor.placeholderText
-        }
-        buttonContinue.setTitle(deleteStep == .step3 ? "Done" : "Continue", for: .normal)
-    }
 }
 
 // MARK: - Actions
@@ -108,11 +108,10 @@ extension DeleteAccountVC {
 
     @IBAction func btnBackTap(_ sender: UIButton) {
         if deleteStep == .step2 {
-            deleteStep = .step1
-        } else if deleteStep == .step3 {
-            _appDelegator.removeUserInfoAndNavToLogin()
+            self.dismiss(animated: true)
+//            _appDelegator.removeUserInfoAndNavToLogin()
         } else {
-            self.navigationController?.popViewController(animated: true)
+            self.dismiss(animated: true)
         }
     }
 
@@ -120,15 +119,48 @@ extension DeleteAccountVC {
         if deleteStep == .step1 {
             if selectedReason == nil {
                 ValidationToast.showStatusMessage(message: "Please select to reason to continue", yCord: _navigationHeight)
-            } else if arrCells[self.selectedReason!] == .otherReason && otherReason.isEmpty {
-                ValidationToast.showStatusMessage(message: "Please enter your reason to continue", yCord: _navigationHeight)
-            } else {
+            }  else {
                 deleteStep = .step2
             }
         } else if deleteStep == .step2 {
-            deleteStep = .step3
-        } else {
             _appDelegator.removeUserInfoAndNavToLogin()
+        }
+    }
+    
+    func openIssueTypePicker(_ sender: AnyObject) {
+        if let reason = arrReasons {
+            let alert = UIAlertController.init(title: "Select Reason", message: nil, preferredStyle: .actionSheet)
+            
+            reason.forEach { type in
+                let action = UIAlertAction(title: type.name, style: .default) { [weak self] (action) in
+                    guard let `self` = self else { return }
+                    self.selectedReason = type.id
+                    self.selectedReasonText = type.name
+//                    if type.name.lowercased() == "other" && !self.arrCells.contains(.other) {
+//                        self.arrCells.removeItem(.other)
+//                        if self.isFromRideDetail {
+//                            self.arrCells.insert(.other, at: 2)
+//                        } else {
+//                            self.arrCells.insert(.other, at: 1)
+//                        }
+//                    } else if self.arrCells.contains(.other){
+//                        self.arrCells.removeItem(.other)
+//                        self.data.otherTitle = ""
+//                    }
+                    self.tableView.reloadData()
+                }
+                alert.addAction(action)
+            }
+            let cancel = UIAlertAction(title: "Close", style: .cancel, handler: nil)
+            alert.addAction(cancel)
+            if let popoverController = alert.popoverPresentationController {
+                popoverController.sourceView = sender as? UIView
+                popoverController.sourceRect = (sender as? UIView)!.bounds
+            }
+//            if _appTheme != .system {
+//                alert.overrideUserInterfaceStyle = appTheme
+//            }
+            self.present(alert, animated: true, completion: nil)
         }
     }
 }
@@ -142,76 +174,125 @@ extension DeleteAccountVC: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let cellType = arrCells[indexPath.row]
-        if cellType == .linkLabel {
-            let str = getLinkString(deleteStep == .step1 ? "Learn more about account deletion requests" : _user!.emailAddress, key: deleteStep == .step1 ? "learnMode" : "mail")
-            return str.heightWithConstrainedWidth(width: _screenSize.width - (40 * _widthRatio)) + (28 * _heightRatio)
-        } else if cellType == .info {
-            let info = "This will permanently delete your account and your data, in accordance with applicable law."
-            return info.heightWithConstrainedWidth(width: _screenSize.width - (70 * _widthRatio), font: AppFont.fontWithName(.regular, size: 12 * _fontRatio)) + (16 * _widthRatio)
-        } else if cellType == .reasonCell {
-            return arrReasons![indexPath.row - 3].name.heightWithConstrainedWidth(width: _screenSize.width - (110 * _widthRatio), font: AppFont.fontWithName(.regular, size: 15 * _fontRatio)) + (34 * _widthRatio)
-        } else if cellType == .otherReason {
-            if selectedReason != nil && indexPath.row == selectedReason! {
-                return 210 * _widthRatio
-            } else {
-                return 70 * _widthRatio
+//        if cellType == .linkLabel {
+//            let str = getLinkString(deleteStep == .step1 ? "Learn more about account deletion requests" : _user!.emailAddress, key: deleteStep == .step1 ? "learnMode" : "mail")
+//            return str.heightWithConstrainedWidth(width: _screenSize.width - (40 * _widthRatio)) + (28 * _heightRatio)
+//        } else if cellType == .info {
+//            let info = "This will permanently delete your account and your data, in accordance with applicable law."
+//            return info.heightWithConstrainedWidth(width: _screenSize.width - (70 * _widthRatio), font: AppFont.fontWithName(.regular, size: 12 * _fontRatio)) + (16 * _widthRatio)
+//        } else if cellType == .reasonCell {
+//            return arrReasons![indexPath.row - 3].name.heightWithConstrainedWidth(width: _screenSize.width - (110 * _widthRatio), font: AppFont.fontWithName(.regular, size: 15 * _fontRatio)) + (34 * _widthRatio)
+//        } else if cellType == .otherReason {
+//            if selectedReason != nil && indexPath.row == selectedReason! {
+//                return 210 * _widthRatio
+//            } else {
+//                return 70 * _widthRatio
+//            }
+//        } else if cellType == .description {
+//            var str: String = ""
+//            if deleteStep == .step2 {
+//                str = arrInfo1[indexPath.row - 2]
+//            } else if deleteStep == .step3 {
+//                str = arrInfo2[indexPath.row - 1]
+//            }
+//            return str.heightWithConstrainedWidth(width: _screenSize.width - (80 * _widthRatio), font: AppFont.fontWithName(.regular, size: 14 * _fontRatio)) + (16 * _heightRatio)
+//        }
+        if deleteStep == .step1 {
+            if cellType == .reasonCell || cellType == .buttonCell{
+                return cellType.cellHeight
             }
-        } else if cellType == .description {
-            var str: String = ""
-            if deleteStep == .step2 {
-                str = arrInfo1[indexPath.row - 2]
-            } else if deleteStep == .step3 {
-                str = arrInfo2[indexPath.row - 1]
+        }else{
+            if cellType == .deleteSuccesTitle {
+                return TitleTVC.height(for: cellType.infoString, width:  _screenSize.width - (32 * _widthRatio), font: AppFont.fontWithName(.bold, size: 20 * _fontRatio)) + 16 * _widthRatio
             }
-            return str.heightWithConstrainedWidth(width: _screenSize.width - (80 * _widthRatio), font: AppFont.fontWithName(.regular, size: 14 * _fontRatio)) + (16 * _heightRatio)
         }
         return UITableView.automaticDimension
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellType = arrCells[indexPath.row]
-        return tableView.dequeueReusableCell(withIdentifier: cellType.cellId, for: indexPath)
+        if deleteStep == .step1 {
+            if cellType == .reasonCell {
+                let cell = tableView.dequeueReusableCell(withIdentifier: cellType.cellId, for: indexPath) as! InputCell
+                cell.tag = indexPath.row
+                cell.delegate = self
+//                applyRoundedBackground(to: cell, at: indexPath, in: self.tableView)
+
+                return cell
+            }else if cellType == .buttonCell {
+                let cell = tableView.dequeueReusableCell(withIdentifier: cellType.cellId, for: indexPath) as! ButtonTableCell
+                cell.btn.setTitle("Submit", for: .normal)
+                cell.btnTapAction = { [weak self] (sender) in
+                    guard let `self` = self else { return }
+                    self.btnContinueTap(sender)
+                }
+//                applyRoundedBackground(to: cell, at: indexPath, in: self.tableView)
+                return cell
+            }else{
+                let cell = tableView.dequeueReusableCell(withIdentifier: cellType.cellId, for: indexPath) as! DeleteAccountCell
+                cell.parent = self
+                if cellType == .title {
+                    cell.labelTitle.text = deleteStep.title
+                }else if cellType == .info || cellType == .note1 || cellType == .note2{
+                    cell.lblInfo.text = cellType.infoString
+                }
+//                applyRoundedBackground(to: cell, at: indexPath, in: self.tableView)
+                return cell
+            }
+
+        }else {
+            if cellType == .deleteSucces {
+                let cell = tableView.dequeueReusableCell(withIdentifier: cellType.cellId, for: indexPath) as! DeleteAccountCell
+                return cell
+            }else if cellType == .deleteSuccesTitle{
+                let cell = tableView.dequeueReusableCell(withIdentifier: cellType.cellId, for: indexPath) as! TitleTVC
+                cell.prepareUI(cellType.infoString, AppFont.fontWithName(.bold, size: 20 * _fontRatio), clr: AppColor.primaryTextDark)
+                return cell
+            }else{
+                let cell = tableView.dequeueReusableCell(withIdentifier: cellType.cellId, for: indexPath) as! DeleteAccountCell
+                cell.parent = self
+                if cellType == .title {
+                    cell.labelTitle.text = deleteStep.title
+                }
+                return cell
+            }
+        }
     }
 
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let cellType = arrCells[indexPath.row]
-        if let cell = cell as? DeleteAccountCell {
-            cell.tag = indexPath.row
-            cell.parent = self
-            cell.prepareU()
-            if cellType == .title {
-                cell.labelTitle.text = deleteStep.title
-                cell.imgRightTitle?.isHidden = deleteStep.hideRightImage
-            } else if cellType == .linkLabel {
-                cell.labelLink?.setTagText(attriText: getLinkString(deleteStep == .step1 ? "Learn more about account deletion requests" : _user!.emailAddress, key: deleteStep == .step1 ? "learnMore" : "mail"), linebreak: .byTruncatingTail)
-                cell.labelLink?.delegate = self
-            } else if cellType == .reasonCell {
-                cell.labelTitle?.text = arrReasons![indexPath.row - 3].name
-                cell.buttonReasonRadio?.isSelected = (selectedReason != nil && indexPath.row == selectedReason!)
-            } else if cellType == .otherReason {
-                cell.buttonReasonRadio?.isSelected = (selectedReason != nil && indexPath.row == selectedReason!)
-                cell.textContainer.isHidden = !cell.buttonReasonRadio.isSelected
-                cell.lblReasonTitle.isHidden = !cell.buttonReasonRadio.isSelected
-                cell.labelTextCount.isHidden = !cell.buttonReasonRadio.isSelected
-            } else if cellType == .description {
-                var str: String = ""
-                if deleteStep == .step2 {
-                    str = arrInfo1[indexPath.row - 2]
-                } else if deleteStep == .step3 {
-                    str = arrInfo2[indexPath.row - 1]
-                }
-                cell.labelTitle.text = str
-            }
-
-        }
+//        if let cell = cell as? DeleteAccountCell {
+//            cell.tag = indexPath.row
+//            cell.parent = self
+//            cell.prepareU()
+//            if cellType == .title {
+//                cell.labelTitle.text = deleteStep.title
+//                cell.imgRightTitle?.isHidden = deleteStep.hideRightImage
+//            } else if cellType == .linkLabel {
+//                cell.labelLink?.setTagText(attriText: getLinkString(deleteStep == .step1 ? "Learn more about account deletion requests" : _user!.emailAddress, key: deleteStep == .step1 ? "learnMore" : "mail"), linebreak: .byTruncatingTail)
+//                cell.labelLink?.delegate = self
+//            } else if cellType == .reasonCell {
+//                cell.labelTitle?.text = arrReasons![indexPath.row - 3].name
+//                cell.buttonReasonRadio?.isSelected = (selectedReason != nil && indexPath.row == selectedReason!)
+//            } else if cellType == .otherReason {
+//                cell.buttonReasonRadio?.isSelected = (selectedReason != nil && indexPath.row == selectedReason!)
+//                cell.textContainer.isHidden = !cell.buttonReasonRadio.isSelected
+//                cell.lblReasonTitle.isHidden = !cell.buttonReasonRadio.isSelected
+//                cell.labelTextCount.isHidden = !cell.buttonReasonRadio.isSelected
+//            } else if cellType == .description {
+//                var str: String = ""
+//                if deleteStep == .step2 {
+//                    str = arrInfo1[indexPath.row - 2]
+//                } else if deleteStep == .step3 {
+//                    str = arrInfo2[indexPath.row - 1]
+//                }
+//                cell.labelTitle.text = str
+//            }
+//
+//        }
     }
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cellType = arrCells[indexPath.row]
-        if cellType == .reasonCell || cellType == .otherReason {
-            self.actionChooseReason(indexPath.row)
-        }
-    }
+   
 }
 
 // MARK: - NLinkLabelDelagete
@@ -238,9 +319,9 @@ extension DeleteAccountVC {
 
     @objc func keyboardWillShow(_ notification: NSNotification) {
         tableView.contentInset = UIEdgeInsets(top: 12, left: 0, bottom: _screenSize.height / 2, right: 0)
-        if let fIndex = arrCells.firstIndex(of: .otherReason) {
-            scrollToIndex(index: fIndex, animate: true, .top)
-        }
+//        if let fIndex = arrCells.firstIndex(of: .otherReason) {
+//            scrollToIndex(index: fIndex, animate: true, .top)
+//        }
     }
 
     @objc func keyboardWillHide(_ notification: NSNotification) {
@@ -314,7 +395,7 @@ extension DeleteAccountVC {
         WebCall.call.getReasonListCodable(["type": "delete_account"]) { [weak self] (result: Result<ApiResponse<DeleteData>, Error>) in
             guard let self = self else { return }
             self.hideCentralSpinner()
-            self.arrCells.removeAll(where: { $0 == .reasonCell })
+//            self.arrCells.removeAll(where: { $0 == .reasonCell })
             self.arrReasons = []
             self.arrInfo1 = []
             self.arrInfo2 = []
@@ -323,12 +404,17 @@ extension DeleteAccountVC {
                 guard let data = response.data else { return }
                 
                 self.arrReasons = data.deleteReason
-                self.arrCells.insert(contentsOf: Array.init(repeating: .reasonCell, count: self.arrReasons!.count), at: 3)
-                self.arrReasons!.removeAll(where: { $0.name.lowercased() == "other" })
-                
-                self.arrInfo1 = data.deleteAccountNote.map { $0.name }
-                self.arrInfo2 = data.deletedAccountNote.map { $0.name }
+//                self.arrCells.insert(contentsOf: Array.init(repeating: .reasonCell, count: self.arrReasons!.count), at: 3)
+//                self.arrReasons!.removeAll(where: { $0.name.lowercased() == "other" })
+//                
+//                self.arrInfo1 = data.deleteAccountNote.map { $0.name }
+//                self.arrInfo2 = data.deletedAccountNote.map { $0.name }
                 self.tableView.reloadData()
+                DispatchQueue.main.async {
+                    let updatedContentHeight = self.tableView.contentSize.height
+                    print("Updated Table View Content Height after reload: \(updatedContentHeight)")
+                    self.heightConstTable.constant = updatedContentHeight + 10
+                }
             case .failure(let error):
                 self.showError(data: error, yCord: _navigationHeight)
                 print("Error occured while fetching the data")

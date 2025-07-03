@@ -14,7 +14,9 @@ class AddProfilePicVC: ParentVC {
     
     /// Variables
     var arrCells: [AddProfilePicCells] = [.title, .desc1, .desc2, .img, .btn]
-    
+    var titleHeight : CGFloat = 0
+    var desc1Height : CGFloat = 0
+    var desc2Height : CGFloat = 0
     var selectedImg: UIImage? = nil {
         didSet {
             if selectedImg != nil {
@@ -36,12 +38,23 @@ extension AddProfilePicVC {
     
     func prepareUI() {
         tableView.contentInset = UIEdgeInsets(top: 12, left: 0, bottom: 0, right: 0)
+//        if _user?.profilePic != "" {
+//            selectedImg =
+//        }
+        if _user?.profilePic == nil {
+            arrCells.removeLast()
+        }
         registerCells()
     }
     
     func registerCells() {
 //        TitleTVC.prepareToRegisterCells(tableView)
         ButtonTableCell.prepareToRegisterCells(tableView)
+    }
+    func countHeight() -> CGFloat{
+         
+        let height : CGFloat = _screenSize.height - (100 * _widthRatio) - titleHeight - desc1Height - desc2Height - 12 - additionalSafeAreaInsets.top - additionalSafeAreaInsets.bottom
+        return height
     }
 }
 
@@ -57,16 +70,34 @@ extension AddProfilePicVC : UITableViewDelegate, UITableViewDataSource {
         if EnumHelper.checkCases(cellType, cases: [.title, .desc1, .desc2, .desc3]) {
             if cellType == .title {
                 let titleText = selectedImg != nil ? "Review your profile picture" : "Add your profile picture for safer pickups"
+                titleHeight = TitleTVC.height(for: titleText, width: _screenSize.width - (40 * _widthRatio), font: AppFont.fontWithName(.mediumFont, size: 20 * _fontRatio)) + 4 * _widthRatio
                 return TitleTVC.height(for: titleText, width: _screenSize.width - (40 * _widthRatio), font: AppFont.fontWithName(.mediumFont, size: 20 * _fontRatio)) + 4 * _widthRatio
             } else {
+                if cellType == .desc1 {
+                    desc1Height = TitleTVC.height(for: cellType.title, width: _screenSize.width - (40 * _widthRatio), font: AppFont.fontWithName(.regular, size: 14 * _fontRatio)) + 4 * _widthRatio
+                }else if cellType == .desc2 {
+                    desc2Height = TitleTVC.height(for: cellType.title, width: _screenSize.width - (40 * _widthRatio), font: AppFont.fontWithName(.regular, size: 14 * _fontRatio)) + 4 * _widthRatio
+                }
                 return TitleTVC.height(for: cellType.title, width: _screenSize.width - (40 * _widthRatio), font: AppFont.fontWithName(.regular, size: 14 * _fontRatio)) + 4 * _widthRatio
+            }
+        }else{
+            if cellType == .img && selectedImg == nil{
+                return self.countHeight()
+            }else{
+                return cellType.cellHeight
             }
         }
         return cellType.cellHeight
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCell(withIdentifier: arrCells[indexPath.row].cellId, for: indexPath)
+        
+        let cellType = arrCells[indexPath.row]
+        if cellType == .img && _user?.profilePic == "" && selectedImg == nil{
+            return tableView.dequeueReusableCell(withIdentifier: "beforeProfileImageCell", for: indexPath)
+        }else{
+            return tableView.dequeueReusableCell(withIdentifier: arrCells[indexPath.row].cellId, for: indexPath)
+        }
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

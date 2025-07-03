@@ -50,6 +50,7 @@ extension SideMenuVC {
 //MARK: - Button Actions
 extension SideMenuVC {
     @IBAction func buttonMenuTap(_ sender: UIButton) {
+        self.navigaton_controller?.popViewController(animated: false)
         self.dismiss(animated: true)
     }
     @IBAction func btnCheckCompleteProfile(_ sender: UIButton) {
@@ -83,7 +84,7 @@ extension SideMenuVC: UITableViewDelegate, UITableViewDataSource {
         if cellType == .userDetails {
             return UITableView.automaticDimension
         }
-        return 44 * _widthRatio
+        return 50 * _widthRatio
     }
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 15 * _widthRatio
@@ -117,51 +118,57 @@ extension SideMenuVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cellType = arrSections[indexPath.section].arrCells[indexPath.row]
-        self.dismiss(animated: false)
+        if cellType == .logout {
+            self.confirmLogout()
+        }else{
+//            self.dismiss(animated: false)
+        }
         switch cellType {
+           
+
         case .accSetting :
             let vc = ProfileVC.instantiate(from: .Profile)
 //            vc.editType = EditProfileScreenType(cellType)!
-            self.navigaton_controller?.pushViewController(vc, animated: true)
+            self.navigationController?.pushViewController(vc, animated: true)
             
         case .wallet:
             let vc = ChangePasswordVC.instantiate(from: .Profile)
-            self.navigaton_controller?.pushViewController(vc, animated: true)
+            self.navigationController?.pushViewController(vc, animated: true)
             
         case .myRides:
             let vc = RideHistoryVC.instantiate(from: .Profile)
             vc.scrennType = .created //RideHistoryScreenType(rawValue: tag)!
-            self.navigaton_controller?.pushViewController(vc, animated: true)
+            self.navigationController?.pushViewController(vc, animated: true)
         case .rideHistory:
             let vc = RideHistoryVC.instantiate(from: .Profile)
             vc.scrennType = .history //RideHistoryScreenType(rawValue: tag)!
-            self.navigaton_controller?.pushViewController(vc, animated: true)
+            self.navigationController?.pushViewController(vc, animated: true)
             
         case .subscription:
             let vc = SubscriptionVC.instantiate(from: .Profile)
             vc.isFromSideMenu = true
-            self.navigaton_controller?.pushViewController(vc, animated: true)
+            self.navigationController?.pushViewController(vc, animated: true)
         case .document:
             let vc = IdVerificationVC.instantiate(from: .Profile)
-            self.navigaton_controller?.pushViewController(vc, animated: true)
+            self.navigationController?.pushViewController(vc, animated: true)
         case .carDetails:
             let vc = CarListVC.instantiate(from: .Profile)
-            self.navigaton_controller?.pushViewController(vc, animated: true)
+            self.navigationController?.pushViewController(vc, animated: true)
         case .autoDetails:
             let vc = CarListVC.instantiate(from: .Profile)
-            self.navigaton_controller?.pushViewController(vc, animated: true)
+            self.navigationController?.pushViewController(vc, animated: true)
         case .driverDetails:
             let vc = CarListVC.instantiate(from: .Profile)
-            self.navigaton_controller?.pushViewController(vc, animated: true)
+            self.navigationController?.pushViewController(vc, animated: true)
        
         case .insurance:
             let vc = CardListVC.instantiate(from: .Profile)
             vc.screenType = .list
-            self.navigaton_controller?.pushViewController(vc, animated: true)
+            self.navigationController?.pushViewController(vc, animated: true)
         case .paymentMethods:
             let vc = CardListVC.instantiate(from: .Profile)
             vc.screenType = .list
-            self.navigaton_controller?.pushViewController(vc, animated: true)
+            self.navigationController?.pushViewController(vc, animated: true)
             
 //        case .bankDetails:
 //            let vc = BankDetailsVC.instantiate(from: .Profile)
@@ -169,9 +176,9 @@ extension SideMenuVC: UITableViewDelegate, UITableViewDataSource {
             
         case .supportCenter:
             let vc = SupportTicketListVC.instantiate(from: .Profile)
-            self.navigaton_controller?.pushViewController(vc, animated: true)
-        case .logout:
-            self.confirmLogout()
+            self.navigationController?.pushViewController(vc, animated: true)
+//        case .logout:
+            
             
         default:
             break
@@ -190,6 +197,7 @@ extension SideMenuVC {
         _appDelegator.getUserProfile { [weak self] (succ, json) in
             guard let weakSelf = self else { return }
             if succ {
+                weakSelf.tableView.reloadRows(at: [IndexPath(item: 0, section: 0)], with: .none)
 //                weakSelf.labelUserName?.text = _user?.fullName
 //                weakSelf.imgVerifyBadgeRight.isHidden = !(_user?.userVerify ?? false)
 //                if let profileImg = _user?.profilePic, !profileImg.isEmpty {
@@ -210,6 +218,7 @@ extension SideMenuVC {
         self.showCentralSpinner()
         _appDelegator.prepareForLogout { [weak self] (success, json) in
             guard let weakSelf = self else { return }
+//            weakSelf.dismiss(animated: false)
             weakSelf.hideCentralSpinner()
         }
     }

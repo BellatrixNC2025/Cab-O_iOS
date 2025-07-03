@@ -18,6 +18,8 @@ class User: NSManagedObject, ParentManagedObject {
     @NSManaged var pushNotify: Bool
     @NSManaged var textNotify: Bool
     @NSManaged var roleValue: String
+    @NSManaged var emailVerify: Bool
+    @NSManaged var mobileVerify: Bool
     
 //    var isSubscribed: Bool = false
     
@@ -39,6 +41,8 @@ class User: NSManagedObject, ParentManagedObject {
         allowDelete = dict.getBooleanValue(key: "is_allow_delete_account")
         isSocialUser = dict.getBooleanValue(key: "is_social_user")
         roleValue = dict.getStringValue(key: "role")
+        emailVerify = dict.getBooleanValue(key: "email_verify")
+        mobileVerify = dict.getBooleanValue(key: "mobile_verify")
 //        isSubscribed = dict.getBooleanValue(key: "isSubscription")
 //        pushNotify = true
 //        textNotify = true

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fuG-LO-eAU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fuG-LO-eAU">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -24,7 +24,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="NfB-KE-gZH">
-                                <rect key="frame" x="0.0" y="119" width="393" height="733"/>
+                                <rect key="frame" x="0.0" y="178" width="393" height="674"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="faqCell" rowHeight="66" id="qsr-jF-I6G" customClass="FaqCell" customModule="CabO" customModuleProvider="target">
@@ -157,7 +157,7 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fXX-cU-bfu" customClass="NBottomRoundCornerView" customModule="CabO" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="119"/>
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="178"/>
                                 <color key="backgroundColor" name="headerBG"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="radious">
@@ -169,7 +169,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YeX-YP-kDE" customClass="NBottomRoundCornerView" customModule="CabO" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="59" width="393" height="60"/>
+                                <rect key="frame" x="0.0" y="118" width="393" height="60"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JvX-5s-NNB">
                                         <rect key="frame" x="20" y="10" width="40" height="40"/>
@@ -190,7 +190,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FAQ's" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FDk-2J-5WI">
-                                        <rect key="frame" x="72" y="19.333333333333329" width="47.666666666666657" height="21.666666666666671"/>
+                                        <rect key="frame" x="72" y="19.333333333333343" width="47.666666666666657" height="21.666666666666671"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <color key="textColor" name="primaryText"/>
                                         <nil key="highlightedColor"/>
@@ -283,7 +283,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6A4-3L-4Wd" customClass="NBottomRoundCornerView" customModule="CabO" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="119"/>
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="178"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="radious">
@@ -295,7 +295,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BV6-yh-E9n" customClass="NBottomRoundCornerView" customModule="CabO" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="59" width="393" height="60"/>
+                                <rect key="frame" x="0.0" y="118" width="393" height="60"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sWg-1S-Boz">
                                         <rect key="frame" x="20" y="10" width="40" height="40"/>
@@ -316,7 +316,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dBK-DB-ckd">
-                                        <rect key="frame" x="72" y="30" width="0.0" height="0.0"/>
+                                        <rect key="frame" x="196.66666666666666" y="30" width="0.0" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <color key="textColor" name="primaryText"/>
                                         <nil key="highlightedColor"/>
@@ -340,11 +340,12 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isWidthResize" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </constraint>
-                                    <constraint firstItem="dBK-DB-ckd" firstAttribute="leading" secondItem="sWg-1S-Boz" secondAttribute="trailing" constant="12" id="f2K-qL-iAk">
+                                    <constraint firstItem="dBK-DB-ckd" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="sWg-1S-Boz" secondAttribute="trailing" constant="12" id="f2K-qL-iAk">
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isWidthResize" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </constraint>
+                                    <constraint firstItem="dBK-DB-ckd" firstAttribute="centerX" secondItem="BV6-yh-E9n" secondAttribute="centerX" id="uOr-VM-C5l"/>
                                     <constraint firstItem="dBK-DB-ckd" firstAttribute="centerY" secondItem="BV6-yh-E9n" secondAttribute="centerY" id="yI1-8W-wie"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -357,11 +358,11 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6zG-LU-Xoj">
-                                <rect key="frame" x="0.0" y="818" width="393" height="34"/>
+                                <rect key="frame" x="0.0" y="784" width="393" height="68"/>
                                 <color key="backgroundColor" name="appBg"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="jeT-fR-Xch">
-                                <rect key="frame" x="0.0" y="750" width="393" height="68"/>
+                                <rect key="frame" x="0.0" y="716" width="393" height="68"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mcq-Xt-Ql2">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="68"/>
@@ -423,7 +424,7 @@
                                 <color key="backgroundColor" name="appBg"/>
                             </stackView>
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="veu-fW-nrh">
-                                <rect key="frame" x="0.0" y="247" width="393" height="503"/>
+                                <rect key="frame" x="0.0" y="306" width="393" height="410"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cmsCell" rowHeight="104" id="6Xb-On-U87" customClass="CmsCell" customModule="CabO" customModuleProvider="target">
@@ -481,7 +482,7 @@
                                 </connections>
                             </tableView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="yb3-fc-W3D">
-                                <rect key="frame" x="0.0" y="119" width="393" height="128"/>
+                                <rect key="frame" x="0.0" y="178" width="393" height="128"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FFr-s6-nLK">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="128"/>
@@ -529,7 +530,7 @@ cnBvb2wgVGVybXMgJiBDb25kaXRpb25zA
                                 </subviews>
                             </stackView>
                             <wkWebView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gqd-52-alR">
-                                <rect key="frame" x="20" y="247" width="353" height="503"/>
+                                <rect key="frame" x="20" y="306" width="353" height="410"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -598,7 +599,7 @@ cnBvb2wgVGVybXMgJiBDb25kaXRpb25zA
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Deposited Balance" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="NnF-Nb-zHB">
-                                <rect key="frame" x="10" y="65" width="373" height="14"/>
+                                <rect key="frame" x="10" y="124" width="373" height="14"/>
                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="12"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>

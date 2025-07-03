@@ -30,14 +30,14 @@ class HomeVC: ParentVC {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var collectionHeight: NSLayoutConstraint!
     /// Variables
-    var arrCells: [HomeCellType] = [.taxi, .carpool, .postRide]
+    var arrCells: [HomeCellType] = HomeCellType.allCases
     var unreadCount: Int = 0 {
         didSet {
             updateUnreadCount(unreadCount)
         }
     }
     var adView: SliderView?
-    
+    var isPostRideEnable : Bool = true
     var manager: CLLocationManager?
     var newPin = MKPointAnnotation()
 
@@ -85,12 +85,12 @@ class HomeVC: ParentVC {
 extension HomeVC {
     
     func prepareUI() {
+        if _user?.role == .rider {
+            arrCells.remove(.postRide)
+        }
+        
         collectionView?.contentInset = UIEdgeInsets(top: 0, left: 25, bottom: 0, right: 25)
-//        if _user?.role == .driver {
-            self.collectionHeight.constant = 113 * _widthRatio
-//        }else{
-//            self.collectionHeight.constant = 175 * _widthRatio
-//        }
+        self.collectionHeight.constant = _user?.role == .rider ? 125 * _widthRatio : 175 * _widthRatio 
 //        labelUserName.text = getTimeOfDay() + "\n" + (_user?.fullName ?? "")
 //        labelUserName.setAttributedText(texts: [(getTimeOfDay() + "\n") , (_user?.fullName ?? "")], attributes: [ [NSAttributedString.Key.font : AppFont.fontWithName(.regular, size: (14 * _fontRatio))],[NSAttributedString.Key.font : AppFont.fontWithName(.mediumFont, size: (16 * _fontRatio))]])
 //        imgUserProfile.loadFromUrlString(_user?.profilePic ?? "", placeholder: _userPlaceImage)
@@ -146,10 +146,11 @@ extension HomeVC {
     
     @IBAction func buttonMenuTap(_ sender: UIButton) {
         let vc = SideMenuVC.instantiate(from: .Profile)
-        vc.navigaton_controller = self.navigationController
-        vc.modalTransitionStyle = .crossDissolve
-        vc.modalPresentationStyle = .overFullScreen
-        self.navigationController?.present(vc, animated: true)
+        self.navigationController?.pushViewController(vc, animated: false)
+//        vc.navigaton_controller = self.navigationController
+//        vc.modalTransitionStyle = .crossDissolve
+//        vc.modalPresentationStyle = .overFullScreen
+//        self.navigationController?.present(vc, animated: true)
     }
 }
 
@@ -185,16 +186,12 @@ extension HomeVC : UICollectionViewDataSource, UICollectionViewDelegateFlowLayou
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         let cellType = arrCells[indexPath.row]
         if let cell = cell as? HomeCreateRideCVC {
-            cell.prepareUI(cellType.title, cellType.desc, cellType.img)
+            cell.prepareUI(cellType, isPostEnable: self.isPostRideEnable)
             cell.toggleSwitch = { [weak self] (isOn) in
                 guard let `self` = self else { return }
                 if cellType == .carpool {
-                    if isOn {
-                        self.arrCells.append(.postRide)
-                    }else{
-                        self.arrCells.remove(.postRide)
-                    }
-                    self.collectionView.reloadData()
+                    self.isPostRideEnable = isOn
+                    self.collectionView.reloadItems(at: [IndexPath(item: arrCells.count-1, section: 0)])
                 }else{
                     //                self.toggleSwitchActions(cellType, isOn)
                 }

@@ -3,6 +3,7 @@
     <entity name="User" representedClassName=".User" syncable="YES">
         <attribute name="allowDelete" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="emailAddress" optional="YES" attributeType="String"/>
+        <attribute name="emailVerify" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="isSocialUser" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
@@ -10,6 +11,7 @@
         <attribute name="joinDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="lastName" optional="YES" attributeType="String"/>
         <attribute name="mobileNumber" optional="YES" attributeType="String"/>
+        <attribute name="mobileVerify" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="profilePic" optional="YES" attributeType="String"/>
         <attribute name="pushNotify" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="roleValue" optional="YES" attributeType="String"/>

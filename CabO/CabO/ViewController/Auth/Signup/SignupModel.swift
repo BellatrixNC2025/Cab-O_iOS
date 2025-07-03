@@ -30,7 +30,7 @@ enum SignScreenSection: Int {
                 return [ .dob, .gender,.homeAddress, .bio, .btn]
             }
             
-        case .emergency: return [ .eInfo, .eContact, .addMore, .btn ]
+        case .emergency: return [  .eContact, .addMore, .btn ]
         }
     }
 }
@@ -195,8 +195,9 @@ class SignUpData {
     var login_with: String?
     var apple_auth_code: String?
     var isCheckOneSelected: Bool = false
+    var homeAddress: SearchAddress?
     var arrEmergencyContacts: [EmergencyContactData] = [EmergencyContactData()]
-    var role: Role = .rider
+    var role: Role = .driver
     var param: [String: Any] {
 //        var param: [String: String] = [:]
         return [:]
@@ -293,7 +294,9 @@ class SignUpData {
                 return (false, "Please select your date of birth")
             } else if gender == nil {
                 return (false, "Please select your gender")
-            } else if !fb.isEmpty && !fb.contains(find: "www.facebook.com/"){
+            } else if homeAddress == nil && _user!.role == .driver {
+                return (false, "Please select home address")
+            }else if !fb.isEmpty && !fb.contains(find: "www.facebook.com/"){
                 return (false, "Please enter valid facebook url")
             } else if !twitter.isEmpty && !twitter.contains(find: "www.x.com/"){
                 return (false, "Please enter valid x url")
@@ -330,7 +333,14 @@ class SignUpData {
             param["gender"] = gender!.title.lowercased()
             param["something_about_you"] = bio
             if _user?.role == .driver {
-                param["address"] = bio
+                param["address"] = homeAddress?.formatedAddress
+                param["zipcode"] = homeAddress?.zipcode
+                param["state"] = homeAddress?.state
+                param["city"] = homeAddress?.city
+                param["county"] = homeAddress?.country
+                param["latitude"] = homeAddress?.lat
+                param["longitude"] = homeAddress?.long
+                
             }
 //            param["facebook_url"] = fb
 //            param["twitter_url"] = twitter
@@ -354,6 +364,7 @@ class SignUpData {
         case .fb: return fb
         case .twit: return twitter
         case .insta: return insta
+        case .homeAddress: return homeAddress?.formatedAddress ?? ""
         default: return ""
         }
     }

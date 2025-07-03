@@ -94,8 +94,23 @@ extension SignUpVC {
         InputCell.prepareToRegisterCells(tableView)
         AddEmergencyContactCell.prepareToRegisterCells(tableView)
         ButtonTableCell.prepareToRegisterCells(tableView)
+        
+        if screenType == .emergency {
+            self.setHeaderView()
+        }
     }
-    
+    func setHeaderView() {
+        // 2. Dequeue an instance of your cell
+               guard let headerCell = tableView.dequeueReusableCell(withIdentifier: "emergencyInfoCell") as? UITableViewCell else {
+                   fatalError("Could not dequeue MyTableHeaderCell")
+               }
+        tableView.tableHeaderView = headerCell.contentView
+        // Set the frame, only the height matters for tableHeaderView
+        headerCell.contentView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 130 * _widthRatio)
+
+                // Very important: Tell the header view to lay out its subviews
+                headerCell.contentView.layoutIfNeeded()
+    }
     func updateProgressView() {
         vwProgress.forEach { view in
             view.backgroundColor = view.tag < screenType.rawValue ? AppColor.themeGreen : AppColor.placeholderText
@@ -139,7 +154,15 @@ extension SignUpVC {
         }
         self.present(alert, animated: true, completion: nil)
     }
-    
+    func openLocationPickerFor(_ tag: Int) {
+        let vc = SearchVC.instantiate(from: .Home)
+        vc.selectionBlock = { [weak self] (address) in
+            guard let self = self else { return }
+            self.data.homeAddress = address
+            self.tableView.reloadData()
+        }
+        self.present(vc, animated: true)
+    }
     func continueTap() {
         if screenType == .profile || screenType == .personal {
             let valid = data.isValidData(screenType)
@@ -190,6 +213,40 @@ extension SignUpVC: UITableViewDelegate, UITableViewDataSource {
         return arrCells[indexPath.row].cellHeight
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if screenType == .emergency {
+            // Dequeue as if it's a cell
+            guard let headerCell = tableView.dequeueReusableCell(withIdentifier: "emergencyInfoCell") as? UITableViewCell else {
+                return nil
+            }
+
+            // Configure cell content based on section
+    //        headerCell.titleLabel.text = "Section \(section + 1) Header"
+            // ... configure other properties
+
+            // Important: Set the frame of the cell's contentView.
+            // This is crucial for Auto Layout and sizing.
+            // You might need to calculate the height based on content.
+            let headerWidth = tableView.bounds.width
+            let desiredHeaderHeight: CGFloat = 130 * _widthRatio // Your desired section header height
+            headerCell.contentView.frame = CGRect(x: 0, y: 0, width: headerWidth, height: desiredHeaderHeight)
+            headerCell.contentView.layoutIfNeeded() // Force layout for Auto Layout subviews
+
+            return headerCell.contentView // Return the cell's content view
+        }
+        return nil
+        
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+            // Return the height you set in viewForHeaderInSection.
+            // If dynamic, calculate it here or use UITableView.automaticDimension
+            // along with proper Auto Layout constraints in your cell.
+        if screenType == .emergency {
+            return 130 * _widthRatio // Or your calculated height
+        }else{
+            return 0
+        }
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellType = arrCells[indexPath.row]
         if cellType == .checkOne  || cellType == .alreadyAccount {
@@ -328,6 +385,8 @@ extension SignUpVC {
                 _user?.initWith(data)
                 _user?.pushNotify = data.getBooleanValue(key: "push_notify")
                 _user?.textNotify = data.getBooleanValue(key: "text_notification")
+                _user?.emailVerify = data.getBooleanValue(key: "email_verify")
+                _user?.mobileVerify = data.getBooleanValue(key: "mobile_verify")
                 
                 _userDefault.set(data.getBooleanValue(key: "mobile_verify"), forKey: "mobileVerify")
                 _userDefault.set(data.getBooleanValue(key: "email_verify"), forKey: "emailVerify")

@@ -10,7 +10,7 @@ import UIKit
 class AddEmergencyContactCell: ConstrainedTableViewCell {
     
     static let identifier: String = "addEmergencyContactCell"
-    static let normalHeight: CGFloat = 150 * _widthRatio
+    static let normalHeight: CGFloat = 200 * _widthRatio
     private let placeholderFont: UIFont = AppFont.fontWithName(.regular, size: 14 * _fontRatio)
     
     /// Outlets
@@ -59,7 +59,7 @@ class AddEmergencyContactCell: ConstrainedTableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        lblTitleOne?.font = placeholderFont
+        lblTitleOne?.font = AppFont.fontWithName(.bold, size: 16 * _fontRatio)
 
         textFieldOne?.font = placeholderFont
         textFieldTwo?.font = placeholderFont
@@ -76,7 +76,7 @@ extension AddEmergencyContactCell {
         textFieldOne?.returnKeyType = .next
         textFieldOne?.isSecureTextEntry = false
         textFieldOne?.inputAccessoryView = nil
-        textFieldOne?.textColor = AppColor.primaryText
+        textFieldOne?.textColor = AppColor.primaryTextDark
         textFieldOne?.isUserInteractionEnabled = true
         
         vwRightBgOne?.isHidden = true
@@ -89,7 +89,7 @@ extension AddEmergencyContactCell {
         textFieldTwo?.returnKeyType = .next
         textFieldTwo?.isSecureTextEntry = false
         textFieldTwo?.inputAccessoryView = nil
-        textFieldTwo?.textColor = AppColor.primaryText
+        textFieldTwo?.textColor = AppColor.primaryTextDark
         textFieldTwo?.isUserInteractionEnabled = true
         
         vwRightBgTwo?.isHidden = true
@@ -127,10 +127,10 @@ extension AddEmergencyContactCell {
     
     private func prepareEditProfileUI(_ parent: EditProfileVC) {
         lblTitleOne.text = "Contact - \(self.tag + 1)"
-        
-        textFieldOne.text = parent.arrEmergencyContacts[self.tag].getValue(0)
-        textFieldTwo.text = parent.arrEmergencyContacts[self.tag].getValue(1)
-        
+        if parent.arrEmergencyContacts.count > 0 {
+            textFieldOne.text = parent.arrEmergencyContacts[self.tag].getValue(0)
+            textFieldTwo.text = parent.arrEmergencyContacts[self.tag].getValue(1)
+        }
         textFieldOne.setAttributedPlaceHolder(text: "Name", font: placeholderFont, color: AppColor.placeholderText, spacing: 0)
         textFieldTwo.setAttributedPlaceHolder(text: "Mobile Number", font: placeholderFont, color: AppColor.placeholderText, spacing: 0)
         
