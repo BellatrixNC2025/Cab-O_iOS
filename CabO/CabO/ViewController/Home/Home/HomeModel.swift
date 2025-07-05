@@ -59,6 +59,7 @@ class HomeCreateRideCVC: ConstrainedCollectionViewCell {
         if type ==  .postRide{
             vwBg.backgroundColor = isPostEnable ? vwBg.backgroundColor :vwBg.backgroundColor?.withAlphaComponent(0.5)
             vwBg.isUserInteractionEnabled = isPostEnable ? true : false
+            btnNext.isHidden = !type.isSwitch
         }
     }
 }

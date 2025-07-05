@@ -178,3 +178,9 @@ enum CreateRideRediration: String {
         }
     }
 }
+// MARK: - Drive Type
+enum driveType : String {
+    case car = "car"
+    case auto = "auto"
+    case both = "both"
+}

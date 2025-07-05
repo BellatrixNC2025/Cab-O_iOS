@@ -236,6 +236,7 @@ extension Notification.Name {
     static let requestDetailsUpdate = Notification.Name("RequestDetailsUpdate")
     
     static let chatUpdate = Notification.Name("ChatUpdate")
+    static let subscriptionChange = Notification.Name("SubscriptionChange")
 }
 
 /*---------------------------------------------------

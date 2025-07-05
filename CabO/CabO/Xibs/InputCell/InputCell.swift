@@ -74,7 +74,8 @@ class InputCell: ConstrainedTableViewCell {
         let pickerView = UIPickerView()
         pickerView.dataSource = self
         pickerView.delegate = self
-        pickerView.backgroundColor = AppColor.headerBg
+        pickerView.backgroundColor = AppColor.appBg
+        pickerView.tintColor = AppColor.primaryText
         return pickerView
     }()
     
@@ -237,8 +238,31 @@ extension InputCell {
         }else if let parent = delegate as? DeleteAccountVC {
             prepareDeleteAccountUI(parent)
         }
+        else if let parent = delegate as? AddDriverVC {
+            prepareAddDriverVCUI(parent)
+        }
     }
     
+    private func prepareAddDriverVCUI(_ parent: AddDriverVC){
+        let cellType = parent.arrCells[self.tag]
+        lblTitle?.text = cellType.inputTitle
+        tfInput?.text = parent.data.getValue(cellType)
+        tfInput?.setAttributedPlaceHolder(text: cellType.inputPlaceholder, font: placeholderFont, color: AppColor.placeholderText, spacing: 0)
+        placeholder?.text = cellType.inputPlaceholder
+        tfInput?.keyboardType = cellType.keyboardType
+        tfInput?.returnKeyType = cellType.returnKeyType
+        tfInput?.autocapitalizationType = cellType.capitalCase
+        tfInput?.inputView = nil
+        tfInput?.inputAccessoryView = cellType.inputAccView ? inputAccView : nil
+        self.maxLength = cellType.maxLength
+        tfInput?.returnKeyType = cellType == .lname ? .done : .next
+        tfInput?.tintColor =  AppColor.primaryTextDark
+        btnInput?.isHidden = cellType != .driveType
+        imgRight?.isHidden = cellType != .driveType
+        vwRightBg?.isHidden = cellType != .driveType
+        
+        imgRight?.image = UIImage(named: "ic_dropdown")?.withTintColor(AppColor.primaryTextDark)
+    }
     private func prepareDeleteAccountUI(_ parent: DeleteAccountVC) {
         let cellType = parent.arrCells[self.tag]
         lblTitle.text = "Select Reason"
@@ -649,6 +673,8 @@ extension InputCell {
             parent.openLocationPickerFor(self.tag)
         }else if let parent = delegate as? DeleteAccountVC {
             parent.openIssueTypePicker(sender)
+        }else if let parent = delegate as? AddDriverVC {
+            parent.openIssueTypePicker(sender)
         }
     }
     
@@ -829,6 +855,9 @@ extension InputCell {
                 sender.text = parent.data.getValue(cellType)
             }
         }
+        else if let parent = delegate as? AddDriverVC {
+            parent.data.setValue(sender.text!.trimmedString(), parent.arrCells[self.tag])
+        }
     }
 }
 
@@ -924,6 +953,15 @@ extension InputCell: UITextFieldDelegate {
                 } else {
                     return fullText.count <= maxLength
                 }
+            }else if let parent = delegate as? AddDriverVC {
+                let cellType = parent.arrCells[self.tag]
+                if cellType == .mobile {
+                    return string.isNumeric && fullText.trimWhiteSpace().removeSpace().count <= maxLength
+                }else if cellType == .email {
+                    return fullText.count <= maxLength
+                }else {
+                    return fullText.count <= maxLength
+                }
             }
             else {
                 return fullText.count <= maxLength
@@ -936,6 +974,7 @@ extension InputCell: UITextFieldDelegate {
         } else if let _ = delegate as? RideHistoryFilterVC {
             return false
         }
+        
         return true
     }
     
@@ -954,7 +993,13 @@ extension InputCell: UITextFieldDelegate {
         }
         else if let parent = delegate as? AddCarVC {
             let cellType = parent.arrCells[self.tag]
-            if cellType == .make {
+            if cellType == .type {
+//                if parent.data.carType == nil {
+                tfInput.text = parent.arrCarType.first
+                parent.data.carType = parent.arrCarType[0]
+//                }
+                return true
+            }else if cellType == .make {
                 if parent.data.carCompany == nil {
                     tfInput.text = parent.arrCarCompanies[0].name
                     parent.data.carCompany = parent.arrCarCompanies[0]
@@ -1044,24 +1089,41 @@ extension InputCell: UIPickerViewDataSource, UIPickerViewDelegate {
                 return parent.arrCarCompanies.count
             } else if cellType == .model {
                 return parent.arrCarModels.count
+            }else if cellType == .type{
+                return parent.arrCarType.count
             }
             return 2
         }
         return 1
     }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        var strTitle : String = ""
         if let parent = delegate as? AddCarVC {
             let cellType = parent.arrCells[self.tag]
             if cellType == .make {
-                return parent.arrCarCompanies[row].name
+                strTitle =  parent.arrCarCompanies[row].name
             } else if cellType == .model {
-                return parent.arrCarModels[row].name
+                strTitle =  parent.arrCarModels[row].name
+            }else if cellType == .type {
+                strTitle = parent.arrCarType[row]
             }
-         return "aa"
         }
-        return ""
+        return NSAttributedString(string: strTitle, attributes: [NSAttributedString.Key.foregroundColor:AppColor.primaryText])
     }
+//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+//        if let parent = delegate as? AddCarVC {
+//            let cellType = parent.arrCells[self.tag]
+//            if cellType == .make {
+//                return parent.arrCarCompanies[row].name
+//            } else if cellType == .model {
+//                return parent.arrCarModels[row].name
+//            }else if cellType == .type {
+//                return parent.arrCarType[row]
+//            }
+//         return "aa"
+//        }
+//        return ""
+//    }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if let parent = delegate as? AddCarVC {
@@ -1072,6 +1134,9 @@ extension InputCell: UIPickerViewDataSource, UIPickerViewDelegate {
             } else if cellType == .model {
                 self.tfInput.text = parent.arrCarModels[row].name
                 parent.data.carModel = parent.arrCarModels[row]
+            }else if cellType == .type {
+                self.tfInput.text = parent.arrCarType[row]
+                parent.data.carType = parent.arrCarType[row]
             }
         }
     }

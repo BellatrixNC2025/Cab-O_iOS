@@ -225,11 +225,11 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
         case .changePass:
             let vc = ChangePasswordVC.instantiate(from: .Profile)
             self.navigationController?.pushViewController(vc, animated: true)
-        case .faq:
-            let vc = FaqVC.instantiate(from: .CMS)
-            self.navigationController?.pushViewController(vc, animated: true)
+//        case .faq:
+//            let vc = FaqVC.instantiate(from: .CMS)
+//            self.navigationController?.pushViewController(vc, animated: true)
             
-        case .aboutUS, .tnc, .privacyPolicy, .cancellationPolicy:
+        case .aboutUS, .tnc, .privacyPolicy, .cancellationPolicy, .faq:
             let vc = CmsVC.instantiate(from: .CMS)
             vc.screenType = CmsScreenType(cellType)!
             self.navigationController?.pushViewController(vc, animated: true)

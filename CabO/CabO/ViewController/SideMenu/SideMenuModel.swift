@@ -134,7 +134,7 @@ class SideMenuCell: ConstrainedTableViewCell {
         if cellType == .userDetails {
 //            vwProgress = CircularProgressView(frame: vwProgress.bounds, lineWidth: 4.0, rounded: true)
 //            vwProgress.backgroundColor = AppColor.vwBgColor
-            vwProgress.backgroundColor = .red
+            vwProgress.backgroundColor = .clear
             vwProgress.trackColor = AppColor.placeholderText
             vwProgress.progressColor = AppColor.appBg
             vwProgress.progress = 0.4
@@ -147,8 +147,9 @@ class SideMenuCell: ConstrainedTableViewCell {
         } else if cellType == .version {
             lblTitle?.text = getAppVersionAndBuild()
         } else {
-            imgLeft?.image = cellType.leftImg?.withTintColor(AppColor.primaryTextDark) ?? UIImage()
+            imgLeft?.image = cellType.leftImg ?? UIImage()
             lblTitle?.text = cellType.title
+            vwseperator?.isHidden = cellType == .logout ? true : false
         }
         self.layoutIfNeeded()
     }

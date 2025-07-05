@@ -216,6 +216,7 @@
 		35FFBDFB2AF1016700722D19 /* InputPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FFBDF92AF1013000722D19 /* InputPopView.swift */; };
 		35FFBDFE2AF1245900722D19 /* AddProfilePicVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FFBDFD2AF1245900722D19 /* AddProfilePicVC.swift */; };
 		35FFBE002AF124AE00722D19 /* AddProfilePicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FFBDFF2AF124AE00722D19 /* AddProfilePicModel.swift */; };
+		7803ED2A2E18F6D9009F3E0D /* AddDriverModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7803ED292E18F6D7009F3E0D /* AddDriverModel.swift */; };
 		786387152E09175A0024CFB2 /* RoleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786387142E09175A0024CFB2 /* RoleVC.swift */; };
 		786387172E0958F60024CFB2 /* RoleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786387162E0958F10024CFB2 /* RoleModel.swift */; };
 		788E962C2E101823005FD4D5 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 788E962B2E101823005FD4D5 /* IQKeyboardManagerSwift */; };
@@ -237,6 +238,17 @@
 		78CBDB592E0459A9006A80EB /* Satoshi-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 78CBDB562E0459A9006A80EB /* Satoshi-Medium.otf */; };
 		78CBDB5A2E0459A9006A80EB /* Satoshi-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 78CBDB572E0459A9006A80EB /* Satoshi-Regular.otf */; };
 		78CBDB5B2E0459A9006A80EB /* Satoshi-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 78CBDB542E0459A9006A80EB /* Satoshi-Bold.otf */; };
+		78CBFB6D2E16417D00C96A78 /* CompleteProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CBFB6C2E16417D00C96A78 /* CompleteProfileVC.swift */; };
+		78CBFB732E1641D600C96A78 /* IdVerificationListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CBFB722E1641D600C96A78 /* IdVerificationListVC.swift */; };
+		78CBFB752E1641E400C96A78 /* VerificationListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CBFB742E1641DE00C96A78 /* VerificationListModel.swift */; };
+		78CBFB772E1641F200C96A78 /* CompleteProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CBFB762E1641EF00C96A78 /* CompleteProfileModel.swift */; };
+		78CBFB7F2E16426000C96A78 /* InsuranceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CBFB7E2E16426000C96A78 /* InsuranceVC.swift */; };
+		78CBFB812E16426800C96A78 /* InsuranceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CBFB802E16426500C96A78 /* InsuranceModel.swift */; };
+		78CBFB872E16432100C96A78 /* DriverDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CBFB862E16432100C96A78 /* DriverDetailsVC.swift */; };
+		78CBFB892E16432D00C96A78 /* DriverDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CBFB882E16432800C96A78 /* DriverDetailsModel.swift */; };
+		78CBFB8B2E16434100C96A78 /* AddDriverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CBFB8A2E16434100C96A78 /* AddDriverVC.swift */; };
+		78CBFB8D2E16435500C96A78 /* DriverListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CBFB8C2E16434A00C96A78 /* DriverListModel.swift */; };
+		78CBFB912E1643C200C96A78 /* DriverListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CBFB902E1643C200C96A78 /* DriverListVC.swift */; };
 		78DC2D752DF6F4EE00237B45 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 78DC2D742DF6F4EE00237B45 /* Toast */; };
 		78DCB80A2E0C24F400066938 /* SideMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DCB8092E0C24F400066938 /* SideMenuVC.swift */; };
 		78DCB80C2E0C598300066938 /* SideMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DCB80B2E0C598000066938 /* SideMenuModel.swift */; };
@@ -562,6 +574,7 @@
 		35FFBDFD2AF1245900722D19 /* AddProfilePicVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProfilePicVC.swift; sourceTree = "<group>"; };
 		35FFBDFF2AF124AE00722D19 /* AddProfilePicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProfilePicModel.swift; sourceTree = "<group>"; };
 		5D258334D22408AE219CC666 /* Pods-CabO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CabO.release.xcconfig"; path = "Target Support Files/Pods-CabO/Pods-CabO.release.xcconfig"; sourceTree = "<group>"; };
+		7803ED292E18F6D7009F3E0D /* AddDriverModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDriverModel.swift; sourceTree = "<group>"; };
 		786387142E09175A0024CFB2 /* RoleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleVC.swift; sourceTree = "<group>"; };
 		786387162E0958F10024CFB2 /* RoleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleModel.swift; sourceTree = "<group>"; };
 		788E962E2E102BED005FD4D5 /* SubscriptionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionVC.swift; sourceTree = "<group>"; };
@@ -571,6 +584,17 @@
 		78CBDB552E0459A9006A80EB /* Satoshi-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Satoshi-Light.otf"; sourceTree = "<group>"; };
 		78CBDB562E0459A9006A80EB /* Satoshi-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Satoshi-Medium.otf"; sourceTree = "<group>"; };
 		78CBDB572E0459A9006A80EB /* Satoshi-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Satoshi-Regular.otf"; sourceTree = "<group>"; };
+		78CBFB6C2E16417D00C96A78 /* CompleteProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteProfileVC.swift; sourceTree = "<group>"; };
+		78CBFB722E1641D600C96A78 /* IdVerificationListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdVerificationListVC.swift; sourceTree = "<group>"; };
+		78CBFB742E1641DE00C96A78 /* VerificationListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationListModel.swift; sourceTree = "<group>"; };
+		78CBFB762E1641EF00C96A78 /* CompleteProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteProfileModel.swift; sourceTree = "<group>"; };
+		78CBFB7E2E16426000C96A78 /* InsuranceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsuranceVC.swift; sourceTree = "<group>"; };
+		78CBFB802E16426500C96A78 /* InsuranceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsuranceModel.swift; sourceTree = "<group>"; };
+		78CBFB862E16432100C96A78 /* DriverDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverDetailsVC.swift; sourceTree = "<group>"; };
+		78CBFB882E16432800C96A78 /* DriverDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverDetailsModel.swift; sourceTree = "<group>"; };
+		78CBFB8A2E16434100C96A78 /* AddDriverVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDriverVC.swift; sourceTree = "<group>"; };
+		78CBFB8C2E16434A00C96A78 /* DriverListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverListModel.swift; sourceTree = "<group>"; };
+		78CBFB902E1643C200C96A78 /* DriverListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverListVC.swift; sourceTree = "<group>"; };
 		78DCB8092E0C24F400066938 /* SideMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuVC.swift; sourceTree = "<group>"; };
 		78DCB80B2E0C598000066938 /* SideMenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuModel.swift; sourceTree = "<group>"; };
 		8806E7412B4460F500B095FE /* RideDetailPrefTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideDetailPrefTableCell.swift; sourceTree = "<group>"; };
@@ -733,6 +757,7 @@
 		3538DB1E2AFB4FE200077963 /* IdVerification */ = {
 			isa = PBXGroup;
 			children = (
+				78CBFB712E1641C900C96A78 /* IdVerificationList */,
 				3538DB1F2AFB500A00077963 /* IdVerificationVC.swift */,
 				35CE59662B15D18A00873BF4 /* IdVerificationModel.swift */,
 			);
@@ -968,11 +993,11 @@
 		356813AE2AEBC6B30064FFA4 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				78DCB8042E0C24B600066938 /* SideMenu */,
 				356813B32AEBC79F0064FFA4 /* Parent */,
 				3568143A2AEBC8E60064FFA4 /* Auth */,
 				881253AB2AED0E79009CEF8B /* Home */,
 				881253B22AED0EA9009CEF8B /* Chat */,
+				78DCB8042E0C24B600066938 /* SideMenu */,
 				881253B32AED0EAF009CEF8B /* Profile */,
 				35ADD6B82AF91B020064ACC6 /* CMS */,
 			);
@@ -1608,6 +1633,70 @@
 			path = Subscription;
 			sourceTree = "<group>";
 		};
+		78CBFB6B2E16415E00C96A78 /* CompleteProfile */ = {
+			isa = PBXGroup;
+			children = (
+				78CBFB762E1641EF00C96A78 /* CompleteProfileModel.swift */,
+				78CBFB6C2E16417D00C96A78 /* CompleteProfileVC.swift */,
+			);
+			path = CompleteProfile;
+			sourceTree = "<group>";
+		};
+		78CBFB712E1641C900C96A78 /* IdVerificationList */ = {
+			isa = PBXGroup;
+			children = (
+				78CBFB742E1641DE00C96A78 /* VerificationListModel.swift */,
+				78CBFB722E1641D600C96A78 /* IdVerificationListVC.swift */,
+			);
+			path = IdVerificationList;
+			sourceTree = "<group>";
+		};
+		78CBFB7D2E16425200C96A78 /* Insurance */ = {
+			isa = PBXGroup;
+			children = (
+				78CBFB802E16426500C96A78 /* InsuranceModel.swift */,
+				78CBFB7E2E16426000C96A78 /* InsuranceVC.swift */,
+			);
+			path = Insurance;
+			sourceTree = "<group>";
+		};
+		78CBFB822E16428E00C96A78 /* Driver */ = {
+			isa = PBXGroup;
+			children = (
+				78CBFB852E1642E500C96A78 /* DriverDetails */,
+				78CBFB842E1642A800C96A78 /* AddDriver */,
+				78CBFB832E1642A100C96A78 /* DriverList */,
+			);
+			path = Driver;
+			sourceTree = "<group>";
+		};
+		78CBFB832E1642A100C96A78 /* DriverList */ = {
+			isa = PBXGroup;
+			children = (
+				78CBFB8C2E16434A00C96A78 /* DriverListModel.swift */,
+				78CBFB902E1643C200C96A78 /* DriverListVC.swift */,
+			);
+			path = DriverList;
+			sourceTree = "<group>";
+		};
+		78CBFB842E1642A800C96A78 /* AddDriver */ = {
+			isa = PBXGroup;
+			children = (
+				7803ED292E18F6D7009F3E0D /* AddDriverModel.swift */,
+				78CBFB8A2E16434100C96A78 /* AddDriverVC.swift */,
+			);
+			path = AddDriver;
+			sourceTree = "<group>";
+		};
+		78CBFB852E1642E500C96A78 /* DriverDetails */ = {
+			isa = PBXGroup;
+			children = (
+				78CBFB882E16432800C96A78 /* DriverDetailsModel.swift */,
+				78CBFB862E16432100C96A78 /* DriverDetailsVC.swift */,
+			);
+			path = DriverDetails;
+			sourceTree = "<group>";
+		};
 		78DCB8042E0C24B600066938 /* SideMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -1675,6 +1764,9 @@
 		881253B32AED0EAF009CEF8B /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				78CBFB822E16428E00C96A78 /* Driver */,
+				78CBFB7D2E16425200C96A78 /* Insurance */,
+				78CBFB6B2E16415E00C96A78 /* CompleteProfile */,
 				788E962D2E102BD1005FD4D5 /* Subscription */,
 				35EF61B82AEFCA7E0069E2BE /* ProfileMenu */,
 				88C7BCF62B4EF13600639706 /* Reviews */,
@@ -2160,6 +2252,7 @@
 				354CC50D2AF23D2D0042D9D3 /* FindRideModel.swift in Sources */,
 				356813FC2AEBC8570064FFA4 /* FontExtension.swift in Sources */,
 				35A94A572B4D205F00169ADC /* StartBookingVC.swift in Sources */,
+				78CBFB8B2E16434100C96A78 /* AddDriverVC.swift in Sources */,
 				35ADD6B02AF8C9200064ACC6 /* CardListVC.swift in Sources */,
 				356E88242B2ADB440058C8FC /* HomeModel.swift in Sources */,
 				358AB5682AFA095B00BD927C /* AddCarModel.swift in Sources */,
@@ -2183,7 +2276,10 @@
 				356814512AEBD92C0064FFA4 /* TitleTVC.swift in Sources */,
 				35EF61B52AEFCA250069E2BE /* ForgotPasswordModel.swift in Sources */,
 				885D5D342B0B682E00E928DD /* SupportTicketListVC.swift in Sources */,
+				78CBFB7F2E16426000C96A78 /* InsuranceVC.swift in Sources */,
+				7803ED2A2E18F6D9009F3E0D /* AddDriverModel.swift in Sources */,
 				35E54D752B85C25200BD0E14 /* NonMaxSuppression.swift in Sources */,
+				78CBFB812E16426800C96A78 /* InsuranceModel.swift in Sources */,
 				35E54D692B85C25200BD0E14 /* Array+Extensions.swift in Sources */,
 				356813B82AEBC7E90064FFA4 /* NTabBarVC.swift in Sources */,
 				88187C102B04F0EC00B6E232 /* DeleteAccountModel.swift in Sources */,
@@ -2194,6 +2290,7 @@
 				35ADD6C12AF9235A0064ACC6 /* CmsVC.swift in Sources */,
 				356813EE2AEBC8570064FFA4 /* CustomView.swift in Sources */,
 				35EF61B72AEFCA420069E2BE /* VerifyOtpModel.swift in Sources */,
+				78CBFB772E1641F200C96A78 /* CompleteProfileModel.swift in Sources */,
 				356813F02AEBC8570064FFA4 /* CustomTextField.swift in Sources */,
 				357B77802AF4F6B60083374D /* BankDetailsVC.swift in Sources */,
 				35E54D6D2B85C25200BD0E14 /* UIImage+Extensions.swift in Sources */,
@@ -2219,6 +2316,7 @@
 				35524B852AFCB5B900BDDB0E /* RideRulesVC.swift in Sources */,
 				35EF61B12AEFC9A10069E2BE /* SignupModel.swift in Sources */,
 				356813FF2AEBC8570064FFA4 /* UIViewExtension.swift in Sources */,
+				78CBFB6D2E16417D00C96A78 /* CompleteProfileVC.swift in Sources */,
 				356813F72AEBC8570064FFA4 /* Localization.swift in Sources */,
 				35EF80592B3C236200156F62 /* PostRequestModel.swift in Sources */,
 				88C7BCF82B4EF14F00639706 /* ReviewsVC.swift in Sources */,
@@ -2256,6 +2354,7 @@
 				358AB5702AFA12EE00BD927C /* SeatSelectionCollectionCell.swift in Sources */,
 				35FFBDFE2AF1245900722D19 /* AddProfilePicVC.swift in Sources */,
 				356814002AEBC8570064FFA4 /* ImpExtension.swift in Sources */,
+				78CBFB732E1641D600C96A78 /* IdVerificationListVC.swift in Sources */,
 				350C65312AF0DA6F005434A0 /* ChangePasswordVC.swift in Sources */,
 				351F101A2B6BC84F00732F02 /* PushNotification.swift in Sources */,
 				35ADD6B22AF8C9350064ACC6 /* CardListModel.swift in Sources */,
@@ -2264,12 +2363,15 @@
 				881D46742B077141003D0721 /* StopoverListVC.swift in Sources */,
 				35D2C7FE2B46D54700C566E9 /* PaymentDetailVC.swift in Sources */,
 				35BF7ED72B4EAC170082C1BD /* RateAndReviewVC.swift in Sources */,
+				78CBFB912E1643C200C96A78 /* DriverListVC.swift in Sources */,
 				88187C0B2B04BA9500B6E232 /* FindRideListVC.swift in Sources */,
+				78CBFB892E16432D00C96A78 /* DriverDetailsModel.swift in Sources */,
 				356813F52AEBC8570064FFA4 /* ConstraineSubClasses.swift in Sources */,
 				885D5D362B0B72FB00E928DD /* AddSupportTicketVC.swift in Sources */,
 				88187C0E2B04DEEE00B6E232 /* DeleteAccountVC.swift in Sources */,
 				88F823142BF1E4E5006508BE /* RideRulesModel.swift in Sources */,
 				885D5D312B0B59A000E928DD /* RequestBookRideModel.swift in Sources */,
+				78CBFB872E16432100C96A78 /* DriverDetailsVC.swift in Sources */,
 				35474E682B0C8FCC0043AD8E /* RideHistoryCell.swift in Sources */,
 				35CF24692B1705E300346503 /* CreditCardValidator.swift in Sources */,
 				354CC5092AF23D170042D9D3 /* CreateRideVC.swift in Sources */,
@@ -2297,6 +2399,7 @@
 				35E54D562B85C22400BD0E14 /* DeepLabV3.mlmodel in Sources */,
 				35E54D782B85C25200BD0E14 /* CVPixelBuffer+Resize.swift in Sources */,
 				350C65382AF0DE1A005434A0 /* EditProfileVC.swift in Sources */,
+				78CBFB752E1641E400C96A78 /* VerificationListModel.swift in Sources */,
 				889FA44C2B470E89001014D9 /* CancellationVC.swift in Sources */,
 				356813852AEBC5960064FFA4 /* CabO.xcdatamodeld in Sources */,
 				3538DB2D2AFBA1E600077963 /* CreateRidePreferenceCollectionCell.swift in Sources */,
@@ -2334,6 +2437,7 @@
 				356814432AEBCBA50064FFA4 /* InputCell.swift in Sources */,
 				35DBFEC22B0F415D007C8702 /* LocationManager.swift in Sources */,
 				3538DB242AFB862900077963 /* CarListCell.swift in Sources */,
+				78CBFB8D2E16435500C96A78 /* DriverListModel.swift in Sources */,
 				3554AD0D2AF373C1005AE125 /* SuccessPopUpView.swift in Sources */,
 				35429FBE2B10C4B2005AB5FE /* CarDetailsModel.swift in Sources */,
 				35BC02822B45179A0019C90C /* BookingRequestListVC.swift in Sources */,

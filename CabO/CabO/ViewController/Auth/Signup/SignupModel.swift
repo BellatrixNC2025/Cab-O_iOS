@@ -333,7 +333,7 @@ class SignUpData {
             param["gender"] = gender!.title.lowercased()
             param["something_about_you"] = bio
             if _user?.role == .driver {
-                param["address"] = homeAddress?.formatedAddress
+                param["home_address"] = homeAddress?.formatedAddress
                 param["zipcode"] = homeAddress?.zipcode
                 param["state"] = homeAddress?.state
                 param["city"] = homeAddress?.city

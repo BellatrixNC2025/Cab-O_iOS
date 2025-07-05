@@ -255,7 +255,19 @@ class SearchAddress{
         lat = toDict.getDoubleValue(key: "to_latitude")
         long = toDict.getDoubleValue(key: "to_longitude")
     }
-    
+    init(homeDict: NSDictionary) {
+        name = homeDict.getStringValue(key: "home_address")
+        formatedAddress = homeDict.getStringValue(key: "home_address")
+        customAddress = homeDict.getStringValue(key: "home_address")
+        city = homeDict.getStringValue(key: "city")
+        state = homeDict.getStringValue(key: "state")
+        country = homeDict.getStringValue(key: "county")
+//        timeZoneId = homeDict.getStringValue(key: "to_time_zone_id")
+//        timeZoneName = homeDict.getStringValue(key: "to_time_zone_name")
+        zipcode = homeDict.getStringValue(key: "zipcode")
+        lat = homeDict.getDoubleValue(key: "latitude")
+        long = homeDict.getDoubleValue(key: "longitude")
+    }
     init(stop: StopoverDetail) {
         fullName = stop.fromLocation
         formatedAddress = stop.fromLocation

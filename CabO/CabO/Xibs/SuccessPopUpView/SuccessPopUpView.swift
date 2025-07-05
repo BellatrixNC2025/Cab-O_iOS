@@ -23,6 +23,7 @@ enum LottieAnimationName: String {
 class SuccessPopUpView: ConstrainedView {
     
     /// Outlets
+    @IBOutlet var imgSuccess: UIImageView!
     @IBOutlet weak var viewBg: UIView!
     @IBOutlet weak var viewPopup: UIView!
     @IBOutlet weak var lblTitle: UILabel!
@@ -30,6 +31,7 @@ class SuccessPopUpView: ConstrainedView {
     @IBOutlet weak var viewImage: NRoundImageView!
     @IBOutlet weak var imgVerify: UIImageView!
     @IBOutlet weak var viewAnimation: LottieAnimationView!
+    @IBOutlet var btnSubmit: UIButton!
     
     /// Variables
     var callBack: (() -> ())?
@@ -48,7 +50,7 @@ class SuccessPopUpView: ConstrainedView {
     
     /// It will initialise and return `SuccessPopUpView`
     /// - Returns: `SuccessPopUpView`
-    class func initWithWindow(_ title: String, _ desc: String, img: (String, UIImage?)? = nil, isVerifyPopUp: Bool = false, isGIF: Bool = false, anim: LottieAnimationName? = nil) -> SuccessPopUpView {
+    class func initWithWindow(_ title: String, _ desc: String, img: (String, UIImage?)? = nil, isVerifyPopUp: Bool = false, isGIF: Bool = false, anim: LottieAnimationName? = nil, showSuccess: Bool = false) -> SuccessPopUpView {
         let obj = Bundle.main.loadNibNamed("SuccessPopUpView", owner: nil, options: nil)?.first as! SuccessPopUpView
         _appDelegator.window?.addSubview(obj)
         obj.addConstraintToSuperView(lead: 0, trail: 0, top: 0, bottom: 0)
@@ -56,7 +58,8 @@ class SuccessPopUpView: ConstrainedView {
         obj.animateIn()
         obj.viewImage.isHidden = img == nil
         obj.viewAnimation.isHidden = anim == nil
-        obj.prepareUI(title, desc, img, isVerifyPopUp: isVerifyPopUp, isGIF: isGIF, anim)
+        obj.imgSuccess.isHidden = !showSuccess
+        obj.prepareUI(title, desc, img, isVerifyPopUp: isVerifyPopUp, isGIF: isGIF, anim, showSuccess: showSuccess)
         return obj
     }
     
@@ -91,11 +94,12 @@ class SuccessPopUpView: ConstrainedView {
 // MARK: - UI & Animations
 extension SuccessPopUpView {
     
-    func prepareUI(_ title: String, _ desc: String,_ img: (String, UIImage?)? = nil, isVerifyPopUp: Bool = false, isGIF: Bool = false, _ anim: LottieAnimationName? = nil) {
+    func prepareUI(_ title: String, _ desc: String,_ img: (String, UIImage?)? = nil, isVerifyPopUp: Bool = false, isGIF: Bool = false, _ anim: LottieAnimationName?, showSuccess: Bool = false) {
         lblTitle.text = title
         lblMessage.text = desc
         imgVerify.isHidden = !isVerifyPopUp
         viewImage.borderWidth = isVerifyPopUp ? 1 : 0
+        imgSuccess.isHidden = !showSuccess
         
         if let img {
             if isGIF {
@@ -133,6 +137,11 @@ extension SuccessPopUpView {
 extension SuccessPopUpView {
     
     @IBAction func btnCloseTap(_ sender: UIButton) {
+        animateOut {
+            self.callBack?()
+        }
+    }
+    @IBAction func btnSubmitTap(_ sender: UIButton) {
         animateOut {
             self.callBack?()
         }

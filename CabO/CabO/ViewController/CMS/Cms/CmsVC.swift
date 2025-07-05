@@ -11,7 +11,7 @@ import WebKit
 // MARK: - CmsScreenType
 enum CmsScreenType {
     
-    case tnc, privacy, cancellationPolicy, aboutUS, shareRide, stripe
+    case tnc, privacy, cancellationPolicy, aboutUS, shareRide, stripe, faq
     
     init?(_ screen: ProfileSettingsCells) {
         switch screen {
@@ -19,6 +19,7 @@ enum CmsScreenType {
         case .privacyPolicy: self = .privacy
         case .cancellationPolicy: self = .cancellationPolicy
         case .aboutUS: self = .aboutUS
+        case .faq: self = .faq
         default: self = .tnc
         }
     }
@@ -31,6 +32,7 @@ enum CmsScreenType {
         case .shareRide: return "share_ride"
         case .aboutUS: return "about_us"
         case .stripe: return ""
+        case .faq: return "faq"
         }
     }
     
@@ -40,6 +42,7 @@ enum CmsScreenType {
         case .privacy: return "Privacy policy"
         case .cancellationPolicy: return "Cancellation policy"
         case .aboutUS: return "About Us"
+        case .faq: return "FAQ's"
         default: return ""
         }
     }
@@ -190,9 +193,15 @@ extension CmsVC {
             guard let `self` = self else { return }
             self.hideCentralSpinner()
             if status == 200, let dict = json as? NSDictionary, let data = dict["data"] as? NSDictionary {
-                self.lblTitle?.text = data.getStringValue(key: "title")
-                self.dataStr = data.getStringValue(key: "content")
-                self.loadHtmlString()
+                let content = data.getStringValue(key: "content")
+                let url = data.getStringValue(key: "url")
+                if content != "" {
+                    self.dataStr = content
+                    self.loadHtmlString()
+                    self.lblTitle?.text = data.getStringValue(key: "title")
+                }else{
+                    self.webView.load(URLRequest(url: URL(string: url)!))
+                }
             } else {
                 self.showError(data: json, yCord: _navigationHeight)
             }

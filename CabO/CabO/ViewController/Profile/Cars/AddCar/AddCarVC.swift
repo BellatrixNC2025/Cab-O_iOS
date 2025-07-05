@@ -57,7 +57,8 @@ class AddCarImageModel {
 class AddCarVC: ParentVC {
     
     /// Variables
-    var arrCells: [AddCarCellType] = [.addcarImage, .imageCollection, .info, .make, .model, .yearAndColor, .licencePlate, .availableSeat, .uploadDocTitle, .info, .carRegTitle, .carRegistration, .insuranceTitle, .insurance, .btn]
+    /// 
+    var arrCells: [AddCarCellType] = [.addcarImage, .imageCollection,.type, .make, .model, .yearAndColor, .licencePlate, .availableSeat, .uploadDocTitle, .carRegistration, .insurance, .btn]
     var docPickerCellType : AddCarCellType!
     var data: AddCarModel = AddCarModel()
     var isEdit: Bool = false
@@ -68,7 +69,7 @@ class AddCarVC: ParentVC {
     var arrCarColors: [CarColorModel]!
     var arrSeats: [Int] = []
     var progressLoader: VHUDContent!
-    
+    var arrCarType : [String] = ["Sedan", "Premier"]
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -183,12 +184,14 @@ extension AddCarVC : UITableViewDelegate, UITableViewDataSource {
         let cellType = arrCells[indexPath.row]
         if indexPath.row != 0 && arrCells[indexPath.row - 1] == .imageCollection {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.cellId, for: indexPath) as! TitleTVC
-            cell.prepareUI("Please upload a high-quality of a JPEG, PNG of your car photo.", AppFont.fontWithName(.regular, size: 12 * _fontRatio), clr: AppColor.primaryText)
+            cell.prepareUI("Please upload a high-quality of a JPEG, PNG of your car photo.", AppFont.fontWithName(.regular, size: 12 * _fontRatio), clr: AppColor.primaryTextDark)
+            applyRoundedBackground(to: cell, at: indexPath, in: tableView)
             return cell
         }
         else if cellType == .info {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.cellId, for: indexPath) as! TitleTVC
-            cell.prepareUI("Please upload a high-quality, legible scan of a JPEG, PNG of your car registration.", AppFont.fontWithName(.regular, size: 12 * _fontRatio), clr: AppColor.primaryText)
+            cell.prepareUI("Please upload a high-quality, legible scan of a JPEG, PNG of your car registration.", AppFont.fontWithName(.regular, size: 12 * _fontRatio), clr: AppColor.primaryTextDark)
+            applyRoundedBackground(to: cell, at: indexPath, in: tableView)
             return cell
         }
         return tableView.dequeueReusableCell(withIdentifier: cellType.cellId, for: indexPath)
@@ -226,11 +229,11 @@ extension AddCarVC : UITableViewDelegate, UITableViewDataSource {
         }
         else if let cell = cell as? TitleTVC {
             if arrCells[indexPath.row - 1] == .imageCollection {
-                cell.prepareUI("Please upload a high-quality of a JPEG, PNG of your car photo.", AppFont.fontWithName(.regular, size: 12 * _fontRatio), clr: AppColor.primaryText)
+                cell.prepareUI("Please upload a high-quality of a JPEG, PNG of your car photo.", AppFont.fontWithName(.regular, size: 12 * _fontRatio), clr: AppColor.primaryTextDark)
             } else if arrCells[indexPath.row - 1] == .uploadDocTitle {
-                cell.prepareUI("Please upload a high-quality, legible scan of a JPEG, PNG of your car registration.", AppFont.fontWithName(.regular, size: 12 * _fontRatio), clr: AppColor.primaryText)
+                cell.prepareUI("Please upload a high-quality, legible scan of a JPEG, PNG of your car registration.", AppFont.fontWithName(.regular, size: 12 * _fontRatio), clr: AppColor.primaryTextDark)
             } else {
-                cell.prepareUI(cellType.title.0, AppFont.fontWithName(.mediumFont, size: cellType == .uploadDocTitle ? (18 * _fontRatio) : (14 * _fontRatio)), clr: AppColor.primaryText)
+                cell.prepareUI(cellType.title.0, AppFont.fontWithName(.mediumFont, size: cellType == .uploadDocTitle ? (18 * _fontRatio) : (14 * _fontRatio)), clr: AppColor.primaryTextDark)
             }
         }
         else if let cell = cell as? InputCell {
@@ -251,7 +254,7 @@ extension AddCarVC : UITableViewDelegate, UITableViewDataSource {
             }
         }
         else if let cell = cell as? CarDetailCell {
-            cell.prepareUI(cellType.title.0, AppFont.fontWithName(.mediumFont, size: cellType == .uploadDocTitle ? (18 * _fontRatio) : (14 * _fontRatio)), clr: AppColor.primaryText)
+            cell.prepareUI(cellType.title.0, AppFont.fontWithName(.mediumFont, size: cellType == .uploadDocTitle ? (18 * _fontRatio) : (14 * _fontRatio)), clr: AppColor.primaryTextDark)
             
             cell.prepareCarStatusUI(cellType == .carRegTitle ? self.data.registrationStatus : data.insuranceStatus ,(isEdit && cellType == .carRegTitle ? data.registrationImageStr != nil : data.insuranceImageStr != nil))
         }
@@ -273,7 +276,11 @@ extension AddCarVC : UITableViewDelegate, UITableViewDataSource {
                     }
                 }
             } else {
-                cell.prepareUI(cellType == .carRegistration ? self.data.registrationImage : self.data.insuranceImage)
+                if cellType == .carRegistration  || cellType == .insurance{
+                    cell.prepareUI((cellType == .carRegistration ? self.data.registrationImage : self.data.insuranceImage), cellType.title.0)
+                }else{
+                    cell.prepareUI(cellType == .carRegistration ? self.data.registrationImage : self.data.insuranceImage)
+                }
             }
             
             cell.action_btnUploadTap = { [weak self] (btn) in
@@ -311,6 +318,9 @@ extension AddCarVC : UITableViewDelegate, UITableViewDataSource {
                 guard let `self` = self else { return }
                 self.buttonSubmitCarTap()
             }
+        }
+        if cellType != .btn{
+            applyRoundedBackground(to: cell, at: indexPath, in: tableView)
         }
     }
 }
@@ -623,7 +633,7 @@ extension AddCarVC {
     private func showSucessMsg() {
         let title: String = "Your car details added successfully!"
         let message: String = "Once our team verifies your car details and documents, you will get a notification."
-        let success = SuccessPopUpView.initWithWindow(title, message, anim: .addCar)
+        let success = SuccessPopUpView.initWithWindow(title, message, showSuccess: true)
         success.callBack = { [weak self] in
             guard let `self` = self else { return }
             self.navigationController?.popViewController(animated: true)

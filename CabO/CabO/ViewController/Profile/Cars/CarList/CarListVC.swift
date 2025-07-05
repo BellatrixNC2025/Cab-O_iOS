@@ -90,7 +90,7 @@ extension CarListVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if arrCars.isEmpty {
-            return _isLandScape ? tableView.frame.width : tableView.frame.height
+            return _isLandScape ? tableView.frame.width * 0.75 : tableView.frame.height*0.65
         } else {
             return CarListCell.normalHeight
         }
@@ -106,7 +106,7 @@ extension CarListVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if let cell = cell as? NoDataCell {
-            cell.prepareUI(img: UIImage(named: "no_car")!, title: "No cars found", subTitle: "")
+            cell.prepareUI(img: UIImage(named: "ic_no_car")!, title: "No cars found", subTitle: "Please add your car details, to continue.")
         }
         else if let cell = cell as? CarListCell {
             let car = arrCars[indexPath.row]

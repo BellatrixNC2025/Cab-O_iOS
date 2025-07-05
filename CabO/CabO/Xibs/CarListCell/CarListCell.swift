@@ -25,7 +25,7 @@ class CarListCell: ConstrainedTableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         viewStatus?.setViewHeight(height: (DeviceType.iPad ? 22 : 18) * _widthRatio)
-        imgStatus?.setViewHeight(height: (DeviceType.iPad ? 32 : 28) * _widthRatio)
+        imgStatus?.setViewHeight(height: (DeviceType.iPad ? 30 : 25) * _widthRatio)
     }
 }
 

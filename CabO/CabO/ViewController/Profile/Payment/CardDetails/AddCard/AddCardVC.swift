@@ -27,8 +27,8 @@ class AddCardVC: ParentVC {
 extension AddCardVC {
     
     func prepareUI() {
-        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: (24 * _heightRatio), right: 0)
-        
+        tableView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
+        arrCells.remove(.header)
         data.isDefault = isFirstCard ? true : false
         registerCells()
         tableView.reloadData()
@@ -75,7 +75,11 @@ extension AddCardVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellType = arrCells[indexPath.row]
-        return tableView.dequeueReusableCell(withIdentifier: cellType.cellId, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellType.cellId, for: indexPath)
+        if cellType != .btn {
+            applyRoundedBackground(to: cell, at: indexPath, in: tableView, isBottomRadius: cellType == .stripe ? true : false)
+        }
+        return cell
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

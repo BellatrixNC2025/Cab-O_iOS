@@ -39,7 +39,7 @@ extension SideMenuVC {
     
     func prepareUI() {
         
-        tableView.contentInset = UIEdgeInsets(top: 12, left: 0, bottom: 50, right: 0)
+        tableView.contentInset = UIEdgeInsets(top: 12, left: 0, bottom: 0, right: 0)
         registerCells()
     }
     
@@ -50,8 +50,7 @@ extension SideMenuVC {
 //MARK: - Button Actions
 extension SideMenuVC {
     @IBAction func buttonMenuTap(_ sender: UIButton) {
-        self.navigaton_controller?.popViewController(animated: false)
-        self.dismiss(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     @IBAction func btnCheckCompleteProfile(_ sender: UIButton) {
         let vc = AddProfilePicVC.instantiate(from: .Profile)
@@ -112,7 +111,10 @@ extension SideMenuVC: UITableViewDelegate, UITableViewDataSource {
             vc.userId = _user!.id.integerValue
             self.navigationController?.pushViewController(vc, animated: true)
         }
-        applyRoundedBackground(to: cell, at: indexPath, in: tableView)
+        if cellType != .version {
+            applyRoundedBackground(to: cell, at: indexPath, in: tableView)
+
+        }
             return cell
     }
     
@@ -149,7 +151,7 @@ extension SideMenuVC: UITableViewDelegate, UITableViewDataSource {
             vc.isFromSideMenu = true
             self.navigationController?.pushViewController(vc, animated: true)
         case .document:
-            let vc = IdVerificationVC.instantiate(from: .Profile)
+            let vc = IdVerificationListVC.instantiate(from: .Profile)
             self.navigationController?.pushViewController(vc, animated: true)
         case .carDetails:
             let vc = CarListVC.instantiate(from: .Profile)
@@ -158,7 +160,7 @@ extension SideMenuVC: UITableViewDelegate, UITableViewDataSource {
             let vc = CarListVC.instantiate(from: .Profile)
             self.navigationController?.pushViewController(vc, animated: true)
         case .driverDetails:
-            let vc = CarListVC.instantiate(from: .Profile)
+            let vc = DriverListVC.instantiate(from: .Profile)
             self.navigationController?.pushViewController(vc, animated: true)
        
         case .insurance:

@@ -380,7 +380,7 @@ extension EditProfileVC {
     }
     
     func editUserProfileInfo() {
-        if data.isDataChanged {
+//        if data.isDataChanged {
             let cell = tableViewCell(index: arrCells.firstIndex(of: .btn)!) as! ButtonTableCell
             self.showSpinnerIn(container: cell.bgView, control: cell.btn, isCenter: true)
             
@@ -395,9 +395,9 @@ extension EditProfileVC {
                     self.showError(data: json)
                 }
             }
-        } else {
-            self.navigationController?.popViewController(animated: true)
-        }
+//        } else {
+//            self.navigationController?.popViewController(animated: true)
+//        }
     }
     
     func updateMobileEmail(_ str: String, _ isEmail: Bool) {

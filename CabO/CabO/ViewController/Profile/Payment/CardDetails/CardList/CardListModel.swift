@@ -10,13 +10,14 @@ import UIKit
 
 // MARK: - CardListScreenType
 enum CardListScreenType {
-    case list, booking, tip
+    case list, booking, tip, subscription
     
     var buttonTitle: String {
         switch self {
         case .list: return "Add card"
         case .booking: return "Book ride"
         case .tip: return "Pay"
+        case .subscription: return "Subscribe"
         }
     }
 }

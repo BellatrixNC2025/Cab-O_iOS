@@ -44,7 +44,9 @@ class SupportTicketDetailsCell: ConstrainedTableViewCell {
 class SupportTicketDetailsVC: ParentVC {
     
     /// Variables
-    var arrCells: [SupportTicketDetailCellType] = [.ticket, .issueType, .other, .message, .image]
+    let viewModel = SupportTicketViewModel()
+    var arrSections: [SupportTicketDetailSections] = SupportTicketDetailSections.allCases
+//    var arrCells: [SupportTicketDetailCellType] = [.ticket, .issueType, .other, .message, .image]
     var ticketId: String!
     var data: SupportTicketData!
     
@@ -61,8 +63,19 @@ extension SupportTicketDetailsVC {
     func prepareUI() {
         tableView.contentInset = UIEdgeInsets(top: 12, left: 0, bottom: 50, right: 0)
         addRefresh()
+        // Observe for data updates from the ViewModel
+               NotificationCenter.default.addObserver(self,
+                                                      selector: #selector(handleDataUpdate),
+                                                      name: .supportTicketDataUpdated,
+                                                      object: nil)
     }
-    
+    @objc func handleDataUpdate() {
+            // This method is called when the ViewModel signals a data change
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                print("Table View Reloaded!")
+            }
+        }
     func addRefresh() {
         refresh.addTarget(self, action: #selector(self.refreshing(_:)), for: .valueChanged)
         self.tableView.refreshControl = refresh
@@ -90,13 +103,23 @@ extension SupportTicketDetailsVC {
 
 // MARK: - TableView Methods
 extension SupportTicketDetailsVC : UITableViewDelegate, UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data == nil ? 0 : arrCells.count
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return data == nil ? 0 : viewModel.numberOfSections()
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.numberOfRows(inSection: section)
+    }
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 10 * _widthRatio))
+        view.backgroundColor = .clear
+        return view
+    }
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 15 * _widthRatio
+    }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let cellType = arrCells[indexPath.row]
+        let cellType = viewModel.cellType(for: indexPath)
         if cellType == .tripInfo {
             return data.rideId.isEmpty ? 0 : getTripInfoCellHeight()
         } else if cellType == .image {
@@ -104,18 +127,18 @@ extension SupportTicketDetailsVC : UITableViewDelegate, UITableViewDataSource {
         } else  if cellType == .ticket {
             return UITableView.automaticDimension
         } else {
-            let value = data.getValue(cellType)
+            let value = data.getValue(cellType!)
             return value.isEmpty ? 0 : value.heightWithConstrainedWidth(width: _screenSize.width - (40 * _widthRatio), font: AppFont.fontWithName(.regular, size: 12 * _fontRatio)) + (44 * _widthRatio)
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellType = arrCells[indexPath.row]
-        return tableView.dequeueReusableCell(withIdentifier: cellType.cellId, for: indexPath)
+        let cellType = viewModel.cellType(for: indexPath)
+        return tableView.dequeueReusableCell(withIdentifier: cellType!.cellId, for: indexPath)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let cellType = arrCells[indexPath.row]
+        let cellType = viewModel.cellType(for: indexPath)
         if let cell = cell as? SupportTicketDetailsCell {
             
             cell.labelCreatedAt?.text = Date.localDateString(from: data.createdAt, format: "MMM dd, yyyy hh:mm a")
@@ -130,18 +153,19 @@ extension SupportTicketDetailsVC : UITableViewDelegate, UITableViewDataSource {
             if cellType == .driver {
                 cell.labelTitle?.text = data.userType
             } else {
-                cell.labelTitle?.text = cellType.detailTitle
+                cell.labelTitle?.text = cellType?.detailTitle
             }
-            cell.labelDesc?.text = data.getValue(cellType)
+            cell.labelDesc?.text = data.getValue(cellType!)
             
             if !data.image.isEmpty {
                 cell.imgView?.loadFromUrlString(data.image, placeholder: _dummyPlaceImage)
             }
+            applyRoundedBackground(to: cell, at: indexPath, in: tableView)
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cellType = arrCells[indexPath.row]
+        let cellType = viewModel.cellType(for: indexPath)
         if cellType == .image {
             openMsgImagePreview(data.image)
         }
@@ -171,24 +195,36 @@ extension SupportTicketDetailsVC {
             if status == 200, let dict = json as? NSDictionary, let data = dict["data"] as? NSDictionary {
                 let ticket = SupportTicketData(data)
                 weakSelf.data = ticket
-                if !ticket.rideId.isEmpty {
-                    if !weakSelf.arrCells.contains(.tripInfo){
-                        weakSelf.arrCells.insert(.tripInfo, at: 1)
-                    }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                    let shouldHideRejectReasonFromAPI = (ticket.status == .rejected && !ticket.reason.isEmpty) ? false : true
+                    let shouldHideDriverFromAPI = ticket.dFullname.removeSpace().isEmpty ? true : false
+                    let shouldHideTripFromAPI = ticket.rideId.isEmpty ? true : false
+                    
+                    weakSelf.viewModel.updateCellsAfterAPI(
+                        hideRejectReason: shouldHideRejectReasonFromAPI,
+                        hideDriver: shouldHideDriverFromAPI,
+                        hideTrip: shouldHideTripFromAPI,
+                        hideImage:  ticket.image.isEmpty ? true : false
+                    )
                 }
-                
-                if !weakSelf.arrCells.contains(.driver) && !ticket.dFullname.removeSpace().isEmpty {
-                    weakSelf.arrCells.insert(.driver, at: 2)
-                }
-                
-                if ticket.status == .rejected && !ticket.reason.isEmpty {
-                    if let index = weakSelf.arrCells.firstIndex(of: .message) {
-                        if !weakSelf.arrCells.contains(.rejectReason) {
-                            weakSelf.arrCells.insert(.rejectReason, at: index + 1)
-                        }
-                    }
-                }
-                weakSelf.tableView.reloadData()
+//                if !ticket.rideId.isEmpty {
+//                    if !weakSelf.arrCells.contains(.tripInfo){
+//                        weakSelf.arrCells.insert(.tripInfo, at: 1)
+//                    }
+//                }
+//                
+//                if !weakSelf.arrCells.contains(.driver) && !ticket.dFullname.removeSpace().isEmpty {
+//                    weakSelf.arrCells.insert(.driver, at: 2)
+//                }
+//                
+//                if ticket.status == .rejected && !ticket.reason.isEmpty {
+//                    if let index = weakSelf.arrCells.firstIndex(of: .message) {
+//                        if !weakSelf.arrCells.contains(.rejectReason) {
+//                            weakSelf.arrCells.insert(.rejectReason, at: index + 1)
+//                        }
+//                    }
+//                }
+//                weakSelf.tableView.reloadData()
             } else {
                 weakSelf.showError(data: json, yCord: _navigationHeight)
             }

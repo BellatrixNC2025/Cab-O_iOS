@@ -183,6 +183,16 @@ class EditProfileData {
         fbLink = dict.getStringValue(key: "facebook_url")
         twitLink = dict.getStringValue(key: "twitter_url")
         instaLink = dict.getStringValue(key: "instagram_url")
+        if let add = dict["home_address"] {
+            homeAddress = SearchAddress(homeDict: dict)
+        }
+//        homeAddress?.formatedAddress = dict.getStringValue(key: "home_address")
+//        homeAddress?.city = dict.getStringValue(key: "city")
+//        homeAddress?.country = dict.getStringValue(key: "county")
+//        homeAddress?.state = dict.getStringValue(key: "state")
+//        homeAddress?.zipcode = dict.getStringValue(key: "zipcode")
+//        homeAddress?.lat = dict.getDoubleValue(key: "latitude")
+//        homeAddress?.long = dict.getDoubleValue(key: "longitude")
     }
     
     var isDataReady: Bool {
@@ -208,7 +218,7 @@ class EditProfileData {
         param["gender"] = gender?.title.lowercased()
         param["something_about_you"] = bio
         if _user?.role == .driver {
-            param["address"] = homeAddress?.formatedAddress
+            param["home_address"] = homeAddress?.formatedAddress
             param["zipcode"] = homeAddress?.zipcode
             param["state"] = homeAddress?.state
             param["city"] = homeAddress?.city
@@ -277,6 +287,7 @@ class EditProfileData {
         case .fb: return fbLink
         case .twit: return twitLink
         case .insta: return instaLink
+        case .homeAddress: return homeAddress?.formatedAddress ?? ""
         default: return ""
         }
     }

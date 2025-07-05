@@ -48,7 +48,7 @@ class SubscriptionCell: ConstrainedTableViewCell {
     /// Variables
     var btnSubscribeTap: (() -> ())?
     
-    weak var parent: ProfileVC!
+    weak var parent: SubscriptionVC!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -90,7 +90,7 @@ extension HomeVC {
         }
         
         collectionView?.contentInset = UIEdgeInsets(top: 0, left: 25, bottom: 0, right: 25)
-        self.collectionHeight.constant = _user?.role == .rider ? 125 * _widthRatio : 175 * _widthRatio 
+        self.collectionHeight.constant = _user?.role == .rider ? 125 * _widthRatio : 113 * _widthRatio 
 //        labelUserName.text = getTimeOfDay() + "\n" + (_user?.fullName ?? "")
 //        labelUserName.setAttributedText(texts: [(getTimeOfDay() + "\n") , (_user?.fullName ?? "")], attributes: [ [NSAttributedString.Key.font : AppFont.fontWithName(.regular, size: (14 * _fontRatio))],[NSAttributedString.Key.font : AppFont.fontWithName(.mediumFont, size: (16 * _fontRatio))]])
 //        imgUserProfile.loadFromUrlString(_user?.profilePic ?? "", placeholder: _userPlaceImage)

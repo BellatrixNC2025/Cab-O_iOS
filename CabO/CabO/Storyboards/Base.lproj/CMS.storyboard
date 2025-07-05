@@ -530,7 +530,7 @@ cnBvb2wgVGVybXMgJiBDb25kaXRpb25zA
                                 </subviews>
                             </stackView>
                             <wkWebView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gqd-52-alR">
-                                <rect key="frame" x="20" y="306" width="353" height="410"/>
+                                <rect key="frame" x="5" y="306" width="383" height="410"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -547,7 +547,7 @@ cnBvb2wgVGVybXMgJiBDb25kaXRpb25zA
                             <constraint firstItem="6zG-LU-Xoj" firstAttribute="top" secondItem="jeT-fR-Xch" secondAttribute="bottom" id="3Xg-pR-z11"/>
                             <constraint firstItem="TI8-Ww-fcI" firstAttribute="trailing" secondItem="6A4-3L-4Wd" secondAttribute="trailing" id="43O-Hn-7Xs"/>
                             <constraint firstItem="TI8-Ww-fcI" firstAttribute="trailing" secondItem="BV6-yh-E9n" secondAttribute="trailing" id="9Nv-5p-ur8"/>
-                            <constraint firstItem="gqd-52-alR" firstAttribute="leading" secondItem="TI8-Ww-fcI" secondAttribute="leading" constant="20" id="Dv8-MU-zae">
+                            <constraint firstItem="gqd-52-alR" firstAttribute="leading" secondItem="TI8-Ww-fcI" secondAttribute="leading" constant="5" id="Dv8-MU-zae">
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isWidthResize" value="YES"/>
                                 </userDefinedRuntimeAttributes>
@@ -559,7 +559,7 @@ cnBvb2wgVGVybXMgJiBDb25kaXRpb25zA
                             <constraint firstItem="TI8-Ww-fcI" firstAttribute="trailing" secondItem="veu-fW-nrh" secondAttribute="trailing" id="Y4d-6H-1nk"/>
                             <constraint firstItem="BV6-yh-E9n" firstAttribute="leading" secondItem="TI8-Ww-fcI" secondAttribute="leading" id="ZCW-5m-Zop"/>
                             <constraint firstItem="6A4-3L-4Wd" firstAttribute="leading" secondItem="IDk-1P-vkN" secondAttribute="leading" id="cBS-nv-ZFa"/>
-                            <constraint firstItem="TI8-Ww-fcI" firstAttribute="trailing" secondItem="gqd-52-alR" secondAttribute="trailing" constant="20" id="d98-2r-OMz">
+                            <constraint firstItem="TI8-Ww-fcI" firstAttribute="trailing" secondItem="gqd-52-alR" secondAttribute="trailing" constant="5" id="d98-2r-OMz">
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isWidthResize" value="YES"/>
                                 </userDefinedRuntimeAttributes>

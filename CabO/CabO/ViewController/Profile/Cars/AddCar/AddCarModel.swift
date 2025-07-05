@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: - AddCarCellType
 enum AddCarCellType {
-    case addcarImage, imageCollection, make, model, yearAndColor, licencePlate, availableSeat, uploadDocTitle, carRegTitle, carRegistration, insuranceTitle, insurance, info, btn
+    case addcarImage, imageCollection,type, make, model, yearAndColor, licencePlate, availableSeat, uploadDocTitle, carRegTitle, carRegistration, insuranceTitle, insurance, info, btn
     
     var cellId: String {
         switch self {
@@ -40,9 +40,10 @@ enum AddCarCellType {
     
     var title: (String, String) {
         switch self {
-        case .uploadDocTitle: return ("Upload car documents","")
-        case .carRegTitle: return ("Car registration*","")
-        case .insuranceTitle: return ("Insurance card*","")
+        case .uploadDocTitle: return ("Upload Car RC Book","")
+        case .carRegistration: return ("Front side of your RC","")
+        case .insurance: return ("Back side of your RC","")
+        case .type: return ("Car Type","")
         case .make: return ("Make","")
         case .model: return ("Model","")
         case .yearAndColor: return ("Year","Color")
@@ -53,6 +54,7 @@ enum AddCarCellType {
     
     var placeholder: (String, String) {
         switch self {
+        case .type: return ("Select type","")
         case .make: return ("Select make","")
         case .model: return ("Select model","")
         case .yearAndColor: return ("Select","Select")
@@ -80,6 +82,7 @@ enum AddCarCellType {
 class AddCarModel {
     
     var id: String?
+    var carType : String = ""
     var carCompany: CarCompanyModel? {
         didSet {
             self.carModel = nil

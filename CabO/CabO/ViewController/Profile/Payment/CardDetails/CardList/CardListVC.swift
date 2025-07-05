@@ -19,6 +19,9 @@ class CardListVC: ParentVC {
     var bookRideId: Int!
     var tipAmount: String!
     var selectedCard: CardListModel?
+    var plan_id: String!
+    var isFromSideMenu: Bool = true
+    var isFreeTrialTaken: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,6 +83,19 @@ extension CardListVC {
             else {
                 if screenType == .tip {
                     self.payTip()
+                }  else if screenType == .subscription {
+                    self.subscribePlan(plan_id: plan_id, cardId: selectedCard!.id) { [weak self] (succed, msg) in
+                        guard let self = self else { return }
+                        if succed {
+                            self.showConfirmationPopUpView("Plan Subscribed", msg, btns: [.ok]) { _ in
+                                if self.isFromSideMenu {
+                                    self.navigationController?.popToRootViewController(animated: true)
+                                } else {
+                                    _appDelegator.navigateUserToHome()
+                                }
+                            }
+                        }
+                    }
                 } else {
                     self.bookRide()
                 }
@@ -205,7 +221,7 @@ extension CardListVC {
                         self.selectedCard = self.arrCards.first(where: {$0.isDefault})
                     }
                 }
-                if self.arrCards.isEmpty && self.screenType == .booking {
+                if self.arrCards.isEmpty && (self.screenType == .booking || self.screenType == .subscription){
                     let vc = AddCardVC.instantiate(from: .Profile)
                     vc.isFirstCard = true
                     self.navigationController?.pushViewController(vc, animated: true)
@@ -307,6 +323,31 @@ extension CardListVC {
         success.callBack = { [weak self] in
             guard let self = self else { return }
             self.navigationController?.popToViewController(ofClass: NTabBarVC.self)
+        }
+    }
+    
+    func subscribePlan(plan_id: String, cardId: String?, completion: @escaping (Bool, String) -> ()) {
+        var param: [String: Any] = [:]
+        param["subscriptionPlanId"] = plan_id
+        if let cardIds = cardId {
+            param["cardId"] = cardId
+        }
+        
+        showCentralSpinner()
+        WebCall.call.subscribePlan(param) { [weak self] (json, status) in
+            guard let self = self else { return }
+            self.hideCentralSpinner()
+            if status == 200, let dict = json as? NSDictionary {
+                _userDefault.set(true, forKey: "is_subscribed")
+                let msg = dict["message"] as? String ?? ""
+                completion(true, msg)
+                _appDelegator.getUserProfile() { _,_ in
+                    _defaultCenter.post(name: .subscriptionChange, object: nil)
+                }
+            } else {
+                completion(false, "")
+                self.showError(data: json)
+            }
         }
     }
 }

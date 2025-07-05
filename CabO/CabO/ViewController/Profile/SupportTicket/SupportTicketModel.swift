@@ -192,7 +192,117 @@ enum AddSupportTicketCellType: Equatable {
         }
     }
 }
+// Custom Notification Name for UI updates
+extension Notification.Name {
+    static let supportTicketDataUpdated = Notification.Name("supportTicketDataUpdated")
+}
 
+// Your ViewModel/Data Source
+class SupportTicketViewModel {
+    var sections: [SupportTicketDetailSections] = [.ticketDetails, .issueDetails]
+
+     // Private initial data (all possible cells)
+     private let initialCells: [SupportTicketDetailSections: [SupportTicketDetailCellType]] = [
+         .ticketDetails: [.ticket, .tripInfo, .rejectReason],
+         .issueDetails: [.issueType, .other, .message, .driver, .image]
+     ]
+
+     // This is the mutable property you'll update, and the UI will observe
+     private(set) var currentSectionCells: [SupportTicketDetailSections: [SupportTicketDetailCellType]] = [:]
+
+     init() {
+         // Initialize with all cells
+         self.currentSectionCells = initialCells
+     }
+
+     // Call this method after your API call completes
+     func updateCellsAfterAPI(
+         hideRejectReason: Bool,
+         hideDriver: Bool,
+         hideTrip:Bool,
+         hideImage: Bool
+         // Add more parameters for other dynamic removals
+     ) {
+         var updatedCells = initialCells // Start with the full set
+
+         if hideRejectReason {
+             if var ticketCells = updatedCells[.ticketDetails] {
+                 ticketCells.removeAll { $0 == .rejectReason }
+                 updatedCells[.ticketDetails] = ticketCells
+             }
+         }
+
+         if hideDriver {
+             if var issueCells = updatedCells[.issueDetails] {
+                 issueCells.removeAll { $0 == .driver }
+                 updatedCells[.issueDetails] = issueCells
+             }
+         }
+         if hideTrip {
+             if var issueCells = updatedCells[.ticketDetails] {
+                 issueCells.removeAll { $0 == .tripInfo }
+                 updatedCells[.ticketDetails] = issueCells
+             }
+         }
+         if hideImage {
+             if var issueCells = updatedCells[.issueDetails] {
+                 issueCells.removeAll { $0 == .image }
+                 updatedCells[.issueDetails] = issueCells
+             }
+         }
+         self.currentSectionCells = updatedCells
+
+         // Notify the UI that data has changed
+         NotificationCenter.default.post(name: .supportTicketDataUpdated, object: nil)
+
+         print("ViewModel updated. Current cells: \(self.currentSectionCells)")
+     }
+
+
+     // MARK: - Data Source Helpers for UITableView
+
+     func numberOfSections() -> Int {
+         return sections.count
+     }
+
+     func numberOfRows(inSection section: Int) -> Int {
+         guard section < sections.count else { return 0 }
+         let currentSection = sections[section]
+         return currentSectionCells[currentSection]?.count ?? 0
+     }
+
+     func cellType(for indexPath: IndexPath) -> SupportTicketDetailCellType? {
+         guard indexPath.section < sections.count else { return nil }
+         let currentSection = sections[indexPath.section]
+         guard indexPath.row < (currentSectionCells[currentSection]?.count ?? 0) else { return nil }
+         return currentSectionCells[currentSection]?[indexPath.row]
+     }
+
+     func titleForHeader(inSection section: Int) -> String? {
+         guard section < sections.count else { return nil }
+         return sections[section].title
+     }
+
+}
+
+// MARK: - Support Details Sections
+enum SupportTicketDetailSections: CaseIterable {
+    case ticketDetails, issueDetails
+    
+    var title: String {
+        switch self {
+        default: return ""
+        }
+    }
+    
+//    var arrCells: [SupportTicketDetailCellType] {
+//
+//            switch self {
+//            case .ticketDetails: return [.ticket, .tripInfo, .rejectReason]
+//            case .issueDetails: return [.issueType, .other, .message, .driver, ]
+//            }
+//    }
+}
 // MARK: - SupportTicketDetailCellType
 enum SupportTicketDetailCellType: Equatable {
     case ticket, tripInfo, issueType, driver, other, message, rejectReason, image

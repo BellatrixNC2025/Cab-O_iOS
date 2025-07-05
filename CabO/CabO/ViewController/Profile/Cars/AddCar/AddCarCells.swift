@@ -16,7 +16,7 @@ class AddCarDocumentPickerCell: ConstrainedTableViewCell {
     @IBOutlet weak var viewUploadImage: UIView!
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var buttonDelete: UIButton!
-    
+    @IBOutlet var lblTitle: UILabel!
     /// Variables
     var action_btnUploadTap: ((AnyObject) -> ())?
     var action_btnDeleteTap: ((AnyObject) -> ())?
@@ -25,7 +25,7 @@ class AddCarDocumentPickerCell: ConstrainedTableViewCell {
         super.awakeFromNib()
     }
     
-    func prepareUI(_ img: UIImage?, isEditable: Bool = true) {
+    func prepareUI(_ img: UIImage?, isEditable: Bool = true,_ title:String = "") {
         if let img {
             imgView?.image = img
             imgView?.isHidden = false
@@ -35,10 +35,11 @@ class AddCarDocumentPickerCell: ConstrainedTableViewCell {
             imgView?.isHidden = true
             buttonDelete?.isHidden = true
             viewUploadImage?.isHidden = false
+            lblTitle?.text = title
         }
     }
     
-    func prepareUI(_ img: String?, isEditable: Bool = true) {
+    func prepareUI(_ img: String?, isEditable: Bool = true, _ title:String = "") {
         if let img {
             imgView?.loadFromUrlString(img, placeholder: _dummyPlaceImage)
             imgView?.isHidden = false
@@ -48,6 +49,7 @@ class AddCarDocumentPickerCell: ConstrainedTableViewCell {
             imgView?.isHidden = true
             buttonDelete?.isHidden = true
             viewUploadImage?.isHidden = false
+            lblTitle?.text = title
         }
     }
     

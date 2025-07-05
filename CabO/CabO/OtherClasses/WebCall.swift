@@ -1088,3 +1088,45 @@ extension WebCall {
         apiCall(relPath: relPath, method: .post, param: param, headerParam: nil, block: block)
     }
 }
+// MARK: - Subscription
+extension WebCall {
+    
+    func getSubscriptionList(block: @escaping WSBlock) {
+        nprint(items: "---------------- Get Subscription List -----------")
+        let relPath = "v1/getsubscriptionplans"
+        apiCall(relPath: relPath, method: .get, param: nil, headerParam: nil, block: block)
+    }
+
+    func getSubscriptionDetails(block: @escaping WSBlock) {
+        nprint(items: "---------------- Get Subscription Plan List -----------")
+        let relPath = "v1/subscriptiondetails"
+        apiCall(relPath: relPath, method: .get, param: nil, headerParam: nil, block: block)
+    }
+    
+    func subscribePlan(_ param: [String: Any], block: @escaping WSBlock) {
+        nprint(items: "---------------- Subscribe Plan -----------")
+        let relPath = "v1/subscribeplan"
+        apiCall(relPath: relPath, method: .post, param: param, headerParam: nil, block: block)
+    }
+    
+    func unsubscribePlan(_ id: String, block: @escaping WSBlock) {
+        nprint(items: "---------------- Unsubscribe Plan -----------")
+        let relPath = "v1/unsubscribeplan/\(id)"
+        apiCall(relPath: relPath, method: .put, param: nil, headerParam: nil, block: block)
+    }
+}
+// MARK: - Driver
+extension WebCall {
+    func addUpdateDrvier(param: [String: Any], block: @escaping WSBlock) {
+        nprint(items: "---------------- Add Update Driver -----------")
+        let relPath = "v1/addupdatedriver"
+            apiCall(relPath: relPath, method: .post, param: param, headerParam: nil, block: block)
+        
+    }
+    
+    func deleteDriver(_ id: String, block: @escaping WSBlock) {
+        nprint(items: "---------------- Delete Driver -----------")
+        let relPath = "v1/deletedriver/\(id)"
+        apiCall(relPath: relPath, method: .delete, param: nil, headerParam: nil, block: block)
+    }
+}
